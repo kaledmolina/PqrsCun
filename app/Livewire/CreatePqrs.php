@@ -119,7 +119,7 @@ class CreatePqrs extends Component implements HasForms
 
         $pqrs = Pqrs::create($data);
 
-        $pqrs = Pqrs::create($data);
+
 
         // Flash success message with CUN
         session()->flash('success_cun', $pqrs->cun);

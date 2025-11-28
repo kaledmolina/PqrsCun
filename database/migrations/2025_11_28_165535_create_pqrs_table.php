@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('cun')->unique();
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->string('document_number');
             $table->enum('type', ['peticion', 'queja', 'apelacion', 'reposicion']);
-            $table->string('motive');
+            $table->string('motive')->nullable();
             $table->text('description');
             $table->string('status')->default('pending'); // pending, in_progress, resolved, closed
             $table->json('attachments')->nullable();
