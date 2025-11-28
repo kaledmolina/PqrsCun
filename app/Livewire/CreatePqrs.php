@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Pqrs;
-use App\Models\Pqrs;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 

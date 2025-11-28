@@ -1,95 +1,50 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISP Connect - @yield('title')</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
-    {{-- Font --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .navbar { background-color: #003366; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        .navbar a { color: white; text-decoration: none; margin-left: 1rem; font-weight: bold; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem; }
+        .form-group { margin-bottom: 1rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+        .form-control { width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn { display: inline-block; padding: 0.5rem 1rem; background-color: #003366; color: white; text-decoration: none; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background-color: #002244; }
+        .error { color: red; font-size: 0.875rem; margin-top: 0.25rem; }
+        .alert { padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
+        .alert-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .footer { text-align: center; padding: 2rem; background-color: #eee; margin-top: 2rem; }
     </style>
+    @livewireStyles
 </head>
-<body class="min-h-screen font-sans antialiased bg-base-200/50">
+<body>
 
-    {{-- Navbar --}}
-    <x-nav sticky full-width class="bg-slate-900 text-slate-100 shadow-lg">
-        <x-slot:brand>
-            <label for="main-drawer" class="lg:hidden mr-3">
-                <x-icon name="o-bars-3" class="cursor-pointer" />
-            </label>
+    <nav class="navbar">
+        <div style="display: flex; align-items: center;">
+            <span style="font-size: 1.5rem; font-weight: bold;">Intalnet</span>
+        </div>
+        <div>
+            <a href="{{ route('home') }}">Inicio</a>
+            <a href="{{ route('pqrs.create') }}">Radicar PQRS</a>
+            <a href="{{ route('pqrs.consult') }}">Consultar PQRS</a>
+            <a href="/admin" style="background-color: rgba(255,255,255,0.1); padding: 0.5rem; border-radius: 4px;">Admin</a>
+        </div>
+    </nav>
 
-            <a href="{{ route('home') }}" class="flex items-center gap-2 text-xl font-bold">
-                <img src="{{ asset('images/logo.png') }}" alt="ISP Connect Logo" class="h-8 w-auto" />
-                <span>Intalnet</span>
-            </a>
-        </x-slot:brand>
+    <div class="container">
+        @yield('content')
+    </div>
 
-        <x-slot:actions>
-            <div class="hidden lg:flex gap-6 mr-6">
-                <a href="{{ route('home') }}" class="hover:text-primary transition {{ request()->routeIs('home') ? 'text-primary font-bold' : '' }}">Inicio</a>
-                <a href="{{ route('pqrs.create') }}" class="hover:text-primary transition {{ request()->routeIs('pqrs.create') ? 'text-primary font-bold' : '' }}">Registrar PQRS</a>
-                <a href="{{ route('pqrs.consult') }}" class="hover:text-primary transition {{ request()->routeIs('pqrs.consult') ? 'text-primary font-bold' : '' }}">Consultar PQRS</a>
-            </div>
-            <x-button label="Acceso Administrativo" link="/admin" icon="o-user" class="btn-primary btn-sm" responsive />
-        </x-slot:actions>
-    </x-nav>
-
-    {{-- Main Content --}}
-    <x-main full-width>
-        <x-slot:content>
-            @yield('content')
-        </x-slot:content>
-    </x-main>
-
-    {{-- Footer --}}
-    <footer class="footer p-10 bg-neutral text-neutral-content mt-10">
-        <nav>
-            <header class="footer-title">Normatividad</header> 
-            <a class="link link-hover">Acuerdo 001 CNTV</a>
-            <a class="link link-hover">Acuerdo 10 CNTV</a>
-            <a class="link link-hover">Acuerdo 10 Anexo CNTV</a>
-        </nav> 
-        <nav>
-            <header class="footer-title">Protección al Usuario</header> 
-            <a class="link link-hover">Políticas de servicio</a>
-            <a class="link link-hover">Circular única - SIC PQR</a>
-            <a class="link link-hover">Manejo de Quejas y Reclamos</a>
-            <a class="link link-hover">Política de tratamiento de datos</a>
-        </nav> 
-        <nav>
-            <header class="footer-title">Información de Interés</header> 
-            <a class="link link-hover">Decreto 1524 de 2002</a>
-            <a class="link link-hover">Ley 679 de 2001</a>
-            <a class="link link-hover">www.teprotejo.org</a>
-            <a class="link link-hover">En TIC Confío</a>
-        </nav>
-        <nav>
-            <header class="footer-title">Contratos</header> 
-            <a class="link link-hover">Contrato TV</a>
-            <a class="link link-hover">Contrato Internet</a>
-            <a class="link link-hover">Anexo Cláusula de Permanencia</a>
-        </nav>
-    </footer>
-    <footer class="footer px-10 py-4 border-t bg-neutral text-neutral-content border-base-300">
-        <aside class="items-center grid-flow-col">
-            <p>Intalnet © {{ date('Y') }}. Todos los derechos reservados.</p>
-        </aside> 
-        <nav class="md:place-self-center md:justify-self-end">
-            <div class="grid grid-flow-col gap-4">
-                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a> 
-                <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a>
-            </div>
-        </nav>
+    <footer class="footer">
+        <p>&copy; {{ date('Y') }} Intalnet. Todos los derechos reservados.</p>
     </footer>
 
-    {{-- Toast --}}
-    <x-toast />
+    @livewireScripts
 </body>
 </html>
