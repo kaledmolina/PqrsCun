@@ -81,42 +81,42 @@
 <body class="bg-surface-50 text-slate-800 font-sans antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-dark transition-all duration-300 border-b border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 p-4">
+        <div class="max-w-7xl mx-auto bg-slate-900/80 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl px-6">
+            <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-4 group cursor-pointer">
                     <div class="relative">
                         <div class="absolute -inset-1 bg-gradient-to-r from-secondary to-primary rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
-                        <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-12 w-auto relative transform group-hover:scale-105 transition-transform duration-300">
+                        <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-10 w-auto relative transform group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="font-bold text-2xl text-white tracking-tight hidden sm:block">Intalnet</span>
+                    <span class="font-bold text-xl text-white tracking-tight hidden sm:block">Intalnet</span>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ route('home') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2">
+                    <a href="{{ route('home') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2 text-sm">
                         Inicio
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('pqrs.create') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2">
+                    <a href="{{ route('pqrs.create') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2 text-sm">
                         Radicar PQRS
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('pqrs.consult') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2">
+                    <a href="{{ route('pqrs.consult') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2 text-sm">
                         Consultar
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="/admin" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-primary to-slate-900 text-white font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-all duration-300 border border-white/10 backdrop-blur-sm flex items-center gap-2 group">
+                    <a href="/admin" class="px-5 py-2 rounded-full bg-gradient-to-r from-primary to-slate-900 text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-all duration-300 border border-white/10 backdrop-blur-sm flex items-center gap-2 group">
                         <span>Acceso Admin</span>
-                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                        <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                     </a>
                 </div>
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
                     <button class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors">
-                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
                     </button>
