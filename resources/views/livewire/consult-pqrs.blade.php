@@ -1,32 +1,3 @@
-<div>
-    <h2 style="text-align: center; margin-bottom: 2rem;">Consulta tu Solicitud</h2>
-
-    <!-- Search Box -->
-    <div class="card">
-        <form wire:submit="search" style="display: flex; gap: 1rem;">
-            <div style="flex-grow: 1;">
-                <input type="text" wire:model="data.cun" placeholder="Ingresa tu código CUN (Ej: 4436-24-0000000001)" class="form-control">
-                @error('data.cun') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <button type="submit" class="btn">
-                <span wire:loading.remove wire:target="search">Consultar</span>
-                <span wire:loading wire:target="search">Buscando...</span>
-            </button>
-        </form>
-    </div>
-
-    <!-- Not Found Alert -->
-    @if ($notFound)
-        <div class="alert alert-danger">
-            <strong>No encontrado:</strong> No hemos encontrado ninguna solicitud con ese código CUN.
-        </div>
-    @endif
-
-    <!-- Result Card -->
-    @if ($pqrs)
-        <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem;">
-                <div>
 <div class="animate-fade-in">
     <!-- Hero Search Section -->
     <div class="text-center mb-12">
