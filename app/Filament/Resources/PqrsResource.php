@@ -183,7 +183,7 @@ class PqrsResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\MessagesRelationManager::class,
         ];
     }
 

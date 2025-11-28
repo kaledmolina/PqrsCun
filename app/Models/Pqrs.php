@@ -70,4 +70,8 @@ class Pqrs extends Model
 
         return sprintf('%s-%s-%010d', $providerCode, $year, $sequence);
     }
+    public function messages()
+    {
+        return $this->hasMany(PqrsMessage::class);
+    }
 }

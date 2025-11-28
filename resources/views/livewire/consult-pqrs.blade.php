@@ -129,6 +129,70 @@
                     </dl>
                 </div>
             </div>
+
+            <!-- Timeline & Messages -->
+            <div class="mt-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">Historial de Mensajes</h3>
+
+                <div class="space-y-6">
+                    @forelse ($pqrs->messages as $message)
+                        <div class="flex flex-col {{ $message->role === 'client' ? 'items-end' : 'items-start' }}">
+                            <div class="max-w-[80%] rounded-lg p-4 {{ $message->role === 'client' ? 'bg-blue-50 text-blue-900' : 'bg-gray-100 text-gray-900' }}">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="font-bold text-sm">
+                                        {{ $message->role === 'client' ? 'Tú' : 'Administrador' }}
+                                    </span>
+                                    <span class="text-xs opacity-75">
+                                        {{ $message->created_at->format('d/m/Y H:i') }}
+                                    </span>
+                                </div>
+                                <div class="prose prose-sm max-w-none">
+                                    {!! $message->content !!}
+                                </div>
+                                @if($message->attachments)
+                                    <div class="mt-3 pt-3 border-t border-gray-200/50">
+                                        <p class="text-xs font-semibold mb-1">Adjuntos:</p>
+                                        <ul class="list-disc list-inside text-xs">
+                                            @foreach($message->attachments as $attachment)
+                                                <li>
+                                                    <a href="{{ Storage::url($attachment) }}" target="_blank" class="underline hover:text-blue-600">
+                                                        Ver archivo
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @empty
+                        <p class="text-center text-gray-500 italic py-4">No hay mensajes en el historial.</p>
+                    @endforelse
+                </div>
+
+                <!-- Reply Form -->
+                @if(!in_array($pqrs->status, ['resolved', 'closed']))
+                    <div class="mt-8 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Enviar Respuesta</h4>
+                        
+                        @if (session()->has('message_sent'))
+                            <div class="mb-4 p-4 bg-green-50 text-green-700 rounded-lg">
+                                {{ session('message_sent') }}
+                            </div>
+                        @endif
+
+                        <form wire:submit="submitReply">
+                            {{ $this->replyForm }}
+                            
+                            <div class="mt-4 flex justify-end">
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200">
+                                    Enviar Respuesta
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                @endif
+            </div>
         @endif
     </div>
 </div>
