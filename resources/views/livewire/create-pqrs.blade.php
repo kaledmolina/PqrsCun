@@ -67,9 +67,27 @@
                             </h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Tipo de Documento</label>
+                                    <div class="relative">
+                                        <select wire:model="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm group-hover:border-slate-300">
+                                            <option value="">Selecciona...</option>
+                                            <option value="CC">Cédula de Ciudadanía</option>
+                                            <option value="TI">Tarjeta de Identidad</option>
+                                            <option value="CE">Cédula de Extranjería</option>
+                                            <option value="NIT">NIT</option>
+                                            <option value="PAS">Pasaporte</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                    @error('data.document_type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                </div>
+
+                                <div class="group">
                                     <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Número de Identificación</label>
-                                    <input type="text" wire:model="data.identification_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300" placeholder="Ej: 1057500123">
-                                    @error('data.identification_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    <input type="text" wire:model="data.document_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300" placeholder="Ej: 1057500123">
+                                    @error('data.document_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
                                 
                                 <div class="group">

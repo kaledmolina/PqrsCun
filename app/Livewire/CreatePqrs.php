@@ -26,7 +26,8 @@ class CreatePqrs extends Component
     {
         return [
             'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,apelacion,reposicion',
-            'data.identification_number' => 'required|max:255',
+            'data.document_type' => 'required|in:CC,TI,CE,NIT,PAS',
+            'data.document_number' => 'required|max:255',
             'data.first_name' => 'required|max:255',
             'data.last_name' => 'nullable|max:255',
             'data.email' => 'required|email|max:255',
