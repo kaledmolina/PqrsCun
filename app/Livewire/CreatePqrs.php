@@ -28,11 +28,23 @@ class CreatePqrs extends Component implements HasForms
                 Forms\Components\Section::make('Información del Cliente')
                     ->schema([
                         Forms\Components\TextInput::make('first_name')
-                            ->label('Nombres')
+                            ->label('Nombres / Razón Social')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('last_name')
                             ->label('Apellidos')
+                            ->maxLength(255), // Optional for companies
+                        Forms\Components\Select::make('document_type')
+                            ->label('Tipo de Documento')
+                            ->options([
+                                'CC' => 'Cédula de Ciudadanía',
+                                'CE' => 'Cédula de Extranjería',
+                                'NIT' => 'NIT',
+                                'PAS' => 'Pasaporte',
+                            ])
+                            ->required(),
+                        Forms\Components\TextInput::make('document_number')
+                            ->label('Número de Documento')
                             ->required()
                             ->maxLength(255),
                         Forms\Components\TextInput::make('email')
@@ -45,10 +57,25 @@ class CreatePqrs extends Component implements HasForms
                             ->tel()
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('document_number')
-                            ->label('Número de Documento')
-                            ->required()
-                            ->maxLength(255),
+                        Forms\Components\TextInput::make('department')
+                            ->label('Departamento')
+                            ->default('Boyacá')
+                            ->readOnly()
+                            ->required(),
+                        Forms\Components\Select::make('city')
+                            ->label('Ciudad')
+                            ->options([
+                                'Tunja' => 'Tunja',
+                                'Duitama' => 'Duitama',
+                                'Sogamoso' => 'Sogamoso',
+                                'Paipa' => 'Paipa',
+                                'Chiquinquirá' => 'Chiquinquirá',
+                            ])
+                            ->required(),
+                        Forms\Components\TextInput::make('operator')
+                            ->label('Operador')
+                            ->default('ISP Connect') // Or whatever default
+                            ->required(),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Detalles de la PQRS')
@@ -62,7 +89,12 @@ class CreatePqrs extends Component implements HasForms
                                 'reposicion' => 'Recurso de Reposición',
                             ])
                             ->required()
-                            ->live(), // Make it reactive if needed
+                            ->live(),
+                        Forms\Components\TextInput::make('subject_cun')
+                            ->label('CUN a Apelar/Reponer')
+                            ->required(fn (Forms\Get $get) => in_array($get('type'), ['apelacion', 'reposicion']))
+                            ->visible(fn (Forms\Get $get) => in_array($get('type'), ['apelacion', 'reposicion']))
+                            ->maxLength(255),
                         Forms\Components\TextInput::make('motive')
                             ->label('Motivo')
                             ->required()

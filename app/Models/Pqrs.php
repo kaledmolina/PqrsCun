@@ -21,6 +21,11 @@ class Pqrs extends Model
         'description',
         'status',
         'attachments',
+        'operator',
+        'document_type',
+        'department',
+        'city',
+        'subject_cun',
     ];
 
     protected $casts = [
