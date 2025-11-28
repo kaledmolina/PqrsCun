@@ -14,30 +14,33 @@
     </style>
 </head>
 <body class="antialiased bg-slate-50 text-slate-900">
-    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="flex items-center gap-2">
-                        <img src="{{ asset('images/logo.png') }}" alt="ISP Connect Logo" class="h-10 w-auto">
-                    </a>
-                    <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
-                        <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
-                            Inicio
-                        </a>
-                        <a href="{{ route('pqrs.create') }}" class="{{ request()->routeIs('pqrs.create') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
-                            Registrar PQRS
-                        </a>
-                        <a href="{{ route('pqrs.consult') }}" class="{{ request()->routeIs('pqrs.consult') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
-                            Consultar PQRS
-                        </a>
-                    </div>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div style="display: flex; align-items: center;">
+                <a href="{{ route('home') }}" class="navbar-brand">
+                    <img src="{{ asset('images/logo.png') }}" alt="ISP Connect Logo" style="height: 2.5rem; width: auto;">
+                    <span>Intalnet</span>
+                </a>
+                <div class="navbar-menu" style="margin-left: 3rem; display: none;">
+                    <!-- Mobile menu placeholder if needed, for now desktop only logic in CSS or inline -->
                 </div>
-                <div class="flex items-center">
-                    <a href="/admin" class="text-sm font-medium text-blue-600 hover:text-blue-500 transition-colors">
-                        Acceso Administrativo &rarr;
+                <!-- Desktop Menu -->
+                <div style="margin-left: 3rem; display: flex; gap: 2rem;" class="hidden-mobile">
+                    <a href="{{ route('home') }}" class="navbar-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                        Inicio
+                    </a>
+                    <a href="{{ route('pqrs.create') }}" class="navbar-link {{ request()->routeIs('pqrs.create') ? 'active' : '' }}">
+                        Registrar PQRS
+                    </a>
+                    <a href="{{ route('pqrs.consult') }}" class="navbar-link {{ request()->routeIs('pqrs.consult') ? 'active' : '' }}">
+                        Consultar PQRS
                     </a>
                 </div>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <a href="/admin" class="navbar-btn">
+                    Acceso Administrativo &rarr;
+                </a>
             </div>
         </div>
     </nav>
