@@ -3,132 +3,68 @@
 namespace App\Livewire;
 
 use App\Models\Pqrs;
-use Filament\Forms;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
+use App\Models\Pqrs;
 use Livewire\Component;
-use Filament\Notifications\Notification;
+use Livewire\WithFileUploads;
 
-class CreatePqrs extends Component implements HasForms
+class CreatePqrs extends Component
 {
-    use InteractsWithForms;
+    use Livewire\WithFileUploads;
 
-    public ?array $data = [];
+    public $data = [
+        'department' => 'Boyacá',
+        'operator' => 'Intalnet',
+        'city' => '',
+        'type' => '',
+        'document_type' => '',
+    ];
 
-    public function mount(): void
+    public $attachments = [];
+    public $showSuccessModal = false;
+    public $createdCun = '';
+
+    protected function rules()
     {
-        $this->form->fill();
+        return [
+            'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,apelacion,reposicion',
+            'data.identification_number' => 'required|max:255',
+            'data.first_name' => 'required|max:255',
+            'data.last_name' => 'nullable|max:255',
+            'data.email' => 'required|email|max:255',
+            'data.phone' => 'required|max:255',
+            'data.motive' => 'nullable|max:255',
+            'data.description' => 'required',
+            'attachments.*' => 'nullable|file|max:10240', // 10MB max
+        ];
     }
 
-    public function form(Form $form): Form
+    public function create()
     {
-        return $form
-            ->schema([
-                Forms\Components\Section::make('Información del Cliente')
-                    ->schema([
-                        Forms\Components\TextInput::make('first_name')
-                            ->label('Nombres / Razón Social')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('last_name')
-                            ->label('Apellidos')
-                            ->maxLength(255), // Optional for companies
-                        Forms\Components\Select::make('document_type')
-                            ->label('Tipo de Documento')
-                            ->options([
-                                'CC' => 'Cédula de Ciudadanía',
-                                'CE' => 'Cédula de Extranjería',
-                                'NIT' => 'NIT',
-                                'PAS' => 'Pasaporte',
-                            ])
-                            ->required(),
-                        Forms\Components\TextInput::make('document_number')
-                            ->label('Número de Documento')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('email')
-                            ->label('Correo Electrónico')
-                            ->email()
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('phone')
-                            ->label('Teléfono')
-                            ->tel()
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('department')
-                            ->label('Departamento')
-                            ->default('Boyacá')
-                            ->readOnly()
-                            ->required(),
-                        Forms\Components\Select::make('city')
-                            ->label('Ciudad')
-                            ->options([
-                                'Tunja' => 'Tunja',
-                                'Duitama' => 'Duitama',
-                                'Sogamoso' => 'Sogamoso',
-                                'Paipa' => 'Paipa',
-                                'Chiquinquirá' => 'Chiquinquirá',
-                            ])
-                            ->required(),
-                        Forms\Components\TextInput::make('operator')
-                            ->label('Operador')
-                            ->default('Intalnet')
-                            ->required(),
-                    ])->columns(2),
+        $this->validate();
 
-                Forms\Components\Section::make('Detalles de la PQRS')
-                    ->schema([
-                        Forms\Components\Select::make('type')
-                            ->label('Tipo de Solicitud')
-                            ->options([
-                                'peticion' => 'Petición',
-                                'queja' => 'Queja',
-                                'apelacion' => 'Recurso de Apelación',
-                                'reposicion' => 'Recurso de Reposición',
-                            ])
-                            ->required()
-                            ->live(),
-                        Forms\Components\TextInput::make('subject_cun')
-                            ->label('CUN a Apelar/Reponer')
-                            ->required(fn (Forms\Get $get) => in_array($get('type'), ['apelacion', 'reposicion']))
-                            ->visible(fn (Forms\Get $get) => in_array($get('type'), ['apelacion', 'reposicion']))
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('motive')
-                            ->label('Motivo')
-                            ->required(fn (Forms\Get $get) => in_array($get('type'), ['peticion', 'queja']))
-                            ->visible(fn (Forms\Get $get) => in_array($get('type'), ['peticion', 'queja']))
-                            ->maxLength(255),
-                        Forms\Components\Textarea::make('description')
-                            ->label('Descripción')
-                            ->required()
-                            ->columnSpanFull(),
-                        Forms\Components\FileUpload::make('attachments')
-                            ->label('Anexos')
-                            ->multiple()
-                            ->columnSpanFull(),
-                    ])->columns(2),
-            ])
-            ->statePath('data');
-    }
+        // Handle file uploads
+        $attachmentPaths = [];
+        foreach ($this->attachments as $file) {
+            $attachmentPaths[] = $file->store('pqrs_attachments', 'public');
+        }
+        $this->data['attachments'] = $attachmentPaths;
 
-    public function create(): void
-    {
-        $data = $this->form->getState();
+        // Create PQRS
+        $pqrs = Pqrs::create($this->data);
 
-        $pqrs = Pqrs::create($data);
-
-
-
-        // Flash success message with CUN
-        session()->flash('success_cun', $pqrs->cun);
+        // Set success state
+        $this->createdCun = $pqrs->cun;
+        $this->showSuccessModal = true;
         
         // Reset form
-        $this->form->fill();
-        
-        // Optional: redirect or stay
-        // $this->redirect(route('home'));
+        $this->reset(['data', 'attachments']);
+        $this->data = [
+            'department' => 'Boyacá',
+            'operator' => 'Intalnet',
+            'city' => '',
+            'type' => '',
+            'document_type' => '',
+        ];
     }
 
     public function render()
