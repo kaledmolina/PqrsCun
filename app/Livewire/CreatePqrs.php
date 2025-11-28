@@ -8,7 +8,7 @@ use Livewire\WithFileUploads;
 
 class CreatePqrs extends Component
 {
-    use Livewire\WithFileUploads;
+    use WithFileUploads;
 
     public $data = [
         'department' => 'Boyacá',

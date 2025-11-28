@@ -4,19 +4,18 @@ namespace App\Livewire;
 
 use App\Models\Pqrs;
 use Livewire\Component;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
-use Filament\Forms;
+use Livewire\WithFileUploads;
 
 use Livewire\WithFileUploads;
 
-class ConsultPqrs extends Component implements HasForms
+class ConsultPqrs extends Component
 {
-    use InteractsWithForms;
     use WithFileUploads;
 
-    public ?array $data = [];
+    public $data = [
+        'cun' => '',
+    ];
+    
     public $pqrs = null;
     public $notFound = false;
     
@@ -24,32 +23,24 @@ class ConsultPqrs extends Component implements HasForms
     public $replyContent = '';
     public $replyAttachments = [];
 
-    public function mount(): void
+    protected function rules()
     {
-        $this->form->fill();
+        return [
+            'data.cun' => 'required|string|max:255',
+        ];
     }
 
-    public function form(Form $form): Form
+    public function search()
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('cun')
-                    ->label('Código CUN')
-                    ->placeholder('Ingrese el código CUN (ej: 4436-24-0000000001)')
-                    ->required()
-                    ->maxLength(255),
-            ])
-            ->statePath('data');
-    }
+        $this->validate([
+            'data.cun' => 'required|string|max:255',
+        ]);
 
-    public function search(): void
-    {
-        $data = $this->form->getState();
-        $this->pqrs = Pqrs::with('messages')->where('cun', $data['cun'])->first();
+        $this->pqrs = Pqrs::with('messages')->where('cun', $this->data['cun'])->first();
         $this->notFound = !$this->pqrs;
     }
 
-    public function submitReply(): void
+    public function submitReply()
     {
         if (!$this->pqrs) {
             return;
