@@ -119,16 +119,16 @@ class CreatePqrs extends Component implements HasForms
 
         $pqrs = Pqrs::create($data);
 
-        Notification::make()
-            ->title('PQRS Registrada exitosamente')
-            ->body('Su código CUN es: ' . $pqrs->cun)
-            ->success()
-            ->send();
-            
-        // Redirect to success page or show modal
-        // For now, let's flash the CUN to the session and redirect
+        $pqrs = Pqrs::create($data);
+
+        // Flash success message with CUN
         session()->flash('success_cun', $pqrs->cun);
-        $this->redirect(route('home'));
+        
+        // Reset form
+        $this->form->fill();
+        
+        // Optional: redirect or stay
+        // $this->redirect(route('home'));
     }
 
     public function render()

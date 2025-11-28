@@ -223,5 +223,26 @@
             </form>
         </div>
     </div>
-    <x-filament-actions::modals />
+    @if (session()->has('success_cun'))
+    <div class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden animate-fade-in-up">
+            <div class="bg-green-500 p-6 flex justify-center">
+                <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <div class="p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">¡Solicitud Radicada!</h3>
+                <p class="text-gray-600 mb-6">Tu PQRS ha sido registrada exitosamente. Por favor guarda tu número de radicado para consultar el estado:</p>
+                
+                <div class="bg-blue-50 border-2 border-blue-100 rounded-xl p-4 mb-8">
+                    <p class="text-sm text-blue-600 font-semibold uppercase tracking-wider mb-1">CUN (Código Único Numérico)</p>
+                    <p class="text-3xl font-mono font-bold text-blue-700 select-all">{{ session('success_cun') }}</p>
+                </div>
+                
+                <button type="button" wire:click="$set('data.type', null)" onclick="window.location.reload()" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Entendido, finalizar
+                </button>
+            </div>
+        </div>
+    </div>
+    @endif
 </div>
