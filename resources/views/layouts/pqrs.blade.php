@@ -90,7 +90,6 @@
                         <div class="absolute -inset-1 bg-gradient-to-r from-secondary to-primary rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
                         <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-10 w-auto relative transform group-hover:scale-105 transition-transform duration-300">
                     </div>
-                    <span class="font-bold text-xl text-white tracking-tight hidden sm:block">Intalnet</span>
                 </div>
                 
                 <!-- Desktop Menu -->
