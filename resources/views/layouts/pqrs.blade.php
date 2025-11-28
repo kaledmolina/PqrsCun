@@ -20,7 +20,7 @@
                         sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
-                        primary: '#003366',
+                        primary: '#2b5f94ff',
                         secondary: '#00aaff',
                         accent: '#f59e0b',
                         'surface-50': '#f8fafc',
