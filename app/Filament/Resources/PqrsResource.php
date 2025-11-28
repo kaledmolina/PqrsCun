@@ -101,26 +101,49 @@ class PqrsResource extends Resource
                     ->formatStateUsing(fn ($record) => $record->first_name . ' ' . $record->last_name)
                     ->searchable(['first_name', 'last_name']),
                 Tables\Columns\TextColumn::make('status')
+                    ->label('Estado')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'pending' => 'gray',
-                        'in_progress' => 'warning',
+                        'pending' => 'warning',
+                        'in_progress' => 'info',
                         'resolved' => 'success',
-                        'closed' => 'success',
+                        'closed' => 'gray',
+                    })
+                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                        'pending' => 'Pendiente',
+                        'in_progress' => 'En Progreso',
+                        'resolved' => 'Resuelto',
+                        'closed' => 'Cerrado',
                     }),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
+                Tables\Columns\TextColumn::make('deadline_at')
+                    ->label('Fecha Límite')
+                    ->date('d/m/Y')
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->badge()
+                    ->color(fn ($record) => 
+                        $record->status === 'resolved' || $record->status === 'closed' ? 'gray' : (
+                            $record->deadline_at < now() ? 'danger' : (
+                                $record->deadline_at < now()->addDays(3) ? 'warning' : 'success'
+                            )
+                        )
+                    ),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Radicado')
+                    ->dateTime('d/m/Y H:i')
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('status')
+                    ->label('Estado')
                     ->options([
-                        'pending' => 'Pending',
-                        'in_progress' => 'In Progress',
-                        'resolved' => 'Resolved',
-                        'closed' => 'Closed',
+                        'pending' => 'Pendiente',
+                        'in_progress' => 'En Progreso',
+                        'resolved' => 'Resuelto',
+                        'closed' => 'Cerrado',
                     ]),
+                Tables\Filters\Filter::make('overdue')
+                    ->label('Vencidos')
+                    ->query(fn (Builder $query): Builder => $query->where('deadline_at', '<', now())->whereNotIn('status', ['resolved', 'closed'])),
                 Tables\Filters\SelectFilter::make('type')
                     ->options([
                         'peticion' => 'Petición',
@@ -131,6 +154,24 @@ class PqrsResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('answer')
+                    ->label('Responder')
+                    ->icon('heroicon-o-chat-bubble-left-right')
+                    ->color('success')
+                    ->form([
+                        Forms\Components\Textarea::make('answer')
+                            ->label('Respuesta Oficial')
+                            ->required()
+                            ->rows(5),
+                    ])
+                    ->action(function (Pqrs $record, array $data): void {
+                        $record->update([
+                            'answer' => $data['answer'],
+                            'answered_at' => now(),
+                            'status' => 'resolved',
+                        ]);
+                    })
+                    ->visible(fn (Pqrs $record) => !in_array($record->status, ['resolved', 'closed'])),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

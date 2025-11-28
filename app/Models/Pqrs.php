@@ -26,10 +26,15 @@ class Pqrs extends Model
         'department',
         'city',
         'subject_cun',
+        'deadline_at',
+        'answer',
+        'answered_at',
     ];
 
     protected $casts = [
         'attachments' => 'array',
+        'deadline_at' => 'date',
+        'answered_at' => 'datetime',
     ];
 
     protected static function booted()
@@ -37,6 +42,11 @@ class Pqrs extends Model
         static::creating(function ($pqrs) {
             if (empty($pqrs->cun)) {
                 $pqrs->cun = static::generateCun();
+            }
+            if (empty($pqrs->deadline_at)) {
+                // 15 business days (approx 3 weeks)
+                // Using simple addition for now, can be improved with Carbon business days
+                $pqrs->deadline_at = now()->addWeekdays(15);
             }
         });
     }
