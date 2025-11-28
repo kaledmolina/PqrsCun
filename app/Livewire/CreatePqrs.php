@@ -97,7 +97,8 @@ class CreatePqrs extends Component implements HasForms
                             ->maxLength(255),
                         Forms\Components\TextInput::make('motive')
                             ->label('Motivo')
-                            ->required()
+                            ->required(fn (Forms\Get $get) => in_array($get('type'), ['peticion', 'queja']))
+                            ->visible(fn (Forms\Get $get) => in_array($get('type'), ['peticion', 'queja']))
                             ->maxLength(255),
                         Forms\Components\Textarea::make('description')
                             ->label('Descripción')
