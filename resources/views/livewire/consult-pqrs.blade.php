@@ -1,85 +1,77 @@
-<div class="py-16 bg-slate-50 min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- Header Section -->
-        <div class="text-center mb-12">
-            <h1 class="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-                Consulta el estado de tu solicitud
-            </h1>
-            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-                En <span class="font-bold text-blue-600">Intalnet</span> trabajamos para darte soluciones. 
-                Ingresa tu código CUN para conocer en tiempo real el avance de tu trámite.
-            </p>
-        </div>
+<div class="pqrs-container">
+    
+    <!-- Header Section -->
+    <div class="pqrs-header">
+        <h1 class="pqrs-title">
+            Consulta el estado de tu solicitud
+        </h1>
+        <p class="pqrs-subtitle">
+            En <span style="color: var(--primary-color); font-weight: bold;">Intalnet</span> trabajamos para darte soluciones. 
+            Ingresa tu código CUN para conocer en tiempo real el avance de tu trámite.
+        </p>
+    </div>
 
-        <!-- Search Box -->
-        <div class="bg-white rounded-2xl shadow-xl p-8 mb-10 border border-slate-100">
-            <form wire:submit="search" class="max-w-2xl mx-auto">
-                <div class="relative flex items-center">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <svg class="h-6 w-6 text-slate-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
-                    </div>
-                    <input type="text" wire:model="data.cun" class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-12 pr-4 py-4 text-lg border-slate-300 rounded-xl shadow-sm transition-shadow focus:shadow-md" placeholder="Ingresa tu código CUN (ej: 4436-24-0000000001)">
-                    <button type="submit" class="absolute right-2 top-2 bottom-2 bg-blue-600 text-white px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                        <span wire:loading.remove>Consultar</span>
-                        <span wire:loading>
-                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                        </span>
-                    </button>
+    <!-- Search Box -->
+    <div class="pqrs-card" style="padding: 2rem; margin-bottom: 2.5rem;">
+        <form wire:submit="search" style="max-width: 42rem; margin: 0 auto;">
+            <div style="position: relative; display: flex; align-items: center;">
+                <div style="position: absolute; left: 0; padding-left: 1rem; pointer-events: none;">
+                    <svg style="height: 1.5rem; width: 1.5rem; color: #94a3b8;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
                 </div>
-                @error('data.cun') <span class="text-red-500 text-sm mt-2 ml-2 flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>{{ $message }}</span> @enderror
-            </form>
-        </div>
-
-        <!-- Not Found Alert -->
-        @if ($notFound)
-            <div class="rounded-xl bg-red-50 p-6 border border-red-100 animate-fade-in-up shadow-sm">
-                <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 bg-red-100 p-2 rounded-full">
-                        <svg class="h-6 w-6 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <input type="text" wire:model="data.cun" style="padding-left: 3rem; padding-right: 1rem; padding-top: 1rem; padding-bottom: 1rem;" class="form-control" placeholder="Ingresa tu código CUN (ej: 4436-24-0000000001)">
+                <button type="submit" class="btn btn-primary" style="position: absolute; right: 0.5rem; top: 0.5rem; bottom: 0.5rem;">
+                    <span wire:loading.remove>Consultar</span>
+                    <span wire:loading>
+                        <svg class="animate-spin" style="height: 1.25rem; width: 1.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle style="opacity: 0.25;" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path style="opacity: 0.75;" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                         </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-red-800">No encontramos resultados</h3>
-                        <p class="mt-2 text-red-700">
-                            No hemos encontrado ninguna solicitud con el código CUN ingresado. 
-                            Por favor verifica que el número esté escrito correctamente e inténtalo de nuevo.
-                        </p>
-                    </div>
+                    </span>
+                </button>
+            </div>
+            @error('data.cun') <span class="form-error" style="display: flex; align-items: center; gap: 0.25rem; margin-left: 0.5rem; margin-top: 0.5rem;"><svg style="width: 1rem; height: 1rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>{{ $message }}</span> @enderror
+        </form>
+    </div>
+
+    <!-- Not Found Alert -->
+    @if ($notFound)
+        <div style="background-color: #fef2f2; padding: 1.5rem; border-radius: 0.75rem; border: 1px solid #fee2e2; margin-bottom: 2rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);">
+            <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                <div style="flex-shrink: 0; background-color: #fee2e2; padding: 0.5rem; border-radius: 9999px;">
+                    <svg style="height: 1.5rem; width: 1.5rem; color: #ef4444;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.125rem; font-weight: 700; color: #991b1b; margin: 0;">No encontramos resultados</h3>
+                    <p style="margin-top: 0.5rem; color: #b91c1c;">
+                        No hemos encontrado ninguna solicitud con el código CUN ingresado. 
+                        Por favor verifica que el número esté escrito correctamente e inténtalo de nuevo.
+                    </p>
                 </div>
             </div>
-        @endif
+        </div>
+    @endif
 
-        <!-- Result Card -->
-        @if ($pqrs)
-            <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-slate-100 animate-fade-in-up">
-                <div class="px-8 py-6 border-b border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <!-- Result Card -->
+    @if ($pqrs)
+        <div class="pqrs-card">
+            <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #f1f5f9; background-color: rgba(248, 250, 252, 0.5); display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <h3 class="text-xl font-bold text-slate-900">Detalles de tu Solicitud</h3>
-                        <p class="mt-1 text-sm text-slate-500">Radicado CUN: <span class="font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">{{ $pqrs->cun }}</span></p>
+                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0;">Detalles de tu Solicitud</h3>
+                        <p style="margin-top: 0.25rem; font-size: 0.875rem; color: #64748b;">Radicado CUN: <span style="font-family: monospace; font-weight: 700; color: var(--primary-color); background-color: #eff6ff; padding: 0.125rem 0.5rem; border-radius: 0.25rem;">{{ $pqrs->cun }}</span></p>
                     </div>
                     <div>
-                        <span class="px-4 py-2 inline-flex items-center gap-2 text-sm font-bold rounded-full shadow-sm
-                            {{ match($pqrs->status) {
-                                'pending' => 'bg-yellow-100 text-yellow-800 border border-yellow-200',
-                                'in_progress' => 'bg-blue-100 text-blue-800 border border-blue-200',
-                                'resolved' => 'bg-green-100 text-green-800 border border-green-200',
-                                'closed' => 'bg-slate-100 text-slate-800 border border-slate-200',
-                                default => 'bg-gray-100 text-gray-800'
-                            } }}">
-                            <span class="w-2 h-2 rounded-full {{ match($pqrs->status) {
-                                'pending' => 'bg-yellow-500',
-                                'in_progress' => 'bg-blue-500',
-                                'resolved' => 'bg-green-500',
-                                'closed' => 'bg-slate-500',
-                                default => 'bg-gray-500'
-                            } }}"></span>
+                        <span class="badge {{ match($pqrs->status) {
+                            'pending' => 'badge-pending',
+                            'in_progress' => 'badge-progress',
+                            'resolved' => 'badge-resolved',
+                            'closed' => 'badge-closed',
+                            default => 'badge-closed'
+                        } }}">
                             {{ match($pqrs->status) {
                                 'pending' => 'Pendiente',
                                 'in_progress' => 'En Progreso',
@@ -90,109 +82,121 @@
                         </span>
                     </div>
                 </div>
-                <div class="px-8 py-8">
-                    <dl class="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2">
-                        <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-slate-500 mb-1">Tipo de Solicitud</dt>
-                            <dd class="text-base font-semibold text-slate-900 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                {{ match($pqrs->type) {
-                                    'peticion' => 'Petición',
-                                    'queja' => 'Queja',
-                                    'apelacion' => 'Recurso de Apelación',
-                                    'reposicion' => 'Recurso de Reposición',
-                                    default => ucfirst($pqrs->type)
-                                } }}
-                            </dd>
-                        </div>
-                        <div class="sm:col-span-1">
-                            <dt class="text-sm font-medium text-slate-500 mb-1">Fecha de Radicación</dt>
-                            <dd class="text-base font-semibold text-slate-900 flex items-center gap-2">
-                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                {{ $pqrs->created_at->format('d/m/Y h:i A') }}
-                            </dd>
-                        </div>
-                        
-                        @if($pqrs->motive)
-                        <div class="sm:col-span-2">
-                            <dt class="text-sm font-medium text-slate-500 mb-1">Motivo</dt>
-                            <dd class="text-base text-slate-900">{{ $pqrs->motive }}</dd>
-                        </div>
-                        @endif
-
-                        <div class="sm:col-span-2">
-                            <dt class="text-sm font-medium text-slate-500 mb-2">Descripción de la Solicitud</dt>
-                            <dd class="text-base text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100 leading-relaxed">
-                                {{ $pqrs->description }}
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
             </div>
-
-            <!-- Timeline & Messages -->
-            <div class="mt-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-4">Historial de Mensajes</h3>
-
-                <div class="space-y-6">
-                    @forelse ($pqrs->messages as $message)
-                        <div class="flex flex-col {{ $message->role === 'client' ? 'items-end' : 'items-start' }}">
-                            <div class="max-w-[80%] rounded-lg p-4 {{ $message->role === 'client' ? 'bg-blue-50 text-blue-900' : 'bg-gray-100 text-gray-900' }}">
-                                <div class="flex items-center gap-2 mb-2">
-                                    <span class="font-bold text-sm">
-                                        {{ $message->role === 'client' ? 'Tú' : 'Administrador' }}
-                                    </span>
-                                    <span class="text-xs opacity-75">
-                                        {{ $message->created_at->format('d/m/Y H:i') }}
-                                    </span>
-                                </div>
-                                <div class="prose prose-sm max-w-none">
-                                    {!! $message->content !!}
-                                </div>
-                                @if($message->attachments)
-                                    <div class="mt-3 pt-3 border-t border-gray-200/50">
-                                        <p class="text-xs font-semibold mb-1">Adjuntos:</p>
-                                        <ul class="list-disc list-inside text-xs">
-                                            @foreach($message->attachments as $attachment)
-                                                <li>
-                                                    <a href="{{ Storage::url($attachment) }}" target="_blank" class="underline hover:text-blue-600">
-                                                        Ver archivo
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-center text-gray-500 italic py-4">No hay mensajes en el historial.</p>
-                    @endforelse
-                </div>
-
-                <!-- Reply Form -->
-                @if(!in_array($pqrs->status, ['resolved', 'closed']))
-                    <div class="mt-8 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Enviar Respuesta</h4>
-                        
-                        @if (session()->has('message_sent'))
-                            <div class="mb-4 p-4 bg-green-50 text-green-700 rounded-lg">
-                                {{ session('message_sent') }}
-                            </div>
-                        @endif
-
-                        <form wire:submit="submitReply">
-                            {{ $this->replyForm }}
-                            
-                            <div class="mt-4 flex justify-end">
-                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200">
-                                    Enviar Respuesta
-                                </button>
-                            </div>
-                        </form>
+            <div class="card-body">
+                <dl class="grid-2">
+                    <div>
+                        <dt class="form-label" style="color: #64748b;">Tipo de Solicitud</dt>
+                        <dd style="font-size: 1rem; font-weight: 600; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg style="width: 1.25rem; height: 1.25rem; color: var(--primary-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            {{ match($pqrs->type) {
+                                'peticion' => 'Petición',
+                                'queja' => 'Queja',
+                                'apelacion' => 'Recurso de Apelación',
+                                'reposicion' => 'Recurso de Reposición',
+                                default => ucfirst($pqrs->type)
+                            } }}
+                        </dd>
                     </div>
-                @endif
+                    <div>
+                        <dt class="form-label" style="color: #64748b;">Fecha de Radicación</dt>
+                        <dd style="font-size: 1rem; font-weight: 600; color: #0f172a; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg style="width: 1.25rem; height: 1.25rem; color: var(--primary-color);" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            {{ $pqrs->created_at->format('d/m/Y h:i A') }}
+                        </dd>
+                    </div>
+                    
+                    @if($pqrs->motive)
+                    <div class="col-span-2">
+                        <dt class="form-label" style="color: #64748b;">Motivo</dt>
+                        <dd style="font-size: 1rem; color: #0f172a;">{{ $pqrs->motive }}</dd>
+                    </div>
+                    @endif
+
+                    <div class="col-span-2">
+                        <dt class="form-label" style="color: #64748b; margin-bottom: 0.5rem;">Descripción de la Solicitud</dt>
+                        <dd style="font-size: 1rem; color: #334155; background-color: #f8fafc; padding: 1rem; border-radius: 0.75rem; border: 1px solid #f1f5f9; line-height: 1.6;">
+                            {{ $pqrs->description }}
+                        </dd>
+                    </div>
+                </dl>
             </div>
-        @endif
-    </div>
+        </div>
+
+        <!-- Timeline & Messages -->
+        <div style="margin-top: 2rem;">
+            <h3 style="font-size: 1.25rem; font-weight: 700; color: #1f2937; margin-bottom: 1rem;">Historial de Mensajes</h3>
+
+            <div class="timeline">
+                @forelse ($pqrs->messages as $message)
+                    <div class="message {{ $message->role }}">
+                        <div class="message-bubble">
+                            <div class="message-meta">
+                                <span>
+                                    {{ $message->role === 'client' ? 'Tú' : 'Administrador' }}
+                                </span>
+                                <span class="message-time">
+                                    {{ $message->created_at->format('d/m/Y H:i') }}
+                                </span>
+                            </div>
+                            <div style="font-size: 0.875rem;">
+                                {!! $message->content !!}
+                            </div>
+                            @if($message->attachments)
+                                <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid rgba(0,0,0,0.1);">
+                                    <p style="font-size: 0.75rem; font-weight: 600; margin-bottom: 0.25rem;">Adjuntos:</p>
+                                    <ul style="list-style-type: disc; padding-left: 1rem; font-size: 0.75rem;">
+                                        @foreach($message->attachments as $attachment)
+                                            <li>
+                                                <a href="{{ Storage::url($attachment) }}" target="_blank" style="text-decoration: underline; color: inherit;">
+                                                    Ver archivo
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-center" style="color: #64748b; font-style: italic; padding: 1rem;">No hay mensajes en el historial.</p>
+                @endforelse
+            </div>
+
+            <!-- Reply Form -->
+            @if(!in_array($pqrs->status, ['resolved', 'closed']))
+                <div class="pqrs-card" style="margin-top: 2rem; padding: 1.5rem;">
+                    <h4 style="font-size: 1.125rem; font-weight: 600; color: #1f2937; margin-bottom: 1rem;">Enviar Respuesta</h4>
+                    
+                    @if (session()->has('message_sent'))
+                        <div style="margin-bottom: 1rem; padding: 1rem; background-color: #f0fdf4; color: #15803d; border-radius: 0.5rem;">
+                            {{ session('message_sent') }}
+                        </div>
+                    @endif
+
+                    <form wire:submit="submitReply">
+                        <div class="form-group">
+                            <label for="replyContent" class="form-label">Mensaje</label>
+                            <textarea wire:model="replyContent" id="replyContent" rows="4" class="form-control" placeholder="Escribe tu respuesta aquí..."></textarea>
+                            @error('replyContent') <span class="form-error">{{ $message }}</span> @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="replyAttachments" class="form-label">Adjuntar Archivos</label>
+                            <input type="file" wire:model="replyAttachments" id="replyAttachments" class="form-control" multiple>
+                            @error('replyAttachments.*') <span class="form-error">{{ $message }}</span> @enderror
+                            <div wire:loading wire:target="replyAttachments" style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--primary-color);">Subiendo archivos...</div>
+                        </div>
+                        
+                        <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+                            <button type="submit" class="btn btn-primary" wire:loading.attr="disabled">
+                                <span wire:loading.remove>Enviar Respuesta</span>
+                                <span wire:loading>Enviando...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            @endif
+        </div>
+    @endif
 </div>

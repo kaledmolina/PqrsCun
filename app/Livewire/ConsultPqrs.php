@@ -9,29 +9,24 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Forms;
 
+use Livewire\WithFileUploads;
+
 class ConsultPqrs extends Component implements HasForms
 {
     use InteractsWithForms;
+    use WithFileUploads;
 
     public ?array $data = [];
     public $pqrs = null;
     public $notFound = false;
     
     // Reply form data
-    public ?array $replyData = [];
+    public $replyContent = '';
+    public $replyAttachments = [];
 
     public function mount(): void
     {
         $this->form->fill();
-        $this->replyForm->fill();
-    }
-
-    protected function getForms(): array
-    {
-        return [
-            'form',
-            'replyForm',
-        ];
     }
 
     public function form(Form $form): Form
@@ -47,30 +42,6 @@ class ConsultPqrs extends Component implements HasForms
             ->statePath('data');
     }
 
-    public function replyForm(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\RichEditor::make('content')
-                    ->label('Responder')
-                    ->placeholder('Escribe tu respuesta aquí...')
-                    ->required()
-                    ->toolbarButtons([
-                        'bold',
-                        'italic',
-                        'link',
-                        'bulletList',
-                        'orderedList',
-                    ]),
-                Forms\Components\FileUpload::make('attachments')
-                    ->label('Adjuntar Archivos')
-                    ->multiple()
-                    ->maxSize(10240) // 10MB
-                    ->directory('pqrs-attachments'),
-            ])
-            ->statePath('replyData');
-    }
-
     public function search(): void
     {
         $data = $this->form->getState();
@@ -84,16 +55,25 @@ class ConsultPqrs extends Component implements HasForms
             return;
         }
 
-        $data = $this->replyForm->getState();
+        $this->validate([
+            'replyContent' => 'required|string',
+            'replyAttachments.*' => 'nullable|file|max:10240', // 10MB
+        ]);
+
+        $attachmentPaths = [];
+        foreach ($this->replyAttachments as $attachment) {
+            $attachmentPaths[] = $attachment->store('pqrs-attachments', 'public');
+        }
 
         $this->pqrs->messages()->create([
             'role' => 'client',
-            'content' => $data['content'],
-            'attachments' => $data['attachments'],
+            'content' => nl2br(e($this->replyContent)), // Convert newlines to BR and escape HTML
+            'attachments' => $attachmentPaths,
         ]);
 
         // Reset form and refresh messages
-        $this->replyForm->fill();
+        $this->replyContent = '';
+        $this->replyAttachments = [];
         $this->pqrs->refresh();
         
         // Optional: Flash success message
