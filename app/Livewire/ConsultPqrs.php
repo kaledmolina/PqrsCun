@@ -6,7 +6,7 @@ use App\Models\Pqrs;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-use Livewire\WithFileUploads;
+
 
 class ConsultPqrs extends Component
 {
