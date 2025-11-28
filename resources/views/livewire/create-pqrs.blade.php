@@ -2,11 +2,26 @@
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div class="bg-blue-600 px-6 py-4">
-                <h2 class="text-2xl font-bold text-white">Registrar Nueva Solicitud</h2>
-                <p class="text-blue-100 mt-1">Complete el formulario para radicar su PQRS</p>
+                <h2 class="text-2xl font-bold text-white">Registrar PQR - Intalnet</h2>
+                <p class="text-blue-100 mt-1">En Intalnet estamos para escucharte, registra tu PQR y en la mayor brevedad atenderemos tu solicitud</p>
             </div>
             
             <form wire:submit="create" class="p-8 space-y-8">
+                <!-- Type Selection (First Step) -->
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                    <label for="type" class="block text-lg font-medium text-blue-900 mb-2">¿Qué tipo de solicitud desea realizar?</label>
+                    <div class="mt-1">
+                        <select wire:model.live="data.type" id="type" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full text-base border-gray-300 rounded-md p-3 border">
+                            <option value="">Seleccione una opción</option>
+                            <option value="peticion">Petición</option>
+                            <option value="queja">Queja</option>
+                            <option value="apelacion">Recurso de Apelación</option>
+                            <option value="reposicion">Recurso de Reposición</option>
+                        </select>
+                    </div>
+                    @error('data.type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                </div>
+
                 <!-- Client Info Section -->
                 <div>
                     <h3 class="text-lg font-medium leading-6 text-gray-900 border-b pb-2 mb-4">Información del Cliente</h3>
@@ -121,21 +136,6 @@
                                 <input type="text" wire:model="data.motive" id="motive" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
                             </div>
                             @error('data.motive') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
-                        </div>
-
-                        <!-- Type -->
-                        <div class="sm:col-span-2">
-                            <label for="type" class="block text-sm font-medium text-gray-700">Tipo de Solicitud</label>
-                            <div class="mt-1">
-                                <select wire:model.live="data.type" id="type" class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-2 border">
-                                    <option value="">Seleccione una opción</option>
-                                    <option value="peticion">Petición</option>
-                                    <option value="queja">Queja</option>
-                                    <option value="apelacion">Recurso de Apelación</option>
-                                    <option value="reposicion">Recurso de Reposición</option>
-                                </select>
-                            </div>
-                            @error('data.type') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                         </div>
 
                         <!-- Subject CUN (Conditional) -->

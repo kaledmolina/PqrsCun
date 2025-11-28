@@ -131,7 +131,7 @@
 
             <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-slate-500 text-sm">
-                    Intalnet &copy; {{ date('Y') }} ISP Connect. Todos los derechos reservados.
+                    Intalnet &copy; {{ date('Y') }}. Todos los derechos reservados.
                 </p>
                 <div class="flex space-x-6 mt-4 md:mt-0">
                     <a href="#" class="text-slate-400 hover:text-white transition-colors">

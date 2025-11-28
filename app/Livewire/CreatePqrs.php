@@ -74,7 +74,7 @@ class CreatePqrs extends Component implements HasForms
                             ->required(),
                         Forms\Components\TextInput::make('operator')
                             ->label('Operador')
-                            ->default('ISP Connect') // Or whatever default
+                            ->default('Intalnet')
                             ->required(),
                     ])->columns(2),
 
