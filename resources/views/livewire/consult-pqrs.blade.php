@@ -181,11 +181,20 @@
                             @error('replyContent') <span class="form-error">{{ $message }}</span> @enderror
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" 
+                             x-data="{ isUploading: false, progress: 0 }"
+                             x-on:livewire-upload-start="isUploading = true"
+                             x-on:livewire-upload-finish="isUploading = false"
+                             x-on:livewire-upload-error="isUploading = false"
+                             x-on:livewire-upload-progress="progress = $event.detail.progress">
                             <label for="replyAttachments" class="form-label">Adjuntar Archivos</label>
                             <input type="file" wire:model="replyAttachments" id="replyAttachments" class="form-control" multiple>
                             @error('replyAttachments.*') <span class="form-error">{{ $message }}</span> @enderror
-                            <div wire:loading wire:target="replyAttachments" style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--primary-color);">Subiendo archivos...</div>
+                            
+                            <!-- Uploading Indicator -->
+                            <div x-show="isUploading" style="display: none; margin-top: 0.5rem; font-size: 0.875rem; color: var(--primary-color);">
+                                Subiendo archivos... <span x-text="progress + '%'"></span>
+                            </div>
                         </div>
                         
                         <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
