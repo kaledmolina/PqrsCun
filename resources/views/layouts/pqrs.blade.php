@@ -20,7 +20,6 @@
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="flex items-center gap-2">
                         <img src="{{ asset('images/logo.png') }}" alt="ISP Connect Logo" class="h-10 w-auto">
-                        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-500">ISP Connect</span>
                     </a>
                     <div class="hidden sm:ml-10 sm:flex sm:space-x-8">
                         <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-colors">
