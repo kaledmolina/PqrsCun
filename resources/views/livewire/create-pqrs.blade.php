@@ -153,71 +153,85 @@
                             <svg width="24" height="24" style="color: #ca8a04;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <div style="width: 100%;">
                                 <label for="subject_cun" class="form-label" style="color: #854d0e; font-weight: 700;">Código CUN a Apelar/Reponer <span style="color: var(--danger-color);">*</span></label>
-                                <input type="text" wire:model="data.subject_cun" id="subject_cun" placeholder="Ej: 4436-24-0000000001" class="form-control" style="border-color: #fde047;">
-                                <p style="margin-top: 0.5rem; font-size: 0.75rem; color: #a16207;">Por favor ingresa el número de radicado (CUN) de la solicitud anterior sobre la cual deseas presentar este recurso.</p>
-                            </div>
-                        </div>
-                        @error('data.subject_cun') <span class="form-error" style="margin-left: 2.25rem; display: block;">{{ $message }}</span> @enderror
-                    </div>
-                    @endif
+        <div class="max-w-3xl mx-auto py-10 px-4">
+    <x-header title="Radicar PQRS" subtitle="Completa el formulario para registrar tu solicitud." size="text-3xl" separator />
 
-                    <!-- Description -->
-                    <div class="col-span-2">
-                        <label for="description" class="form-label">Descripción de los hechos <span style="color: var(--danger-color);">*</span></label>
-                        <div style="margin-top: 0.25rem;">
-                            <textarea wire:model="data.description" id="description" rows="5" placeholder="Describe detalladamente tu solicitud..." class="form-control"></textarea>
-                        </div>
-                        <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-light);">Trata de ser lo más claro y específico posible para agilizar tu trámite.</p>
-                        @error('data.description') <span class="form-error">{{ $message }}</span> @enderror
-                    </div>
+    <x-card class="shadow-xl">
+        <x-form wire:submit="create">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <x-select 
+                    label="Tipo de Solicitud" 
+                    :options="[
+                        ['id' => 'peticion', 'name' => 'Petición'],
+                        ['id' => 'queja', 'name' => 'Queja'],
+                        ['id' => 'reclamo', 'name' => 'Reclamo'],
+                        ['id' => 'sugerencia', 'name' => 'Sugerencia'],
+                        ['id' => 'apelacion', 'name' => 'Recurso de Apelación'],
+                        ['id' => 'reposicion', 'name' => 'Recurso de Reposición']
+                    ]"
+                    wire:model="data.type"
+                    icon="o-tag"
+                    placeholder="Seleccione una opción"
+                />
 
-                    <!-- Attachments -->
-                    <div class="col-span-2">
-                        <label for="attachments" class="form-label">Anexos (Opcional)</label>
-                        <div class="file-upload-area">
-                            <div style="text-align: center;">
-                                <svg style="margin: 0 auto; height: 3rem; width: 3rem; color: #94a3b8;" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
-                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                <div style="display: flex; justify-content: center; font-size: 0.875rem; color: #475569; margin-top: 0.5rem;">
-                                    <label for="attachments" style="position: relative; cursor: pointer; color: var(--primary-color); font-weight: 500;">
-                                        <span>Sube un archivo</span>
-                                        <input id="attachments" wire:model="data.attachments" type="file" style="display: none;" multiple>
-                                    </label>
-                                    <p style="padding-left: 0.25rem;">o arrástralo aquí</p>
-                                </div>
-                                <p style="font-size: 0.75rem; color: #64748b;">PNG, JPG, PDF hasta 10MB</p>
-                            </div>
-                        </div>
-                        @error('data.attachments') <span class="form-error">{{ $message }}</span> @enderror
-                        
-                        <!-- Loading State for Upload -->
-                        <div wire:loading wire:target="data.attachments" style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--primary-color); display: flex; align-items: center; gap: 0.5rem;">
-                            <svg class="animate-spin" style="height: 1rem; width: 1rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle style="opacity: 0.25;" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path style="opacity: 0.75;" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Subiendo archivos...
-                        </div>
-                    </div>
-                </div>
+                <x-input label="Número de Identificación" wire:model="data.identification_number" icon="o-identification" />
             </div>
 
-            <div style="padding-top: 1.5rem; border-top: 1px solid #e2e8f0; margin-top: 2rem;">
-                <div style="display: flex; justify-content: flex-end;">
-                    <button type="submit" class="btn btn-primary btn-block" wire:loading.attr="disabled" style="max-width: 200px;">
-                        <span wire:loading.remove>Radicar Solicitud</span>
-                        <span wire:loading style="display: flex; align-items: center; gap: 0.5rem;">
-                            <svg class="animate-spin" style="height: 1.25rem; width: 1.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle style="opacity: 0.25;" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path style="opacity: 0.75;" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Procesando...
-                        </span>
-                    </button>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <x-input label="Nombres" wire:model="data.first_name" icon="o-user" />
+                <x-input label="Apellidos" wire:model="data.last_name" icon="o-user" />
             </div>
-        </form>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <x-input label="Correo Electrónico" wire:model="data.email" icon="o-envelope" type="email" />
+                <x-input label="Teléfono" wire:model="data.phone" icon="o-phone" />
+            </div>
+
+            <x-input label="Motivo (Opcional)" wire:model="data.motive" icon="o-chat-bubble-bottom-center-text" />
+
+            <x-textarea 
+                label="Descripción de la Solicitud" 
+                wire:model="data.description" 
+                rows="5" 
+                placeholder="Describe detalladamente tu solicitud..." 
+            />
+
+            <x-file label="Adjuntar Archivos (Opcional)" wire:model="attachments" multiple icon="o-paper-clip" />
+
+            <x-slot:actions>
+                <x-button label="Radicar Solicitud" class="btn-primary" type="submit" spinner="create" icon="o-paper-airplane" />
+            </x-slot:actions>
+        </x-form>
+    </x-card>
+
+    {{-- Success Modal --}}
+    @if($showSuccessModal)
+    <x-modal wire:model="showSuccessModal" class="backdrop-blur">
+        <div class="text-center">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                <x-icon name="o-check" class="w-8 h-8 text-green-600" />
+            </div>
+            <h3 class="text-lg font-bold text-gray-900">¡Solicitud Radicada!</h3>
+            <div class="mt-2 px-7 py-3">
+                <p class="text-sm text-gray-500">
+                    Tu PQRS ha sido registrada exitosamente.
+                </p>
+                <div class="mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                    <p class="text-xs text-blue-600 uppercase font-bold tracking-wide">Código CUN</p>
+                    <p class="text-2xl font-mono font-bold text-blue-700 mt-1">{{ $createdCun }}</p>
+                </div>
+                <p class="text-xs text-gray-400 mt-4">
+                    Guarda este código para consultar el estado de tu trámite.
+                </p>
+            </div>
+            <div class="mt-4">
+                <x-button label="Entendido" class="btn-primary w-full" @click="$wire.showSuccessModal = false" />
+            </div>
+        </div>
+    </x-modal>
+    @endif
+</div>
     </div>
 
     @if (session()->has('success_cun'))
