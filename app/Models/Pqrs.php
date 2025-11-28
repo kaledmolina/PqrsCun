@@ -38,7 +38,7 @@ class Pqrs extends Model
 
     public static function generateCun()
     {
-        $providerCode = '4436';
+        $providerCode = \App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '4436';
         $year = date('y'); // 2 digits
         
         // Get the last sequence number for the current year
