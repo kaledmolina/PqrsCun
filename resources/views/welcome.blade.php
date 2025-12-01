@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Fondo General con Gradiente Moderno -->
-<div class="min-h-screen bg-slate-900 overflow-x-hidden relative">
+<div class="min-h-screen bg-slate-500 overflow-x-hidden relative rounded-lg ">
     
     <!-- Elementos decorativos de fondo (Blobs) -->
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
