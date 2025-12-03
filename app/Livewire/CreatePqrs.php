@@ -16,6 +16,11 @@ class CreatePqrs extends Component
         'city' => '',
         'type' => '',
         'document_type' => '',
+        'contract_number' => '',
+        'services' => [],
+        'address' => '',
+        'landline' => '',
+        'email_confirmation' => '',
     ];
 
     public $attachments = [];
@@ -25,13 +30,18 @@ class CreatePqrs extends Component
     protected function rules()
     {
         return [
-            'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,apelacion,reposicion',
+            'data.contract_number' => 'nullable|max:255',
             'data.document_type' => 'required|in:CC,TI,CE,NIT,PAS',
             'data.document_number' => 'required|max:255',
             'data.first_name' => 'required|max:255',
             'data.last_name' => 'nullable|max:255',
-            'data.email' => 'required|email|max:255',
+            'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,apelacion,reposicion',
+            'data.services' => 'nullable|array',
+            'data.email' => 'required|email|confirmed|max:255',
             'data.phone' => 'required|max:255',
+            'data.address' => 'required|max:255',
+            'data.city' => 'required|max:255',
+            'data.landline' => 'nullable|max:255',
             'data.motive' => 'nullable|max:255',
             'data.description' => 'required',
             'attachments.*' => 'nullable|file|max:10240', // 10MB max
@@ -64,6 +74,10 @@ class CreatePqrs extends Component
             'city' => '',
             'type' => '',
             'document_type' => '',
+            'contract_number' => '',
+            'services' => [],
+            'address' => '',
+            'landline' => '',
         ];
     }
 

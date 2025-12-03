@@ -6,3 +6,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PqrsController::class, 'index'])->name('home');
 Route::get('/pqrs/create', [PqrsController::class, 'create'])->name('pqrs.create');
 Route::get('/pqrs/consult', [PqrsController::class, 'consult'])->name('pqrs.consult');
+Route::get('/test-pdf', function () {
+    $answer = "Este es un texto de prueba para la respuesta de la PQR.\n\nSegunda línea de prueba.";
+    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.pqrs-answer', ['answer' => $answer]);
+    return $pdf->stream();
+});

@@ -29,10 +29,15 @@ class Pqrs extends Model
         'deadline_at',
         'answer',
         'answered_at',
+        'contract_number',
+        'services',
+        'address',
+        'landline',
     ];
 
     protected $casts = [
         'attachments' => 'array',
+        'services' => 'array',
         'deadline_at' => 'date',
         'answered_at' => 'datetime',
     ];

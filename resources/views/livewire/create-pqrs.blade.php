@@ -37,41 +37,20 @@
                 @else
                     <!-- Form -->
                     <form wire:submit="create" class="space-y-8">
-                        <!-- Section: Request Type -->
-                        <div class="bg-surface-50 p-6 rounded-2xl border border-slate-100 hover:border-secondary/30 transition-colors group">
-                            <label class="block text-sm font-bold text-slate-700 mb-2 group-hover:text-primary transition-colors">¿Qué tipo de solicitud deseas realizar?</label>
-                            <div class="relative">
-                                <select wire:model="data.type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 font-medium shadow-sm">
-                                    <option value="">Selecciona una opción...</option>
-                                    <option value="peticion">Petición (Solicitud de información)</option>
-                                    <option value="queja">Queja (Inconformidad)</option>
-                                    <option value="reclamo">Reclamo (Falla en servicio)</option>
-                                    <option value="sugerencia">Sugerencia</option>
-                                    <option value="apelacion">Recurso de Apelación</option>
-                                    <option value="reposicion">Recurso de Reposición</option>
-                                </select>
-                                <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </div>
-                            </div>
-                            @error('data.type') <span class="text-red-500 text-sm mt-1 block font-medium">{{ $message }}</span> @enderror
-                        </div>
-
-                        <!-- Section: Personal Info -->
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                <span class="w-8 h-8 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                </span>
-                                Información Personal
-                            </h3>
+                        <div class="space-y-6">
+                            <!-- Row 1 -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Tipo de Documento</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Número de contrato de reclamación</label>
+                                    <input type="text" wire:model="data.contract_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                    @error('data.contract_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="group">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Tipo de documento de Identidad o de tu empresa *</label>
                                     <div class="relative">
-                                        <select wire:model="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm group-hover:border-slate-300">
+                                        <select wire:model="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
                                             <option value="">Selecciona...</option>
-                                            <option value="CC">Cédula de Ciudadanía</option>
+                                            <option value="CC">Cédula de ciudadanía</option>
                                             <option value="TI">Tarjeta de Identidad</option>
                                             <option value="CE">Cédula de Extranjería</option>
                                             <option value="NIT">NIT</option>
@@ -83,71 +62,132 @@
                                     </div>
                                     @error('data.document_type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
+                            </div>
 
+                            <!-- Row 2 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Número de Identificación</label>
-                                    <input type="text" wire:model="data.document_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300" placeholder="Ej: 1057500123">
-                                    @error('data.document_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    <label class="block text-sm font-medium text-slate-600 mb-1 {{ $errors->has('data.document_number') ? 'text-red-500' : '' }}">Número de documento *</label>
+                                    <input type="text" wire:model="data.document_number" class="w-full px-4 py-3 bg-white border {{ $errors->has('data.document_number') ? 'border-red-500' : 'border-slate-200' }} rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                    @error('data.document_number') <span class="text-red-500 text-sm mt-1 block">El campo número de documento es obligatorio</span> @enderror
                                 </div>
-                                
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Teléfono de Contacto</label>
-                                    <input type="tel" wire:model="data.phone" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300" placeholder="Ej: 310 123 4567">
-                                    @error('data.phone') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
-                                </div>
-
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Nombres</label>
-                                    <input type="text" wire:model="data.first_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Tu nombre o razón social de empresa *</label>
+                                    <input type="text" wire:model="data.first_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                     @error('data.first_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
+                            </div>
 
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Apellidos</label>
-                                    <input type="text" wire:model="data.last_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300">
-                                    @error('data.last_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                            <!-- Row 3 -->
+                            <div class="group">
+                                <label class="block text-sm font-medium text-slate-600 mb-1">¿Presentar una petición, queja / reclamo o recurso? *</label>
+                                <div class="relative">
+                                    <select wire:model="data.type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
+                                        <option value="">Selecciona una opción...</option>
+                                        <option value="peticion">Petición (Solicitud de información)</option>
+                                        <option value="queja">Queja (Inconformidad)</option>
+                                        <option value="reclamo">Reclamo (Falla en servicio)</option>
+                                        <option value="sugerencia">Sugerencia</option>
+                                        <option value="apelacion">Recurso de Apelación</option>
+                                        <option value="reposicion">Recurso de Reposición</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </div>
                                 </div>
+                                @error('data.type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                            </div>
 
-                                <div class="md:col-span-2 group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Correo Electrónico</label>
-                                    <input type="email" wire:model="data.email" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300" placeholder="nombre@ejemplo.com">
+                            <!-- Row 4 -->
+                            <div class="group">
+                                <label class="block text-sm font-medium text-slate-600 mb-3">Selecciona el servicio Objeto de la PQR:</label>
+                                <div class="flex flex-wrap gap-6">
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" wire:model="data.services" value="Cámaras de seguridad" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary">
+                                        <span class="text-slate-700">Cámaras de seguridad</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" wire:model="data.services" value="Televisión" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary">
+                                        <span class="text-slate-700">Televisión</span>
+                                    </label>
+                                    <label class="flex items-center space-x-3 cursor-pointer">
+                                        <input type="checkbox" wire:model="data.services" value="Internet" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary">
+                                        <span class="text-slate-700">Internet</span>
+                                    </label>
+                                </div>
+                                @error('data.services') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                            </div>
+
+                            <!-- Row 5 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="group">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">¿Cuál es el correo al cual quiere que llegue la respuesta? *</label>
+                                    <input type="email" wire:model="data.email" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                     @error('data.email') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
+                                <div class="group">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Confirma el correo electrónico *</label>
+                                    <input type="email" wire:model="data.email_confirmation" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Section: Details -->
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                                <span class="w-8 h-8 bg-secondary/10 text-secondary rounded-lg flex items-center justify-center">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                </span>
-                                Detalles de la Solicitud
-                            </h3>
-                            
-                            <div class="space-y-6">
+                            <!-- Row 6 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Asunto / Motivo (Opcional)</label>
-                                    <input type="text" wire:model="data.motive" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300">
-                                    @error('data.motive') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Dirección Física *</label>
+                                    <input type="text" wire:model="data.address" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                    @error('data.address') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
-
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 group-focus-within:text-primary transition-colors">Descripción Detallada</label>
-                                    <textarea wire:model="data.description" rows="5" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm group-hover:border-slate-300" placeholder="Por favor describe tu solicitud con el mayor detalle posible..."></textarea>
-                                    @error('data.description') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Ciudad *</label>
+                                    <div class="relative">
+                                        <select wire:model="data.city" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
+                                            <option value="">Selecciona...</option>
+                                            <option value="Tunja">Tunja</option>
+                                            <option value="Duitama">Duitama</option>
+                                            <option value="Sogamoso">Sogamoso</option>
+                                            <option value="Paipa">Paipa</option>
+                                            <option value="Chiquinquirá">Chiquinquirá</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                    @error('data.city') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
+                            </div>
 
+                            <!-- Row 7 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="group">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Número de contacto celular *</label>
+                                    <input type="tel" wire:model="data.phone" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                    @error('data.phone') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="group">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Teléfono de contacto</label>
+                                    <input type="tel" wire:model="data.landline" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                    @error('data.landline') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                </div>
+                            </div>
+
+                            <!-- Row 8 -->
+                            <div class="group">
+                                <label class="block text-sm font-medium text-slate-600 mb-1">Cuéntanos qué ocurrió y qué necesitas que resolvamos (máx. 500 caracteres) *</label>
+                                <textarea wire:model="data.description" rows="5" maxlength="500" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm"></textarea>
+                                @error('data.description') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                            </div>
+
+                            <!-- Row 9 -->
+                            <div class="group">
+                                <label class="block text-sm font-medium text-slate-600 mb-1">Adjuntar soportes/anexos (PDF, JPG y JPEG, max 5mb)</label>
                                 <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 border-dashed border-2 hover:border-blue-300 transition-colors cursor-pointer relative group">
                                     <input type="file" wire:model="attachments" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
-                                    <div class="text-center">
-                                        <div class="w-12 h-12 bg-blue-100 text-blue-500 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform">
-                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                                        </div>
-                                        <p class="text-sm font-medium text-blue-900">Haz clic para adjuntar archivos</p>
-                                        <p class="text-xs text-blue-500 mt-1">o arrastra y suelta aquí (Imágenes, PDF)</p>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-sm font-medium text-blue-900">SELECCIONAR ARCHIVO</span>
+                                        <button type="button" class="px-4 py-2 bg-cyan-400 text-white font-bold rounded-lg uppercase text-sm">Seleccionar Archivo</button>
                                     </div>
-                                    @error('attachments.*') <span class="text-red-500 text-sm mt-2 block text-center">{{ $message }}</span> @enderror
+                                    @error('attachments.*') <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span> @enderror
                                     <div wire:loading wire:target="attachments" class="text-center mt-2 text-sm text-blue-600 font-medium animate-pulse">Subiendo archivos...</div>
                                 </div>
                             </div>
