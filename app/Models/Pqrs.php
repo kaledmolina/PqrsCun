@@ -46,7 +46,7 @@ class Pqrs extends Model
     {
         static::creating(function ($pqrs) {
             if (empty($pqrs->cun)) {
-                $pqrs->cun = static::generateCun();
+                $pqrs->cun = static::generateCun($pqrs->type);
             }
             if (empty($pqrs->deadline_at)) {
                 // 15 business days (approx 3 weeks)
@@ -56,13 +56,14 @@ class Pqrs extends Model
         });
     }
 
-    public static function generateCun()
+    public static function generateCun($type = null)
     {
-        $providerCode = \App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '4436';
+        $isSugerencia = $type === 'sugerencia';
+        $prefix = $isSugerencia ? 'RAD' : (\App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '4436');
         $year = date('y'); // 2 digits
         
-        // Get the last sequence number for the current year
-        $lastPqrs = static::where('cun', 'like', "$providerCode-$year-%")
+        // Get the last sequence number for the current year and prefix
+        $lastPqrs = static::where('cun', 'like', "$prefix-$year-%")
             ->orderBy('id', 'desc')
             ->first();
 
@@ -73,7 +74,7 @@ class Pqrs extends Model
             $sequence = 1;
         }
 
-        return sprintf('%s-%s-%010d', $providerCode, $year, $sequence);
+        return sprintf('%s-%s-%010d', $prefix, $year, $sequence);
     }
     public function messages()
     {

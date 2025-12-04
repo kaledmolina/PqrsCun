@@ -51,7 +51,7 @@
                         
                         <div class="space-y-4">
                             <div>
-                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Código CUN</p>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">{{ $pqrs->type === 'sugerencia' ? 'Radicado' : 'Código CUN' }}</p>
                                 <p class="text-lg font-mono font-bold text-primary">{{ $pqrs->cun }}</p>
                             </div>
                             <div>

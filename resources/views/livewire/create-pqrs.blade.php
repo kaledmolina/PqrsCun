@@ -88,7 +88,8 @@
                                         <option value="queja">Queja (Inconformidad)</option>
                                         <option value="reclamo">Reclamo (Falla en servicio)</option>
                                         <option value="sugerencia">Sugerencia</option>
-                                        <option value="recurso">Recurso o solicitud de indemnización</option>
+                                        <option value="reposicion">Reposición</option>
+                                        <option value="apelacion">Apelación</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -138,15 +139,15 @@
                                     @error('data.address') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Ciudad *</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Sede *</label>
                                     <div class="relative">
                                         <select wire:model="data.city" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
                                             <option value="">Selecciona...</option>
-                                            <option value="Tunja">Tunja</option>
-                                            <option value="Duitama">Duitama</option>
-                                            <option value="Sogamoso">Sogamoso</option>
-                                            <option value="Paipa">Paipa</option>
-                                            <option value="Chiquinquirá">Chiquinquirá</option>
+                                            <option value="Montería">Montería</option>
+                                            <option value="Puerto Libertador">Puerto Libertador</option>
+                                            <option value="San Pedro de Urabá">San Pedro de Urabá</option>
+                                            <option value="Tierralta">Tierralta</option>
+                                            <option value="Valencia">Valencia</option>
                                         </select>
                                         <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
                                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>

@@ -56,7 +56,8 @@ class PqrsResource extends Resource
                                 'queja' => 'Queja',
                                 'reclamo' => 'Reclamo',
                                 'sugerencia' => 'Sugerencia',
-                                'recurso' => 'Recurso o solicitud de indemnización',
+                                'reposicion' => 'Reposición',
+                                'apelacion' => 'Apelación',
                             ])
                             ->required(),
                         Forms\Components\TextInput::make('motive')
@@ -96,7 +97,8 @@ class PqrsResource extends Resource
                         'queja' => 'warning',
                         'reclamo' => 'danger',
                         'sugerencia' => 'success',
-                        'recurso' => 'danger',
+                        'reposicion' => 'danger',
+                        'apelacion' => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label('Client')
@@ -152,7 +154,8 @@ class PqrsResource extends Resource
                         'queja' => 'Queja',
                         'reclamo' => 'Reclamo',
                         'sugerencia' => 'Sugerencia',
-                        'recurso' => 'Recurso o solicitud de indemnización',
+                        'reposicion' => 'Reposición',
+                        'apelacion' => 'Apelación',
                     ]),
             ])
             ->actions([
