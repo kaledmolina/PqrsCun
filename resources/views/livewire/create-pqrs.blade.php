@@ -16,27 +16,32 @@
             <div class="h-2 bg-gradient-to-r from-primary via-secondary to-primary"></div>
             
             <div class="p-8 md:p-12">
-                @if($showSuccessModal)
-                    <!-- Success State -->
+                @if($successCun)
+                    <!-- Success State (Sin Modal, directo en el contenedor) -->
                     <div class="text-center py-12 animate-slide-up">
                         <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
                             <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                         </div>
-                        <h2 class="text-3xl font-bold text-slate-900 mb-4">¡Solicitud Radicada!</h2>
-                        <p class="text-slate-600 mb-8">Tu PQRS ha sido registrada exitosamente en nuestro sistema.</p>
                         
-                        <div class="bg-surface-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto mb-8 transform hover:scale-105 transition-transform duration-300">
-                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Código de Seguimiento (CUN)</p>
-                            <p class="text-3xl font-mono font-bold text-primary tracking-widest">{{ $createdCun }}</p>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-4">¡Solicitud Radicada!</h2>
+                        <p class="text-slate-600 mb-8 max-w-md mx-auto">
+                            Tu solicitud ha sido registrada exitosamente en nuestro sistema. Por favor conserva el siguiente código para consultas futuras.
+                        </p>
+                        
+                        <div class="bg-surface-50 border border-slate-200 rounded-2xl p-6 max-w-sm mx-auto mb-8 transform hover:scale-105 transition-transform duration-300 bg-slate-50">
+                            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                                {{ Str::startsWith($successCun, 'RAD') ? 'Número de Radicado' : 'Código CUN' }}
+                            </p>
+                            <p class="text-4xl font-mono font-bold text-primary tracking-widest break-all">{{ $successCun }}</p>
                         </div>
                         
-                        <button type="button" wire:click="$set('showSuccessModal', false)" class="px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-lg shadow-primary/30">
-                            Entendido, finalizar
+                        <button type="button" wire:click="resetSuccess" class="px-8 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-lg shadow-primary/30 transform hover:-translate-y-0.5 active:translate-y-0">
+                            Finalizar y volver al inicio
                         </button>
                     </div>
                 @else
                     <!-- Form -->
-                    <form wire:submit="create" class="space-y-8">
+                    <form wire:submit="save" class="space-y-8">
                         <div class="space-y-6">
                             <!-- Row 1 -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -196,10 +201,10 @@
                         <!-- Actions -->
                         <div class="pt-4">
                             <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary to-slate-800 text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 group">
-                                <span wire:loading.remove wire:target="create">Radicar Solicitud</span>
-                                <span wire:loading wire:target="create">Procesando...</span>
-                                <svg wire:loading.remove wire:target="create" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                <svg wire:loading wire:target="create" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                                <span wire:loading.remove wire:target="save">Radicar Solicitud</span>
+                                <span wire:loading wire:target="save">Procesando...</span>
+                                <svg wire:loading.remove wire:target="save" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                <svg wire:loading wire:target="save" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                             </button>
                         </div>
                     </form>

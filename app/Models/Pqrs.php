@@ -29,6 +29,8 @@ class Pqrs extends Model
         'deadline_at',
         'answer',
         'answered_at',
+        'rating',
+        'feedback',
         'contract_number',
         'services',
         'address',

@@ -25,6 +25,16 @@ class ConsultPqrs extends Component
     public $replyContent = '';
     public $replyAttachments = [];
 
+    // Survey data
+    public $rating = null;
+    public $feedback = '';
+    public $showSurvey = false;
+
+    public function mount()
+    {
+        //
+    }
+
     protected function rules()
     {
         return [
@@ -42,9 +52,30 @@ class ConsultPqrs extends Component
         $this->notFound = !$this->pqrs;
     }
 
+    public function canReply()
+    {
+        if (!$this->pqrs) return false;
+        
+        if ($this->pqrs->status === 'closed') return false;
+        
+        // If no messages, client can send the first one (actually description is the first one, but messages table stores chat)
+        if ($this->pqrs->messages->isEmpty()) return true;
+
+        // Get the last message
+        $lastMessage = $this->pqrs->messages->sortByDesc('created_at')->first();
+
+        // Client can only reply if the last message is from admin
+        return $lastMessage->role === 'admin';
+    }
+
     public function submitReply()
     {
         if (!$this->pqrs) {
+            return;
+        }
+
+        if (!$this->canReply()) {
+            session()->flash('error', 'Debes esperar una respuesta del asesor antes de enviar otro mensaje.');
             return;
         }
 
@@ -75,13 +106,52 @@ class ConsultPqrs extends Component
             ])
             ->sendToDatabase(User::all());
 
-        // Reset form and refresh messages
+        // Reset form
         $this->replyContent = '';
         $this->replyAttachments = [];
-        $this->pqrs->refresh();
         
-        // Optional: Flash success message
         session()->flash('message_sent', 'Tu respuesta ha sido enviada correctamente.');
+
+        // Trigger survey if not already rated
+        if (!$this->pqrs->rating) {
+            $this->showSurvey = true;
+        } else {
+            // If already rated, force re-login immediately
+            $this->resetSession();
+        }
+    }
+
+    public function rateService()
+    {
+        $this->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'feedback' => 'nullable|string|max:1000',
+        ]);
+
+        if ($this->pqrs) {
+            $this->pqrs->update([
+                'rating' => $this->rating,
+                'feedback' => $this->feedback,
+            ]);
+        }
+
+        $this->showSurvey = false;
+        session()->flash('message_sent', '¡Gracias por tu calificación!');
+        
+        $this->resetSession();
+    }
+
+    public function skipSurvey()
+    {
+        $this->showSurvey = false;
+        $this->resetSession();
+    }
+
+    protected function resetSession()
+    {
+        $this->pqrs = null;
+        $this->data['cun'] = '';
+        $this->reset(['replyContent', 'replyAttachments', 'rating', 'feedback']);
     }
 
     public function render()

@@ -117,6 +117,20 @@ class PqrsResource extends Resource
                             ])
                             ->disabled()
                             ->dehydrated(false),
+                        Forms\Components\Section::make('Satisfacción del Cliente')
+                            ->schema([
+                                Forms\Components\TextInput::make('rating')
+                                    ->label('Calificación')
+                                    ->formatStateUsing(fn ($state) => $state ? str_repeat('⭐', $state) : 'Sin calificación')
+                                    ->disabled()
+                                    ->dehydrated(false),
+                                Forms\Components\Textarea::make('feedback')
+                                    ->label('Comentarios')
+                                    ->disabled()
+                                    ->dehydrated(false)
+                                    ->columnSpanFull(),
+                            ])
+                            ->visible(fn ($record) => $record && $record->rating),
                     ])->columns(2),
             ]);
     }

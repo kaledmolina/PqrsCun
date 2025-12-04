@@ -84,6 +84,45 @@
                     </div>
                 </div>
 
+                <!-- Survey Modal -->
+                @if($showSurvey)
+                    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+                        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 text-center relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-emerald-500"></div>
+                            
+                            <div class="mb-6">
+                                <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce-slow">
+                                    <span class="text-4xl">⭐</span>
+                                </div>
+                                <h3 class="text-2xl font-bold text-slate-900 mb-2">¡Tu opinión nos importa!</h3>
+                                <p class="text-slate-600">Ayúdanos a mejorar calificando la atención recibida.</p>
+                            </div>
+
+                            <form wire:submit.prevent="rateService" class="space-y-6">
+                                <div class="flex justify-center gap-2">
+                                    @for($i = 1; $i <= 5; $i++)
+                                        <button type="button" wire:click="$set('rating', {{ $i }})" class="text-3xl transition-transform hover:scale-110 focus:outline-none {{ $rating >= $i ? 'text-yellow-400' : 'text-slate-200' }}">
+                                            ★
+                                        </button>
+                                    @endfor
+                                </div>
+                                @error('rating') <span class="text-red-500 text-sm block">{{ $message }}</span> @enderror
+
+                                <textarea wire:model="feedback" rows="3" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none" placeholder="¿Algún comentario adicional? (Opcional)"></textarea>
+                                @error('feedback') <span class="text-red-500 text-sm block">{{ $message }}</span> @enderror
+
+                                <button type="submit" class="w-full bg-primary text-white py-3 rounded-xl font-bold hover:bg-slate-800 transition-colors shadow-lg shadow-primary/20">
+                                    Enviar Calificación
+                                </button>
+                                
+                                <button type="button" wire:click="skipSurvey" class="text-slate-400 text-sm hover:text-slate-600 underline">
+                                    Omitir por ahora
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @endif
+
                 <!-- Main: Timeline & Chat -->
                 <div class="lg:col-span-2">
                     <div class="bg-white rounded-3xl shadow-lg border border-slate-100 overflow-hidden flex flex-col h-[700px]">
@@ -101,98 +140,114 @@
                             <!-- Initial Message -->
                             <div class="flex gap-4">
                                 <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs font-bold">YO</div>
-                                <div class="max-w-[80%]">
-                                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 text-slate-700 text-sm">
-                                        {{ $pqrs->description }}
+                                <div class="space-y-1 max-w-[85%]">
+                                    <div class="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-slate-100">
+                                        <p class="text-slate-700 text-sm">{{ $pqrs->description }}</p>
+                                        @if($pqrs->attachments)
+                                            <div class="mt-3 pt-3 border-t border-slate-100">
+                                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Adjuntos Iniciales</p>
+                                                <div class="flex flex-wrap gap-2">
+                                                    @foreach($pqrs->attachments as $attachment)
+                                                        <a href="{{ Storage::url($attachment) }}" target="_blank" class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 rounded-lg text-xs font-medium text-slate-600 hover:bg-slate-100 transition-colors">
+                                                            📎 Ver archivo
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
-                                    <p class="text-xs text-slate-400 mt-1 ml-2">{{ $pqrs->created_at->format('h:i A') }}</p>
+                                    <span class="text-[10px] text-slate-400 font-medium ml-2">{{ $pqrs->created_at->format('d M, h:i A') }}</span>
                                 </div>
                             </div>
 
                             @foreach($pqrs->messages as $message)
-                                <div class="flex gap-4 {{ $message->role === 'admin' ? 'flex-row-reverse' : '' }}">
-                                    <div class="flex-shrink-0 w-8 h-8 {{ $message->role === 'admin' ? 'bg-primary text-white' : 'bg-slate-200 text-slate-500' }} rounded-full flex items-center justify-center text-xs font-bold">
-                                        {{ $message->role === 'admin' ? 'SOP' : 'YO' }}
+                                <div class="flex gap-4 {{ $message->role === 'client' ? '' : 'flex-row-reverse' }}">
+                                    <div class="flex-shrink-0 w-8 h-8 {{ $message->role === 'client' ? 'bg-slate-200 text-slate-500' : 'bg-primary text-white' }} rounded-full flex items-center justify-center text-xs font-bold">
+                                        {{ $message->role === 'client' ? 'YO' : 'SOP' }}
                                     </div>
-                                    <div class="max-w-[80%]">
-                                        <div class="p-4 rounded-2xl shadow-sm text-sm {{ $message->role === 'admin' ? 'bg-primary text-white rounded-tr-none' : 'bg-white text-slate-700 border border-slate-100 rounded-tl-none' }}">
-                                            {!! $message->content !!}
+                                    <div class="space-y-1 max-w-[85%]">
+                                        <div class="{{ $message->role === 'client' ? 'bg-white border-slate-100' : 'bg-primary text-white border-primary' }} p-4 rounded-2xl {{ $message->role === 'client' ? 'rounded-tl-none' : 'rounded-tr-none' }} shadow-sm border">
+                                            <div class="text-sm {{ $message->role === 'client' ? 'text-slate-700' : 'text-white/90' }} prose {{ $message->role === 'client' ? 'prose-slate' : 'prose-invert' }} max-w-none">
+                                                {!! $message->content !!}
+                                            </div>
                                             
                                             @if($message->attachments)
-                                                <div class="mt-3 pt-3 border-t {{ $message->role === 'admin' ? 'border-white/20' : 'border-slate-100' }}">
-                                                    <p class="text-xs font-bold mb-2 opacity-75">Adjuntos:</p>
+                                                <div class="mt-3 pt-3 border-t {{ $message->role === 'client' ? 'border-slate-100' : 'border-white/20' }}">
+                                                    <p class="text-xs font-bold {{ $message->role === 'client' ? 'text-slate-400' : 'text-white/60' }} uppercase tracking-wider mb-2">Adjuntos</p>
                                                     <div class="flex flex-wrap gap-2">
                                                         @foreach($message->attachments as $attachment)
-                                                            <a href="{{ Storage::url($attachment) }}" target="_blank" class="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium {{ $message->role === 'admin' ? 'bg-white/20 hover:bg-white/30 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700' }} transition-colors">
-                                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                                                                Ver
-                                                            </a>
-                                                            <a href="{{ Storage::url($attachment) }}" download class="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium {{ $message->role === 'admin' ? 'bg-white/20 hover:bg-white/30 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700' }} transition-colors">
-                                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                                                                Descargar
+                                                            <a href="{{ Storage::url($attachment) }}" target="_blank" class="flex items-center gap-2 px-3 py-1.5 {{ $message->role === 'client' ? 'bg-slate-50 text-slate-600 hover:bg-slate-100' : 'bg-white/10 text-white hover:bg-white/20' }} rounded-lg text-xs font-medium transition-colors">
+                                                                📎 Ver archivo
                                                             </a>
                                                         @endforeach
                                                     </div>
                                                 </div>
                                             @endif
                                         </div>
-                                        <p class="text-xs text-slate-400 mt-1 {{ $message->role === 'admin' ? 'text-right mr-2' : 'ml-2' }}">{{ $message->created_at->format('d M, h:i A') }}</p>
+                                        <span class="text-[10px] text-slate-400 font-medium {{ $message->role === 'client' ? 'ml-2' : 'mr-2 text-right block' }}">{{ $message->created_at->format('d M, h:i A') }}</span>
                                     </div>
                                 </div>
                             @endforeach
                         </div>
 
                         <!-- Reply Area -->
-                        @if($pqrs->status !== 'closed')
-                            <div class="p-4 bg-white border-t border-slate-100">
-                                @if(session()->has('message_sent'))
-                                    <div class="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-xl flex items-center gap-2 animate-fade-in">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                        {{ session('message_sent') }}
-                                    </div>
-                                @endif
+                        <div class="p-4 bg-white border-t border-slate-100">
+                            @if(session()->has('message_sent'))
+                                <div class="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-xl flex items-center gap-2 animate-fade-in">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    {{ session('message_sent') }}
+                                </div>
+                            @endif
 
-                                <form wire:submit="submitReply" class="relative">
-                                    <div class="relative">
-                                        <textarea wire:model="replyContent" rows="3" class="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none text-sm" placeholder="Escribe tu respuesta aquí..."></textarea>
-                                        
-                                        <!-- Attachment Button -->
-                                        <div class="absolute bottom-3 right-3">
-                                            <label class="cursor-pointer p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-full transition-colors block" title="Adjuntar archivo">
-                                                <input type="file" wire:model="replyAttachments" multiple class="hidden">
-                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
-                                            </label>
-                                        </div>
+                            @if($pqrs->status === 'closed')
+                                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+                                    <p class="text-sm text-slate-800 font-medium">
+                                        🔒 Este caso ha sido cerrado
+                                    </p>
+                                    <p class="text-xs text-slate-500 mt-1">
+                                        Si necesitas más ayuda, por favor crea una nueva solicitud.
+                                    </p>
+                                </div>
+                            @elseif($this->canReply())
+                                <form wire:submit.prevent="submitReply" class="relative">
+                                    <textarea 
+                                        wire:model="replyContent" 
+                                        rows="3" 
+                                        class="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none text-sm"
+                                        placeholder="Escribe tu respuesta..."
+                                    ></textarea>
+                                    
+                                    <div class="absolute bottom-3 right-3 flex items-center gap-2">
+                                        <label class="cursor-pointer p-2 text-slate-400 hover:text-primary hover:bg-slate-100 rounded-lg transition-colors" title="Adjuntar archivos">
+                                            <input type="file" wire:model="replyAttachments" multiple class="hidden">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                                        </label>
+                                        <button type="submit" class="p-2 bg-primary text-white rounded-lg hover:bg-slate-800 transition-colors shadow-lg shadow-primary/20">
+                                            <svg class="w-5 h-5 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                                        </button>
                                     </div>
-
+                                    
                                     @if($replyAttachments)
-                                        <div class="mt-2 flex gap-2 overflow-x-auto py-1">
-                                            @foreach($replyAttachments as $file)
-                                                <div class="flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium whitespace-nowrap">
-                                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                                    {{ $file->getClientOriginalName() }}
-                                                </div>
+                                        <div class="mt-2 flex flex-wrap gap-2">
+                                            @foreach($replyAttachments as $attachment)
+                                                <span class="inline-flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md">
+                                                    📄 {{ $attachment->getClientOriginalName() }}
+                                                </span>
                                             @endforeach
                                         </div>
                                     @endif
-
-                                    <div class="mt-3 flex justify-between items-center">
-                                        <div class="text-xs text-slate-400">
-                                            <span wire:loading wire:target="replyAttachments">Subiendo archivos...</span>
-                                        </div>
-                                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-primary/20 flex items-center gap-2">
-                                            <span wire:loading.remove wire:target="submitReply">Enviar Respuesta</span>
-                                            <span wire:loading wire:target="submitReply">Enviando...</span>
-                                            <svg wire:loading.remove wire:target="submitReply" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                                        </button>
-                                    </div>
                                 </form>
-                            </div>
-                        @else
-                            <div class="p-6 bg-gray-50 border-t border-slate-100 text-center">
-                                <p class="text-slate-500 text-sm">Este caso ha sido cerrado. Si necesitas más ayuda, por favor crea una nueva solicitud.</p>
-                            </div>
-                        @endif
+                            @else
+                                <div class="bg-yellow-50 border border-yellow-100 rounded-xl p-4 text-center">
+                                    <p class="text-sm text-yellow-800 font-medium">
+                                        ⏳ Esperando respuesta del asesor
+                                    </p>
+                                    <p class="text-xs text-yellow-600 mt-1">
+                                        Podrás enviar un nuevo mensaje cuando recibas una respuesta.
+                                    </p>
+                                </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
