@@ -46,8 +46,7 @@
 </head>
 <body>
     <div class="header">
-        <!-- You can add an img tag here if you have a logo file available in public path -->
-        <!-- <img src="{{ public_path('images/logo.png') }}" class="logo"> -->
+        <img src="{{ public_path('images/logo.png') }}" class="logo" alt="Logo CUN">
         <div class="title">Respuesta Oficial a Solicitud</div>
         <div>Radicado No. {{ $pqrs->cun }}</div>
     </div>

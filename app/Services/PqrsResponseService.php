@@ -112,7 +112,7 @@ class PqrsResponseService
         return "
             <p><strong>Ciudad y Fecha:</strong> Tunja, $date</p>
             <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta a Recurso de Reposición/Apelación CUN $cun</p>
+            <p><strong>Referencia:</strong> Respuesta a Recurso o Solicitud de Indemnización CUN $cun</p>
             <p>Cordial saludo,</p>
             <p>Procedemos a dar respuesta al recurso interpuesto por usted frente a la decisión inicial tomada por la empresa.</p>
             <p>Hemos revisado nuevamente los hechos y pruebas aportadas, dentro del término legal de 15 días hábiles.</p>

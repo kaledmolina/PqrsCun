@@ -54,8 +54,9 @@ class PqrsResource extends Resource
                             ->options([
                                 'peticion' => 'Petición',
                                 'queja' => 'Queja',
-                                'apelacion' => 'Recurso de Apelación',
-                                'reposicion' => 'Recurso de Reposición',
+                                'reclamo' => 'Reclamo',
+                                'sugerencia' => 'Sugerencia',
+                                'recurso' => 'Recurso o solicitud de indemnización',
                             ])
                             ->required(),
                         Forms\Components\TextInput::make('motive')
@@ -93,8 +94,9 @@ class PqrsResource extends Resource
                     ->color(fn (string $state): string => match ($state) {
                         'peticion' => 'info',
                         'queja' => 'warning',
-                        'apelacion' => 'danger',
-                        'reposicion' => 'danger',
+                        'reclamo' => 'danger',
+                        'sugerencia' => 'success',
+                        'recurso' => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label('Client')
@@ -148,8 +150,9 @@ class PqrsResource extends Resource
                     ->options([
                         'peticion' => 'Petición',
                         'queja' => 'Queja',
-                        'apelacion' => 'Recurso de Apelación',
-                        'reposicion' => 'Recurso de Reposición',
+                        'reclamo' => 'Reclamo',
+                        'sugerencia' => 'Sugerencia',
+                        'recurso' => 'Recurso o solicitud de indemnización',
                     ]),
             ])
             ->actions([

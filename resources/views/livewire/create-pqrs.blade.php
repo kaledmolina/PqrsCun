@@ -88,8 +88,7 @@
                                         <option value="queja">Queja (Inconformidad)</option>
                                         <option value="reclamo">Reclamo (Falla en servicio)</option>
                                         <option value="sugerencia">Sugerencia</option>
-                                        <option value="apelacion">Recurso de Apelación</option>
-                                        <option value="reposicion">Recurso de Reposición</option>
+                                        <option value="recurso">Recurso o solicitud de indemnización</option>
                                     </select>
                                     <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>

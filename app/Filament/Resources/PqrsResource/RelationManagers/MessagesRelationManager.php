@@ -78,7 +78,7 @@ class MessagesRelationManager extends RelationManager
                                 'queja' => 'Queja (15 días)',
                                 'reclamo' => 'Reclamo (15 días)',
                                 'sugerencia' => 'Sugerencia (30 días)',
-                                'recurso' => 'Recurso (15 días)',
+                                'recurso' => 'Recurso o solicitud de indemnización (15 días)',
                             ])
                             ->default(fn ($livewire) => $livewire->getOwnerRecord()->type)
                             ->reactive()
