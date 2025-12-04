@@ -10,9 +10,13 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class MessagesRelationManager extends RelationManager
+class MessagesRelationManager extends RelationManager implements \Filament\Actions\Contracts\HasActions
 {
+    use \Filament\Actions\Concerns\InteractsWithActions;
+
     protected static string $relationship = 'messages';
+
+    protected static string $view = 'filament.resources.pqrs-resource.relation-managers.messages-relation-manager';
 
     public function form(Form $form): Form
     {
@@ -46,101 +50,174 @@ class MessagesRelationManager extends RelationManager
                 'xl' => 1,
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('sort')
-                    ->label('Orden')
-                    ->options([
-                        'asc' => 'Más antiguos primero',
-                        'desc' => 'Más recientes primero',
-                    ])
-                    ->default('asc')
-                    ->query(function (Builder $query, array $data) {
-                        return $query->orderBy('created_at', $data['value'] ?? 'asc');
-                    }),
+                //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make()
-                    ->label('Responder')
-                    ->modalHeading('Nueva Respuesta')
-                    ->modalWidth('lg')
-                    ->after(function ($livewire) {
-                        // Mark PQRS as in_progress if admin replies
-                        $livewire->getOwnerRecord()->update(['status' => 'in_progress']);
-                    }),
-                Tables\Actions\Action::make('officialResponse')
-                    ->label('Respuesta Oficial')
-                    ->icon('heroicon-o-document-check')
-                    ->color('success')
-                    ->form([
-                        Forms\Components\Select::make('template_type')
-                            ->label('Tipo de Plantilla')
-                            ->options([
-                                'peticion' => 'Petición (10-15 días)',
-                                'queja' => 'Queja (15 días)',
-                                'reclamo' => 'Reclamo (15 días)',
-                                'sugerencia' => 'Sugerencia (30 días)',
-                                'reposicion' => 'Reposición (15 días)',
-                                'apelacion' => 'Apelación (15 días)',
-                            ])
-                            ->default(fn ($livewire) => $livewire->getOwnerRecord()->type)
-                            ->reactive()
-                            ->afterStateUpdated(function ($state, Forms\Set $set, $livewire) {
-                                $service = new \App\Services\PqrsResponseService();
-                                $content = $service->getTemplate($livewire->getOwnerRecord(), $state);
-                                $set('content', $content);
-                            }),
-                        Forms\Components\RichEditor::make('content')
-                            ->label('Contenido de la Respuesta')
-                            ->required()
-                            ->default(function ($livewire) {
-                                $service = new \App\Services\PqrsResponseService();
-                                return $service->getTemplate($livewire->getOwnerRecord(), $livewire->getOwnerRecord()->type);
-                            })
-                            ->columnSpanFull(),
-                    ])
-                    ->action(function (array $data, $livewire) {
-                        $service = new \App\Services\PqrsResponseService();
-                        $pqrs = $livewire->getOwnerRecord();
-                        
-                        // Generate PDF
-                        $pdfPath = $service->generatePdf($data['content'], $pqrs);
-                        
-                        // Create Message
-                        $pqrs->messages()->create([
-                            'role' => 'admin',
-                            'content' => $data['content'],
-                            'attachments' => [$pdfPath],
-                        ]);
-
-                        // Update Status
-                        $pqrs->update([
-                            'status' => 'resolved',
-                            'answer' => $data['content'],
-                            'answered_at' => now(),
-                        ]);
-
-                        \Filament\Notifications\Notification::make()
-                            ->title('Respuesta oficial enviada')
-                            ->success()
-                            ->send();
-                    }),
+                //
             ])
             ->actions([
-                // Tables\Actions\EditAction::make(),
-                // Tables\Actions\DeleteAction::make(),
+                //
             ])
             ->bulkActions([
-                // Tables\Actions\BulkActionGroup::make([
-                //     Tables\Actions\DeleteBulkAction::make(),
-                // ]),
+                //
             ])
             ->defaultSort('created_at', 'asc')
-            ->paginated(false); // Show all messages
+            ->paginated(false) // Show all messages
+            ->poll('5s');
     }
 
-    public function render(): \Illuminate\Contracts\View\View
+    public function replyAction(): \Filament\Actions\Action
     {
-        return parent::render()->with([
-            'header' => view('filament.resources.pqrs-resource.relation-managers.messages-header'),
-        ]);
+        return \Filament\Actions\Action::make('reply')
+            ->label('Responder')
+            ->modalHeading('Nueva Respuesta')
+            ->modalWidth('lg')
+            ->form([
+                Forms\Components\RichEditor::make('content')
+                    ->label('Mensaje')
+                    ->required()
+                    ->columnSpanFull(),
+                Forms\Components\FileUpload::make('attachments')
+                    ->label('Adjuntos')
+                    ->multiple()
+                    ->columnSpanFull(),
+            ])
+            ->action(function (array $data) {
+                $this->getOwnerRecord()->messages()->create([
+                    'role' => 'admin',
+                    'content' => $data['content'],
+                    'attachments' => $data['attachments'] ?? [],
+                ]);
+
+                // Mark PQRS as in_progress if admin replies
+                $this->getOwnerRecord()->update(['status' => 'in_progress']);
+                
+                \Filament\Notifications\Notification::make()
+                    ->title('Respuesta enviada')
+                    ->success()
+                    ->send();
+            });
+    }
+
+    public function quickResponseAction(): \Filament\Actions\Action
+    {
+        return \Filament\Actions\Action::make('quickResponse')
+            ->label('Respuesta Rápida')
+            ->icon('heroicon-o-paper-airplane')
+            ->color('primary')
+            ->visible(fn () => $this->getOwnerRecord()->status === 'pending')
+            ->form([
+                Forms\Components\Select::make('template_type')
+                    ->label('Tipo de Plantilla')
+                    ->options([
+                        'peticion' => 'Petición (10 días)',
+                        'queja' => 'Queja (15 días)',
+                        'reclamo' => 'Reclamo (15 días)',
+                        'sugerencia' => 'Sugerencia (30 días)',
+                        'reposicion' => 'Reposición (15 días)',
+                        'apelacion' => 'Apelación (15 días)',
+                    ])
+                    ->default(fn () => $this->getOwnerRecord()->type)
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, Forms\Set $set) {
+                        $service = new \App\Services\PqrsResponseService();
+                        $content = $service->getQuickResponseTemplate($this->getOwnerRecord(), $state);
+                        $set('content', $content);
+                    }),
+                Forms\Components\RichEditor::make('content')
+                    ->label('Contenido de la Respuesta')
+                    ->required()
+                    ->default(function () {
+                        $service = new \App\Services\PqrsResponseService();
+                        return $service->getQuickResponseTemplate($this->getOwnerRecord(), $this->getOwnerRecord()->type);
+                    })
+                    ->columnSpanFull(),
+            ])
+            ->action(function (array $data) {
+                $service = new \App\Services\PqrsResponseService();
+                $pqrs = $this->getOwnerRecord();
+                
+                // Generate PDF
+                $pdfPath = $service->generatePdf($data['content'], $pqrs);
+                
+                // Create Message
+                $pqrs->messages()->create([
+                    'role' => 'admin',
+                    'content' => $data['content'],
+                    'attachments' => [$pdfPath],
+                ]);
+
+                // Update Status
+                $pqrs->update([
+                    'status' => 'in_progress',
+                ]);
+
+                \Filament\Notifications\Notification::make()
+                    ->title('Respuesta rápida enviada')
+                    ->success()
+                    ->send();
+            });
+    }
+
+    public function officialResponseAction(): \Filament\Actions\Action
+    {
+        return \Filament\Actions\Action::make('officialResponse')
+            ->label('Respuesta Oficial')
+            ->icon('heroicon-o-document-check')
+            ->color('success')
+            ->visible(fn () => $this->getOwnerRecord()->status === 'in_progress')
+            ->form([
+                Forms\Components\Select::make('template_type')
+                    ->label('Tipo de Plantilla')
+                    ->options([
+                        'peticion' => 'Petición',
+                        'queja' => 'Queja',
+                        'reclamo' => 'Reclamo',
+                        'sugerencia' => 'Sugerencia',
+                        'reposicion' => 'Reposición',
+                        'apelacion' => 'Apelación',
+                    ])
+                    ->default(fn () => $this->getOwnerRecord()->type)
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, Forms\Set $set) {
+                        $service = new \App\Services\PqrsResponseService();
+                        $content = $service->getOfficialResponseTemplate($this->getOwnerRecord(), $state);
+                        $set('content', $content);
+                    }),
+                Forms\Components\RichEditor::make('content')
+                    ->label('Contenido de la Respuesta')
+                    ->required()
+                    ->default(function () {
+                        $service = new \App\Services\PqrsResponseService();
+                        return $service->getOfficialResponseTemplate($this->getOwnerRecord(), $this->getOwnerRecord()->type);
+                    })
+                    ->columnSpanFull(),
+            ])
+            ->action(function (array $data) {
+                $service = new \App\Services\PqrsResponseService();
+                $pqrs = $this->getOwnerRecord();
+                
+                // Generate PDF
+                $pdfPath = $service->generatePdf($data['content'], $pqrs);
+                
+                // Create Message
+                $pqrs->messages()->create([
+                    'role' => 'admin',
+                    'content' => $data['content'],
+                    'attachments' => [$pdfPath],
+                ]);
+
+                // Update Status
+                $pqrs->update([
+                    'status' => 'resolved',
+                    'answer' => $data['content'],
+                    'answered_at' => now(),
+                ]);
+
+                \Filament\Notifications\Notification::make()
+                    ->title('Respuesta oficial enviada')
+                    ->success()
+                    ->send();
+            });
     }
 }

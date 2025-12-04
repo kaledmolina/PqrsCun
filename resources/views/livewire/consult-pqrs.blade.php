@@ -46,7 +46,15 @@
                     <div class="bg-white rounded-3xl shadow-lg border border-slate-100 p-6 sticky top-24">
                         <div class="flex items-center justify-between mb-6">
                             <h3 class="text-lg font-bold text-slate-900">Detalles del Caso</h3>
-                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 uppercase tracking-wider">{{ $pqrs->status }}</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700 uppercase tracking-wider">
+                                @switch($pqrs->status)
+                                    @case('pending') Pendiente @break
+                                    @case('in_progress') En Progreso @break
+                                    @case('resolved') Resuelto @break
+                                    @case('closed') Cerrado @break
+                                    @default({{ $pqrs->status }})
+                                @endswitch
+                            </span>
                         </div>
                         
                         <div class="space-y-4">
@@ -89,7 +97,7 @@
                         </div>
 
                         <!-- Messages Area -->
-                        <div class="flex-grow overflow-y-auto p-6 space-y-6 bg-slate-50/50">
+                        <div class="flex-grow overflow-y-auto p-6 space-y-6 bg-slate-50/50" wire:poll.5s>
                             <!-- Initial Message -->
                             <div class="flex gap-4">
                                 <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs font-bold">YO</div>

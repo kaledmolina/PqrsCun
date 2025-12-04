@@ -29,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->brandLogo(asset('images/logo.png'))
             ->brandLogoHeight('3.5rem')
+            ->databaseNotifications()
             ->colors([
                 'primary' => Color::Blue,
             ])
