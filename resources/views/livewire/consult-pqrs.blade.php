@@ -74,12 +74,19 @@
                                 <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Fecha de Radicación</p>
                                 <p class="text-slate-700 font-medium">{{ $pqrs->created_at->format('d M, Y h:i A') }}</p>
                             </div>
-                             <div>
+                            <div>
                                 <p class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Descripción Inicial</p>
                                 <p class="text-slate-600 text-sm leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100">
                                     {{ $pqrs->description }}
                                 </p>
                             </div>
+                            
+                            @if(!$pqrs->rating && $pqrs->status !== 'closed')
+                                <button wire:click="openSurvey" class="w-full py-3 bg-yellow-400 text-yellow-900 font-bold rounded-xl hover:bg-yellow-300 transition-colors shadow-lg shadow-yellow-400/20 flex items-center justify-center gap-2">
+                                    <span class="text-xl">⭐</span>
+                                    Calificar Atención
+                                </button>
+                            @endif
                         </div>
                     </div>
                 </div>

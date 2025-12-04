@@ -6,6 +6,8 @@ use App\Models\Pqrs;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Filament\Notifications\Notification;
+use Filament\Notifications\Actions\Action;
+use App\Filament\Resources\PqrsResource;
 use App\Models\User;
 
 
@@ -98,27 +100,24 @@ class ConsultPqrs extends Component
         // Notify Admins
         Notification::make()
             ->title('Nueva respuesta en PQR')
-            ->body("El cliente {$this->pqrs->first_name} {$this->pqrs->last_name} ha respondido a la PQR {$this->pqrs->cun}.")
+            ->body("El cliente ha respondido a la PQR: {$this->pqrs->cun}")
             ->actions([
-                \Filament\Notifications\Actions\Action::make('view')
-                    ->label('Ver PQR')
-                    ->url(\App\Filament\Resources\PqrsResource::getUrl('edit', ['record' => $this->pqrs])),
+                Action::make('ver')
+                    ->url(PqrsResource::getUrl('edit', ['record' => $this->pqrs]))
             ])
             ->sendToDatabase(User::all());
 
-        // Reset form
+        // Reset form and refresh messages
         $this->replyContent = '';
         $this->replyAttachments = [];
+        $this->pqrs->refresh();
         
         session()->flash('message_sent', 'Tu respuesta ha sido enviada correctamente.');
+    }
 
-        // Trigger survey if not already rated
-        if (!$this->pqrs->rating) {
-            $this->showSurvey = true;
-        } else {
-            // If already rated, force re-login immediately
-            $this->resetSession();
-        }
+    public function openSurvey()
+    {
+        $this->showSurvey = true;
     }
 
     public function rateService()

@@ -11,31 +11,24 @@ class PqrsStatsOverview extends BaseWidget
     protected function getStats(): array
     {
         $pending = Pqrs::where('status', 'pending')->count();
-        
-        $overdue = Pqrs::where('deadline_at', '<', now())
-            ->whereNotIn('status', ['resolved', 'closed'])
-            ->count();
-            
-        $dueSoon = Pqrs::where('deadline_at', '>=', now())
-            ->where('deadline_at', '<=', now()->addDays(3))
-            ->whereNotIn('status', ['resolved', 'closed'])
-            ->count();
+        $inProgress = Pqrs::where('status', 'in_progress')->count();
+        $resolved = Pqrs::where('status', 'resolved')->count();
 
         return [
-            Stat::make('Pendientes', $pending)
-                ->description('Solicitudes por atender')
+            Stat::make('Sin Atender', $pending)
+                ->description('Enviar mensaje rápido')
                 ->descriptionIcon('heroicon-m-clock')
-                ->color('warning'),
-                
-            Stat::make('Vencidas', $overdue)
-                ->description('Atención inmediata requerida')
-                ->descriptionIcon('heroicon-m-exclamation-circle')
                 ->color('danger'),
                 
-            Stat::make('Por Vencer (3 días)', $dueSoon)
-                ->description('Próximas a vencer')
-                ->descriptionIcon('heroicon-m-bell-alert')
-                ->color('info'),
+            Stat::make('En Proceso', $inProgress)
+                ->description('Enviar respuesta final')
+                ->descriptionIcon('heroicon-m-arrow-path')
+                ->color('warning'),
+                
+            Stat::make('Pendiente por Cerrar', $resolved)
+                ->description('Cerrar y archivar con evidencias')
+                ->descriptionIcon('heroicon-m-check-circle')
+                ->color('success'),
         ];
     }
 }
