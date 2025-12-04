@@ -116,8 +116,12 @@
                                                     <div class="flex flex-wrap gap-2">
                                                         @foreach($message->attachments as $attachment)
                                                             <a href="{{ Storage::url($attachment) }}" target="_blank" class="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium {{ $message->role === 'admin' ? 'bg-white/20 hover:bg-white/30 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700' }} transition-colors">
-                                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
-                                                                Ver archivo
+                                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                                                Ver
+                                                            </a>
+                                                            <a href="{{ Storage::url($attachment) }}" download class="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium {{ $message->role === 'admin' ? 'bg-white/20 hover:bg-white/30 text-white' : 'bg-slate-100 hover:bg-slate-200 text-slate-700' }} transition-colors">
+                                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                                                Descargar
                                                             </a>
                                                         @endforeach
                                                     </div>
@@ -131,50 +135,56 @@
                         </div>
 
                         <!-- Reply Area -->
-                        <div class="p-4 bg-white border-t border-slate-100">
-                            @if(session()->has('message_sent'))
-                                <div class="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-xl flex items-center gap-2 animate-fade-in">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    {{ session('message_sent') }}
-                                </div>
-                            @endif
-
-                            <form wire:submit="submitReply" class="relative">
-                                <div class="relative">
-                                    <textarea wire:model="replyContent" rows="3" class="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none text-sm" placeholder="Escribe tu respuesta aquí..."></textarea>
-                                    
-                                    <!-- Attachment Button -->
-                                    <div class="absolute bottom-3 right-3">
-                                        <label class="cursor-pointer p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-full transition-colors block" title="Adjuntar archivo">
-                                            <input type="file" wire:model="replyAttachments" multiple class="hidden">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
-                                        </label>
-                                    </div>
-                                </div>
-
-                                @if($replyAttachments)
-                                    <div class="mt-2 flex gap-2 overflow-x-auto py-1">
-                                        @foreach($replyAttachments as $file)
-                                            <div class="flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium whitespace-nowrap">
-                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                                {{ $file->getClientOriginalName() }}
-                                            </div>
-                                        @endforeach
+                        @if($pqrs->status !== 'closed')
+                            <div class="p-4 bg-white border-t border-slate-100">
+                                @if(session()->has('message_sent'))
+                                    <div class="mb-4 p-3 bg-green-50 text-green-700 text-sm rounded-xl flex items-center gap-2 animate-fade-in">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                        {{ session('message_sent') }}
                                     </div>
                                 @endif
 
-                                <div class="mt-3 flex justify-between items-center">
-                                    <div class="text-xs text-slate-400">
-                                        <span wire:loading wire:target="replyAttachments">Subiendo archivos...</span>
+                                <form wire:submit="submitReply" class="relative">
+                                    <div class="relative">
+                                        <textarea wire:model="replyContent" rows="3" class="w-full pl-4 pr-12 py-3 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-primary focus:border-primary transition-all resize-none text-sm" placeholder="Escribe tu respuesta aquí..."></textarea>
+                                        
+                                        <!-- Attachment Button -->
+                                        <div class="absolute bottom-3 right-3">
+                                            <label class="cursor-pointer p-2 text-slate-400 hover:text-primary hover:bg-primary/10 rounded-full transition-colors block" title="Adjuntar archivo">
+                                                <input type="file" wire:model="replyAttachments" multiple class="hidden">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                                            </label>
+                                        </div>
                                     </div>
-                                    <button type="submit" class="bg-primary text-white px-6 py-2 rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-primary/20 flex items-center gap-2">
-                                        <span wire:loading.remove wire:target="submitReply">Enviar Respuesta</span>
-                                        <span wire:loading wire:target="submitReply">Enviando...</span>
-                                        <svg wire:loading.remove wire:target="submitReply" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+
+                                    @if($replyAttachments)
+                                        <div class="mt-2 flex gap-2 overflow-x-auto py-1">
+                                            @foreach($replyAttachments as $file)
+                                                <div class="flex items-center gap-1 px-2 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium whitespace-nowrap">
+                                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                                    {{ $file->getClientOriginalName() }}
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+
+                                    <div class="mt-3 flex justify-between items-center">
+                                        <div class="text-xs text-slate-400">
+                                            <span wire:loading wire:target="replyAttachments">Subiendo archivos...</span>
+                                        </div>
+                                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded-xl font-bold text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-primary/20 flex items-center gap-2">
+                                            <span wire:loading.remove wire:target="submitReply">Enviar Respuesta</span>
+                                            <span wire:loading wire:target="submitReply">Enviando...</span>
+                                            <svg wire:loading.remove wire:target="submitReply" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        @else
+                            <div class="p-6 bg-gray-50 border-t border-slate-100 text-center">
+                                <p class="text-slate-500 text-sm">Este caso ha sido cerrado. Si necesitas más ayuda, por favor crea una nueva solicitud.</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
