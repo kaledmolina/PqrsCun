@@ -81,8 +81,8 @@
 <body class="bg-surface-50 text-slate-800 font-sans antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300 p-4">
-        <div class="max-w-7xl mx-auto bg-slate-900/40 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] ring-1 ring-white/10 px-6">
+    <nav x-data="{ mobileMenuOpen: false }" class="fixed top-0 w-full z-50 transition-all duration-300 p-4">
+        <div class="max-w-7xl mx-auto bg-slate-900/40 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] ring-1 ring-white/10 px-6 relative">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-4 group cursor-pointer">
@@ -114,11 +114,30 @@
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
-                    <button class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-white/10 transition-colors">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div x-show="mobileMenuOpen" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 x-cloak
+                 class="md:hidden absolute top-full left-0 w-full mt-2 bg-slate-900/90 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl z-50">
+                <div class="px-4 pt-2 pb-6 space-y-2">
+                    <a href="{{ route('home') }}" class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors font-medium">Inicio</a>
+                    <a href="{{ route('pqrs.create') }}" class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors font-medium">Radicar PQRS</a>
+                    <a href="{{ route('pqrs.consult') }}" class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors font-medium">Consultar</a>
+                    <a href="/admin" class="block px-4 py-3 text-primary hover:text-white hover:bg-primary/20 rounded-xl transition-colors font-bold">Acceso Admin</a>
                 </div>
             </div>
         </div>

@@ -18,7 +18,7 @@
                         Estamos en línea para ayudarte
                     </div>
                     
-                    <h1 class="text-5xl tracking-tight font-extrabold text-slate-900 sm:text-6xl xl:text-7xl mb-8 leading-tight">
+                    <h1 class="text-4xl md:text-5xl tracking-tight font-extrabold text-slate-900 sm:text-6xl xl:text-7xl mb-8 leading-tight">
                         Centro de <br class="hidden lg:block" />
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
                             Atención al Usuario
