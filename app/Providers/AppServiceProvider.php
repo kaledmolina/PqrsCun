@@ -22,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         if (config('app.env') !== 'local') {
             // DESCOMENTAR ESTO:
             \Illuminate\Support\Facades\URL::forceScheme('https');
+            $this->app['request']->server->set('HTTPS', 'on');
         }
     }
 }
