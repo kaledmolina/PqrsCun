@@ -64,7 +64,7 @@ class CreatePqrs extends Component
         
         // Determine prefix
         // Determine prefix
-        $prefix = ($type === 'sugerencia') ? 'RAD' : \App\Models\Setting::where('key', 'cun_prefix')->value('value') ?? '4436';
+        $prefix = ($type === 'sugerencia') ? 'RAD' : \App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '4436';
         
         // Find the last CUN with this prefix and year to determine the sequence
         $lastPqrs = Pqrs::where('cun', 'like', "{$prefix}-{$year}-%")
