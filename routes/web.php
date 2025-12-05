@@ -13,14 +13,4 @@ Route::get('/test-pdf', function () {
     return $pdf->stream();
 });
 
-Route::get('/debug-ssl', function (Request $request) {
-    return [
-        'url' => $request->url(),
-        'secure' => $request->secure(),
-        'scheme' => $request->getScheme(),
-        'root' => $request->root(),
-        'headers' => $request->headers->all(),
-        'server' => $request->server->all(),
-        'app_url_config' => config('app.url'),
-    ];
-});
+
