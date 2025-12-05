@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// 1. IMPORTACIONES NUEVAS (Faltaban estas)
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+// 2. IMPLEMENTAR LA INTERFAZ (Faltaba "implements FilamentUser")
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -44,5 +48,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // 3. LA FUNCIÓN DE ACCESO (Faltaba toda esta función)
+    public function canAccessPanel(Panel $panel): bool
+    {
+        // Retornar true permite entrar a cualquier usuario registrado
+        return true;
     }
 }
