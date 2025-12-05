@@ -18,7 +18,7 @@
             <div class="p-8 md:p-12">
                 @if($successCun)
                     <!-- Success State (Sin Modal, directo en el contenedor) -->
-                    <div class="text-center py-12 animate-slide-up">
+                    <div wire:key="success-state" class="text-center py-12 animate-slide-up">
                         <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
                             <svg class="w-12 h-12 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                         </div>
@@ -41,7 +41,7 @@
                     </div>
                 @else
                     <!-- Form -->
-                    <form wire:submit="save" class="space-y-8">
+                    <form wire:key="pqr-form" wire:submit="save" class="space-y-8">
                         <div class="space-y-6">
                             <!-- Row 1 -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
