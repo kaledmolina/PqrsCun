@@ -129,12 +129,12 @@
         <!-- Animated Background Decor -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
             <!-- Blobs -->
-            <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gradient-to-br from-secondary/20 to-primary/20 rounded-full blur-[120px] animate-bounce-slow"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-gradient-to-tl from-primary/20 to-accent/10 rounded-full blur-[120px] animate-bounce-slow" style="animation-delay: 2s;"></div>
-            <div class="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-secondary/10 rounded-full blur-[100px] animate-pulse" style="animation-duration: 4s;"></div>
+            <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full blur-[130px] animate-bounce-slow mix-blend-multiply"></div>
+            <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-tl from-primary/30 to-accent/20 rounded-full blur-[130px] animate-bounce-slow mix-blend-multiply" style="animation-delay: 2s;"></div>
+            <div class="absolute top-[30%] left-[30%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[110px] animate-pulse mix-blend-multiply" style="animation-duration: 5s;"></div>
             
             <!-- Grid Pattern -->
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wMykiLz48L3N2Zz4=')] opacity-40"></div>
         </div>
 
         <div class="max-w-7xl mx-auto relative z-10">
