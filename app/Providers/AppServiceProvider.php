@@ -22,7 +22,9 @@ class AppServiceProvider extends ServiceProvider
         // Force HTTPS unconditionally to ensure it works in production regardless of APP_ENV
         \Illuminate\Support\Facades\URL::forceScheme('https');
         $this->app['request']->server->set('HTTPS', 'on');
+        $this->app['request']->server->set('HTTP_X_FORWARDED_PROTO', 'https'); // Override proxy header
         $_SERVER['HTTPS'] = 'on'; // Force global PHP variable
+        $_SERVER['HTTP_X_FORWARDED_PROTO'] = 'https'; // Force global proxy header
         
         // Ensure APP_URL is treated as HTTPS
         $appUrl = config('app.url');
