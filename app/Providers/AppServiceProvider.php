@@ -19,10 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (config('app.env') !== 'local') {
-            // DESCOMENTAR ESTO:
-            \Illuminate\Support\Facades\URL::forceScheme('https');
-            $this->app['request']->server->set('HTTPS', 'on');
-        }
+        // Force HTTPS unconditionally to ensure it works in production regardless of APP_ENV
+        \Illuminate\Support\Facades\URL::forceScheme('https');
+        $this->app['request']->server->set('HTTPS', 'on');
     }
 }
