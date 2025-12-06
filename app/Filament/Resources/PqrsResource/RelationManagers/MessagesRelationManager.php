@@ -152,6 +152,22 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     'status' => 'in_progress',
                 ]);
 
+                // Send Email
+                try {
+                    \Illuminate\Support\Facades\Mail::to($pqrs->email)->send(new \App\Mail\PqrsResponseMail(
+                        $pqrs,
+                        $data['content'],
+                        [$pdfPath],
+                        'Respuesta Rápida a su PQR'
+                    ));
+                } catch (\Exception $e) {
+                    \Filament\Notifications\Notification::make()
+                        ->title('Error enviando correo')
+                        ->body($e->getMessage())
+                        ->danger()
+                        ->send();
+                }
+
                 \Filament\Notifications\Notification::make()
                     ->title('Respuesta rápida enviada')
                     ->success()
@@ -213,6 +229,22 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     'answer' => $data['content'],
                     'answered_at' => now(),
                 ]);
+
+                // Send Email
+                try {
+                    \Illuminate\Support\Facades\Mail::to($pqrs->email)->send(new \App\Mail\PqrsResponseMail(
+                        $pqrs,
+                        $data['content'],
+                        [$pdfPath],
+                        'Respuesta Oficial a su PQR'
+                    ));
+                } catch (\Exception $e) {
+                    \Filament\Notifications\Notification::make()
+                        ->title('Error enviando correo')
+                        ->body($e->getMessage())
+                        ->danger()
+                        ->send();
+                }
 
                 \Filament\Notifications\Notification::make()
                     ->title('Respuesta oficial enviada')
