@@ -143,7 +143,19 @@
                         </div>
 
                         <!-- Messages Area -->
-                        <div class="flex-grow overflow-y-auto p-6 space-y-6 bg-slate-50/50" wire:poll.5s>
+                        <div 
+                            class="flex-grow overflow-y-auto p-6 space-y-6 bg-slate-50/50" 
+                            wire:poll.5s
+                            x-data="{
+                                scrollToBottom() {
+                                    this.$el.scrollTop = this.$el.scrollHeight;
+                                }
+                            }"
+                            x-init="
+                                scrollToBottom();
+                                new MutationObserver(() => scrollToBottom()).observe($el, { childList: true, subtree: true });
+                            "
+                        >
                             <!-- Initial Message -->
                             <div class="flex gap-4">
                                 <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 text-xs font-bold">YO</div>
