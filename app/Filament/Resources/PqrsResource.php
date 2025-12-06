@@ -104,6 +104,8 @@ class PqrsResource extends Resource
                             ->label('Adjuntos')
                             ->multiple()
                             ->downloadable()
+                            ->disk('local')
+                            ->visibility('private')
                             ->disabled()
                             ->dehydrated(false)
                             ->columnSpanFull(),

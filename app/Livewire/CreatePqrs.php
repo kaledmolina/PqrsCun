@@ -95,7 +95,7 @@ class CreatePqrs extends Component
         // Handle file uploads
         $attachmentPaths = [];
         foreach ($this->attachments as $attachment) {
-            $attachmentPaths[] = $attachment->store('pqrs-attachments', 'public');
+            $attachmentPaths[] = $attachment->store('pqrs-attachments', 'local');
         }
 
         // Map $this->data to individual properties for Pqrs::create

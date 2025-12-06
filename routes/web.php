@@ -14,3 +14,9 @@ Route::get('/test-pdf', function () {
 });
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/private-attachments/{path}', [App\Http\Controllers\AttachmentController::class, 'show'])
+        ->where('path', '.*')
+        ->name('private.attachments.show');
+});
+
