@@ -83,7 +83,7 @@
                             <div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">¿Para qué sirve el CUN?</h3>
                                 <p class="text-slate-600 leading-relaxed mb-4 text-sm">
-                                    Es tu "cédula" de trámite. Te permite identificar tu solicitud desde el inicio hasta el final, garantizando trazabilidad total.
+                                    Es tu "cédula" de trámite. Te permite identificar tu solicitud desde el inicio hasta el final, garantizando trazabilidad total. [cite: 498]
                                 </p>
                                 <a href="#" class="inline-flex items-center text-primary font-bold text-sm hover:text-secondary transition-colors">
                                     Leer más información <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
@@ -111,8 +111,83 @@
             </div>
         </div>
 
-
         <div class="stacking-card sticky top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
+            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                <div class="text-center mb-12">
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Definiciones Clave</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                        ¿Qué trámite necesitas?
+                    </p>
+                    <p class="mt-4 text-slate-500 max-w-2xl mx-auto font-medium">
+                        Identifica correctamente tu solicitud según el Artículo 2.1.24.1 de la Resolución CRC 5111[cite: 490].
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:shadow-lg transition-all">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4 font-bold">P</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Petición</h3>
+                        <p class="text-slate-600 text-sm">
+                            Solicitud de servicios o de información en relación con los servicios prestados por el operador, o cualquier manifestación sobre sus derechos. [cite: 491]
+                        </p>
+                    </div>
+
+                    <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:shadow-lg transition-all">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4 font-bold">Q</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Queja o Reclamo</h3>
+                        <p class="text-slate-600 text-sm">
+                            Manifestación de inconformidad por parte del usuario en relación con la prestación de sus servicios o el ejercicio de sus derechos. [cite: 492]
+                        </p>
+                    </div>
+
+                    <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:shadow-lg transition-all">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4 font-bold">R</div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">Recurso</h3>
+                        <p class="text-slate-600 text-sm">
+                            Inconformidad con la decisión del operador frente a una queja (negativa de contrato, suspensión, facturación). Incluye Reposición y Apelación. [cite: 493]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
+            <div class="bg-gradient-to-br from-slate-50 to-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-1/2">
+                        <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Tiempos de Respuesta</h2>
+                        <p class="text-3xl font-extrabold text-slate-900 mb-6">
+                            15 Días Hábiles
+                        </p>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            Es el plazo máximo que tenemos para dar respuesta a tu PQR (petición, queja/reclamo o recurso), contados a partir del día siguiente a su presentación. [cite: 500]
+                        </p>
+                        
+                        <div class="bg-green-50/80 border border-green-100 rounded-xl p-4 mb-4">
+                            <h4 class="font-bold text-green-800 flex items-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Silencio Administrativo Positivo
+                            </h4>
+                            <p class="text-green-700 text-sm mt-1">
+                                Si no recibes respuesta dentro de este término, se entiende que la PQR ha sido resuelta a tu favor y debemos hacerlo efectivo en 72 horas. [cite: 502, 503]
+                            </p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 grid grid-cols-1 gap-4">
+                        <div class="bg-white/60 p-5 rounded-2xl shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Sin Pago Previo</h4>
+                            <p class="text-slate-500 text-xs">No se exige el pago de la factura como requisito para atender tu PQR. Si reclamas facturación, no debes pagar las sumas en reclamo hasta que se resuelva. [cite: 511, 512]</p>
+                        </div>
+                        <div class="bg-white/60 p-5 rounded-2xl shadow-sm border border-slate-100">
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Atención Prioritaria</h4>
+                            <p class="text-slate-500 text-xs">Contamos con medidas para atender de forma prioritaria a usuarios en situación de discapacidad. [cite: 542]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stacking-card sticky top-[120px] z-40 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-12">
                     <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Régimen de Protección</h2>
@@ -132,7 +207,7 @@
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Compensación Automática</h3>
                             <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Derecho a compensación automática por fallas o interrupciones en el servicio.
+                                Derecho a compensación automática por fallas o interrupciones en el servicio (Art 2.1.11.1)[cite: 229].
                             </p>
                         </div>
                     </div>
@@ -143,7 +218,7 @@
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Terminación de Contrato</h3>
                             <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Puedes terminar tu contrato en cualquier momento a través de cualquier medio de atención.
+                                Puedes terminar tu contrato en cualquier momento presentando la solicitud al menos 3 días hábiles antes del corte (Art 2.1.8.3)[cite: 142, 143].
                             </p>
                         </div>
                     </div>
@@ -154,7 +229,7 @@
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Claridad en Tarifas</h3>
                             <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Derecho a conocer siempre las tarifas que aplican sin cobros sorpresa.
+                                Derecho a conocer siempre las tarifas que aplican sin cobros sorpresa ni "letra menuda" (Art 2.1.2.1.2)[cite: 44].
                             </p>
                         </div>
                     </div>
@@ -165,7 +240,7 @@
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Atención Integral</h3>
                             <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Presenta PQR por cualquier medio y recibe respuesta oportuna sin abogado.
+                                Presenta PQR por cualquier medio (físico, web, telefónico) sin necesidad de abogado (Art 2.1.25.1)[cite: 535].
                             </p>
                         </div>
                     </div>
@@ -173,8 +248,22 @@
             </div>
         </div>
 
+        <div class="stacking-card sticky top-[120px] z-50 pt-10 transition-all duration-500 ease-out origin-top">
+            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                <div class="text-center mb-8">
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Tus Deberes</h2>
+                    <p class="text-2xl font-extrabold text-slate-900">Obligaciones del Usuario</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-600">
+                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ Pagar oportunamente [cite: 50]</span>
+                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ No cometer fraude [cite: 51]</span>
+                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ Usar equipos homologados [cite: 52]</span>
+                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ Respeto en la atención [cite: 53]</span>
+                </div>
+            </div>
+        </div>
 
-        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top pb-20">
+        <div class="stacking-card sticky top-[120px] z-[60] pt-10 transition-all duration-500 ease-out origin-top pb-20">
             <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8 border-l-4 border-primary pl-4">Entidades Regulatorias</h2>
                 
@@ -194,10 +283,10 @@
                         </div>
                     </a>
                     <a href="#" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">ANTV</div>
+                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">SIC</div>
                         <div>
-                            <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Autoridad Nacional TV</h4>
-                            <p class="text-slate-600 text-xs">Servicio público</p>
+                            <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Superintendencia</h4>
+                            <p class="text-slate-600 text-xs">Industria y Comercio</p>
                         </div>
                     </a>
                 </div>
