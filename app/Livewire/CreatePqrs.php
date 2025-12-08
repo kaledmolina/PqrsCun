@@ -52,7 +52,7 @@ class CreatePqrs extends Component
             'data.landline' => 'nullable|max:255',
             'data.motive' => 'nullable|max:255',
             'data.description' => 'required',
-            'attachments.*' => 'nullable|file|max:10240', // 10MB max
+            'attachments.*' => 'nullable|file|max:51200', // 50MB max
         ];
     }
 
@@ -161,7 +161,7 @@ class CreatePqrs extends Component
     public function updatedAttachments()
     {
         $this->validate([
-            'attachments.*' => 'file|max:10240',
+            'attachments.*' => 'file|max:51200',
         ]);
     }
 
