@@ -158,6 +158,13 @@ class CreatePqrs extends Component
         array_splice($this->attachments, $index, 1);
     }
 
+    public function updatedAttachments()
+    {
+        $this->validate([
+            'attachments.*' => 'file|max:10240',
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.create-pqrs');
