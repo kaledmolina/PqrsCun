@@ -317,17 +317,20 @@
                     let progressRatio = 1 - (distanceToSticky / totalDistance);
                     progressRatio = Math.max(0, Math.min(1, progressRatio));
 
-                    const scale = 1 - (progressRatio * 0.08); 
+                    const scale = 1 - (progressRatio * 0.1); 
+                    const opacity = 1 - (progressRatio * 0.4);
                     
-                    // Añadimos un pequeño fade-out al empujar hacia el fondo para mejorar el efecto glass
-                    const opacity = 1 - (progressRatio * 0.3);
+                    // Solo aplicar desenfoque cuando la tarjeta ya está muy atrás (al 70% del recorrido)
+                    const blur = Math.max(0, (progressRatio - 0.7) * 20); 
 
                     card.style.transform = `scale(${scale})`;
                     card.style.opacity = `${opacity}`;
+                    card.style.filter = `blur(${blur}px)`;
 
                 } else {
                     card.style.transform = 'scale(1)';
                     card.style.opacity = '1';
+                    card.style.filter = 'blur(0px)';
                 }
             });
         }

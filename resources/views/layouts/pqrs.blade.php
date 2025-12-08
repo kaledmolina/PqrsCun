@@ -146,19 +146,19 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="flex-grow pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden min-h-screen">
-        <!-- Animated Background Decor -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-            <!-- Blobs -->
-            <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full blur-[130px] animate-bounce-slow mix-blend-multiply"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-tl from-primary/30 to-accent/20 rounded-full blur-[130px] animate-bounce-slow mix-blend-multiply" style="animation-delay: 2s;"></div>
-            <div class="absolute top-[30%] left-[30%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[110px] animate-pulse mix-blend-multiply" style="animation-duration: 5s;"></div>
-            
-            <!-- Grid Pattern -->
-            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wMykiLz48L3N2Zz4=')] opacity-40"></div>
-        </div>
+    <!-- Animated Background Decor -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <!-- Blobs -->
+        <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-br from-secondary/30 to-primary/30 rounded-full blur-[130px] animate-bounce-slow mix-blend-multiply"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-tl from-primary/30 to-accent/20 rounded-full blur-[130px] animate-bounce-slow mix-blend-multiply" style="animation-delay: 2s;"></div>
+        <div class="absolute top-[30%] left-[30%] w-[40%] h-[40%] bg-secondary/20 rounded-full blur-[110px] animate-pulse mix-blend-multiply" style="animation-duration: 5s;"></div>
+        
+        <!-- Grid Pattern -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMCwgMCwgMCwgMC4wMykiLz48L3N2Zz4=')] opacity-40"></div>
+    </div>
 
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative min-h-screen">
         <div class="max-w-7xl mx-auto relative z-10">
             @yield('content')
         </div>
