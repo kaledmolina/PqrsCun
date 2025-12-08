@@ -114,13 +114,10 @@
                         Radicar PQRS
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-primary transition-all duration-300 group-hover:w-full"></span>
                     </a>
-                    <a href="{{ route('pqrs.consult') }}" class="text-slate-300 hover:text-white font-medium transition-colors relative group py-2 text-sm">
-                        Consultar
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-secondary to-primary transition-all duration-300 group-hover:w-full"></span>
-                    </a>
-                    <a href="/admin" class="px-5 py-2 rounded-full bg-gradient-to-r from-primary to-slate-900 text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-all duration-300 border border-white/10 backdrop-blur-sm flex items-center gap-2 group">
-                        <span>Acceso Admin</span>
-                        <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+
+                    <a href="{{ route('pqrs.consult') }}" class="px-5 py-2 rounded-full bg-gradient-to-r from-primary to-slate-900 text-white text-sm font-semibold hover:shadow-lg hover:shadow-primary/50 hover:scale-105 transition-all duration-300 border border-white/10 backdrop-blur-sm flex items-center gap-2 group">
+                        <span>Consultar</span>
+                        <svg class="w-3 h-3 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </a>
                 </div>
 
@@ -148,8 +145,8 @@
                 <div class="px-4 pt-2 pb-6 space-y-2">
                     <a href="{{ route('home') }}" class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors font-medium">Inicio</a>
                     <a href="{{ route('pqrs.create') }}" class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors font-medium">Radicar PQRS</a>
-                    <a href="{{ route('pqrs.consult') }}" class="block px-4 py-3 text-slate-300 hover:text-white hover:bg-white/10 rounded-xl transition-colors font-medium">Consultar</a>
-                    <a href="/admin" class="block px-4 py-3 text-primary hover:text-white hover:bg-primary/20 rounded-xl transition-colors font-bold">Acceso Admin</a>
+
+                    <a href="{{ route('pqrs.consult') }}" class="block px-4 py-3 text-primary hover:text-white hover:bg-primary/20 rounded-xl transition-colors font-bold">Consultar</a>
                 </div>
             </div>
         </div>
