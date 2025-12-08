@@ -65,230 +65,204 @@
 
     <div id="stacking-context" class="relative pb-40">
 
+        <!-- CARD 1: ENTENDIENDO TU TRÁMITE -->
         <div class="stacking-card sticky top-[120px] z-10 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
-                <div class="text-center mb-12">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Información Vital</h2>
+            <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                <div class="text-center mb-10">
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Paso 1: Identificación</h2>
                     <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
-                        Código Único Numérico (CUN)
+                        Entendiendo tu Trámite
+                    </p>
+                    <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                        Antes de iniciar, es fundamental que conozcas el código que garantiza tu seguimiento y el tipo de solicitud que vas a realizar.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-8 hover:bg-white/60 transition-all duration-300 shadow-lg">
-                        <div class="flex items-start gap-6">
-                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- CUN Section -->
+                    <div class="lg:col-span-5 bg-gradient-to-br from-primary/5 to-blue-50/50 rounded-[2rem] p-8 border border-primary/10 relative overflow-hidden group hover:shadow-lg transition-all">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl -mr-16 -mt-16"></div>
+                        <div class="relative z-10">
+                            <div class="w-16 h-16 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary/30 text-2xl font-bold">
+                                #
                             </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-3">¿Para qué sirve el CUN?</h3>
-                                <p class="text-slate-600 leading-relaxed mb-4 text-sm">
-                                    Es tu "cédula" de trámite. Te permite identificar tu solicitud desde el inicio hasta el final, garantizando trazabilidad total. [cite: 498]
-                                </p>
-                                <a href="#" class="inline-flex items-center text-primary font-bold text-sm hover:text-secondary transition-colors">
-                                    Leer más información <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                                </a>
-                            </div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-3">El CUN</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed">
+                                El <strong>Código Único Numérico</strong> es tu "cédula" de trámite. Te permite rastrear tu solicitud desde el inicio hasta el final, garantizando trazabilidad total.
+                            </p>
+                            <a href="{{ route('pqrs.consult') }}" class="inline-flex items-center px-6 py-3 bg-white text-primary font-bold rounded-xl shadow-sm hover:shadow-md transition-all group-hover:scale-105">
+                                Consultar con CUN <span class="ml-2">→</span>
+                            </a>
                         </div>
                     </div>
-                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-8 hover:bg-white/60 transition-all duration-300 shadow-lg">
-                        <div class="flex items-start gap-6">
-                            <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-secondary to-cyan-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900 mb-3">Servicio en Línea</h3>
-                                <p class="text-slate-600 leading-relaxed mb-4 text-sm">
-                                    El CUN unifica el proceso a nivel nacional. Úsalo en nuestra plataforma para procesar apelaciones y realizar seguimiento.
-                                </p>
-                                <a href="{{ route('pqrs.consult') }}" class="inline-flex items-center text-secondary font-bold text-sm hover:text-primary transition-colors">
-                                    Ir al servicio en línea <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
-                                </a>
-                            </div>
+
+                    <!-- Definitions Section -->
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4 text-xl font-bold">P</div>
+                            <h4 class="font-bold text-slate-900 mb-2">Petición</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Solicitud de información o servicios. Cualquier manifestación sobre tus derechos.</p>
+                        </div>
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-4 text-xl font-bold">Q</div>
+                            <h4 class="font-bold text-slate-900 mb-2">Queja</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Inconformidad con la prestación del servicio o la atención recibida.</p>
+                        </div>
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
+                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4 text-xl font-bold">R</div>
+                            <h4 class="font-bold text-slate-900 mb-2">Recurso</h4>
+                            <p class="text-xs text-slate-500 leading-relaxed">Si no estás de acuerdo con la respuesta a tu queja, puedes apelar la decisión.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- CARD 2: TUS GARANTÍAS -->
         <div class="stacking-card sticky top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
-                <div class="text-center mb-12">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Definiciones Clave</h2>
+            <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                <div class="text-center mb-10">
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-3">Paso 2: Protección</h2>
                     <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
-                        ¿Qué trámite necesitas?
+                        Tus Garantías y Derechos
                     </p>
-                    <p class="mt-4 text-slate-500 max-w-2xl mx-auto font-medium">
-                        Identifica correctamente tu solicitud según el Artículo 2.1.24.1 de la Resolución CRC 5111[cite: 490].
+                    <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                        La regulación colombiana te protege. Conoce los tiempos y mecanismos que aseguran una respuesta justa.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:shadow-lg transition-all">
-                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mb-4 font-bold">P</div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">Petición</h3>
-                        <p class="text-slate-600 text-sm">
-                            Solicitud de servicios o de información en relación con los servicios prestados por el operador, o cualquier manifestación sobre sus derechos. [cite: 491]
-                        </p>
-                    </div>
-
-                    <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:shadow-lg transition-all">
-                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4 font-bold">Q</div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">Queja o Reclamo</h3>
-                        <p class="text-slate-600 text-sm">
-                            Manifestación de inconformidad por parte del usuario en relación con la prestación de sus servicios o el ejercicio de sus derechos. [cite: 492]
-                        </p>
-                    </div>
-
-                    <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:shadow-lg transition-all">
-                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mb-4 font-bold">R</div>
-                        <h3 class="text-lg font-bold text-slate-800 mb-2">Recurso</h3>
-                        <p class="text-slate-600 text-sm">
-                            Inconformidad con la decisión del operador frente a una queja (negativa de contrato, suspensión, facturación). Incluye Reposición y Apelación. [cite: 493]
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-gradient-to-br from-slate-50 to-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
-                <div class="flex flex-col md:flex-row items-center gap-10">
-                    <div class="md:w-1/2">
-                        <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Tiempos de Respuesta</h2>
-                        <p class="text-3xl font-extrabold text-slate-900 mb-6">
-                            15 Días Hábiles
-                        </p>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Es el plazo máximo que tenemos para dar respuesta a tu PQR (petición, queja/reclamo o recurso), contados a partir del día siguiente a su presentación. [cite: 500]
-                        </p>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Timeline & Silence -->
+                    <div class="bg-slate-50/50 rounded-[2rem] p-8 border border-slate-100">
+                        <div class="flex items-center gap-4 mb-8">
+                            <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shadow-sm">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">15 Días Hábiles</h3>
+                                <p class="text-sm text-slate-500">Tiempo máximo de respuesta</p>
+                            </div>
+                        </div>
                         
-                        <div class="bg-green-50/80 border border-green-100 rounded-xl p-4 mb-4">
-                            <h4 class="font-bold text-green-800 flex items-center gap-2">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                Silencio Administrativo Positivo
-                            </h4>
-                            <p class="text-green-700 text-sm mt-1">
-                                Si no recibes respuesta dentro de este término, se entiende que la PQR ha sido resuelta a tu favor y debemos hacerlo efectivo en 72 horas. [cite: 502, 503]
-                            </p>
+                        <div class="space-y-4">
+                            <div class="flex gap-4 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                                <span class="text-2xl">🤫</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Silencio Administrativo Positivo</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Si no respondemos a tiempo, tu solicitud se entiende resuelta a tu favor automáticamente en 72 horas.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                                <span class="text-2xl">💰</span>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">Sin Pago Previo</h4>
+                                    <p class="text-xs text-slate-500 mt-1">No debes pagar los valores en reclamo para ser atendido. Solo paga lo que no estás disputando.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="md:w-1/2 grid grid-cols-1 gap-4">
-                        <div class="bg-white/60 p-5 rounded-2xl shadow-sm border border-slate-100">
-                            <h4 class="font-bold text-slate-800 text-sm mb-1">Sin Pago Previo</h4>
-                            <p class="text-slate-500 text-xs">No se exige el pago de la factura como requisito para atender tu PQR. Si reclamas facturación, no debes pagar las sumas en reclamo hasta que se resuelva. [cite: 511, 512]</p>
+
+                    <!-- Rights Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-2xl border border-red-100 hover:shadow-md transition-all">
+                            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-2">Terminación</h4>
+                            <p class="text-xs text-slate-600">Cancela tu contrato cuando quieras, avisando 3 días antes del corte.</p>
                         </div>
-                        <div class="bg-white/60 p-5 rounded-2xl shadow-sm border border-slate-100">
-                            <h4 class="font-bold text-slate-800 text-sm mb-1">Atención Prioritaria</h4>
-                            <p class="text-slate-500 text-xs">Contamos con medidas para atender de forma prioritaria a usuarios en situación de discapacidad. [cite: 542]</p>
+                        <div class="bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100 hover:shadow-md transition-all">
+                            <div class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-3">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-sm mb-2">Compensación</h4>
+                            <p class="text-xs text-slate-600">Recibe saldo a favor automáticamente si tu servicio falla.</p>
+                        </div>
+                        <div class="col-span-1 sm:col-span-2 bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border border-blue-100 hover:shadow-md transition-all flex items-center gap-4">
+                            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Tarifas Claras</h4>
+                                <p class="text-xs text-slate-600">Sin letra menuda ni cobros sorpresa.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="stacking-card sticky top-[120px] z-40 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
-                <div class="text-center mb-12">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Régimen de Protección</h2>
+        <!-- CARD 3: DEBERES Y REGULADOR -->
+        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top pb-20">
+            <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                <div class="text-center mb-10">
+                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-3">Paso 3: Responsabilidad</h2>
                     <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
-                        Tus Derechos Protegidos
+                        Tus Deberes y el Regulador
                     </p>
-                    <p class="mt-4 text-slate-500 max-w-2xl mx-auto font-medium">
-                        Conforme a la Resolución CRC 5111 de 2017, garantizamos el cumplimiento de tus derechos fundamentales.
+                    <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                        Una relación sana requiere compromiso de ambas partes. Conoce tus deberes y quién nos vigila.
                     </p>
                 </div>
 
-                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
-                        <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-green-100/80 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-3">Compensación Automática</h3>
-                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Derecho a compensación automática por fallas o interrupciones en el servicio (Art 2.1.11.1)[cite: 229].
-                            </p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <!-- Duties List -->
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                            <span class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm">📋</span>
+                            Tus Obligaciones
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs">✓</div>
+                                <span class="text-sm text-slate-700 font-medium">Pagar oportunamente tu factura</span>
+                            </li>
+                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs">✓</div>
+                                <span class="text-sm text-slate-700 font-medium">No realizar fraudes ni conexiones ilegales</span>
+                            </li>
+                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs">✓</div>
+                                <span class="text-sm text-slate-700 font-medium">Usar equipos homologados</span>
+                            </li>
+                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
+                                <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs">✓</div>
+                                <span class="text-sm text-slate-700 font-medium">Tratar con respeto al personal de atención</span>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
-                        <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-red-100/80 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-3">Terminación de Contrato</h3>
-                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Puedes terminar tu contrato en cualquier momento presentando la solicitud al menos 3 días hábiles antes del corte (Art 2.1.8.3)[cite: 142, 143].
-                            </p>
-                        </div>
-                    </div>
-                     <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
-                        <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-blue-100/80 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-3">Claridad en Tarifas</h3>
-                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Derecho a conocer siempre las tarifas que aplican sin cobros sorpresa ni "letra menuda" (Art 2.1.2.1.2)[cite: 44].
-                            </p>
-                        </div>
-                    </div>
-                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
-                        <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-purple-100/80 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-                            </div>
-                            <h3 class="text-lg font-bold text-slate-900 mb-3">Atención Integral</h3>
-                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
-                                Presenta PQR por cualquier medio (físico, web, telefónico) sin necesidad de abogado (Art 2.1.25.1)[cite: 535].
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="stacking-card sticky top-[120px] z-50 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
-                <div class="text-center mb-8">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Tus Deberes</h2>
-                    <p class="text-2xl font-extrabold text-slate-900">Obligaciones del Usuario</p>
-                </div>
-                <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-600">
-                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ Pagar oportunamente [cite: 50]</span>
-                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ No cometer fraude [cite: 51]</span>
-                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ Usar equipos homologados [cite: 52]</span>
-                    <span class="px-4 py-2 bg-slate-100 rounded-full border border-slate-200">✅ Respeto en la atención [cite: 53]</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="stacking-card sticky top-[120px] z-[60] pt-10 transition-all duration-500 ease-out origin-top pb-20">
-            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
-                <h2 class="text-2xl font-bold text-slate-900 mb-8 border-l-4 border-primary pl-4">Entidades Regulatorias</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <a href="https://www.crcom.gov.co" target="_blank" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">CRC</div>
-                        <div>
-                            <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Comisión de Regulación</h4>
-                            <p class="text-slate-600 text-xs">Comunicaciones</p>
+                    <!-- Regulators -->
+                    <div class="bg-slate-900 rounded-[2rem] p-8 text-white relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                        <h3 class="text-xl font-bold mb-6 relative z-10">Entidades de Vigilancia</h3>
+                        <div class="space-y-4 relative z-10">
+                            <a href="https://www.crcom.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all group">
+                                <div class="w-10 h-10 bg-white text-slate-900 rounded-lg flex items-center justify-center font-bold text-xs">CRC</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Comisión de Regulación</h4>
+                                    <p class="text-xs text-slate-300">Regula el mercado de comunicaciones</p>
+                                </div>
+                                <svg class="w-5 h-5 ml-auto text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                            <a href="https://www.mintic.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all group">
+                                <div class="w-10 h-10 bg-white text-slate-900 rounded-lg flex items-center justify-center font-bold text-xs">TIC</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Ministerio TIC</h4>
+                                    <p class="text-xs text-slate-300">Diseña la política pública</p>
+                                </div>
+                                <svg class="w-5 h-5 ml-auto text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                            <a href="https://www.sic.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all group">
+                                <div class="w-10 h-10 bg-white text-slate-900 rounded-lg flex items-center justify-center font-bold text-xs">SIC</div>
+                                <div>
+                                    <h4 class="font-bold text-sm">Superintendencia</h4>
+                                    <p class="text-xs text-slate-300">Protege tus derechos como consumidor</p>
+                                </div>
+                                <svg class="w-5 h-5 ml-auto text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
                         </div>
-                    </a>
-                    <a href="https://www.mintic.gov.co" target="_blank" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">TIC</div>
-                        <div>
-                            <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Ministerio TIC</h4>
-                            <p class="text-slate-600 text-xs">Políticas del sector</p>
-                        </div>
-                    </a>
-                    <a href="#" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">SIC</div>
-                        <div>
-                            <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Superintendencia</h4>
-                            <p class="text-slate-600 text-xs">Industria y Comercio</p>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
