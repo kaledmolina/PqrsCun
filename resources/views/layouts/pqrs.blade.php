@@ -88,7 +88,7 @@
                 <div class="flex-shrink-0 flex items-center gap-4 group cursor-pointer">
                     <div class="relative">
                         <div class="absolute -inset-1 bg-gradient-to-r from-secondary to-primary rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
-                        <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-10 w-auto relative transform group-hover:scale-105 transition-transform duration-300">
+                        <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-16 w-auto relative transform group-hover:scale-105 transition-transform duration-300">
                     </div>
                 </div>
                 
