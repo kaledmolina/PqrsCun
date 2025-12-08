@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta property="og:site_name" content="Backoffice Intalnet" />
+    <meta property="og:site_name" content="PQRS Intalnet" />
     <meta property="og:title" content="Backoffice Intalnet" />
     <meta property="og:description" content="Ingresa para gestionar reportes y monitorear la red de manera eficiente." />
     <meta property="og:url" content="{{ url('/') }}" />
