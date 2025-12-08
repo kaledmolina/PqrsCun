@@ -81,7 +81,10 @@
 <body class="bg-surface-50 text-slate-800 font-sans antialiased selection:bg-primary selection:text-white flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav x-data="{ mobileMenuOpen: false }" class="fixed top-0 w-full z-50 transition-all duration-300 p-4">
+    <nav x-data="{ mobileMenuOpen: false, showNavbar: true, lastScrollY: window.scrollY }" 
+         @scroll.window="showNavbar = (window.scrollY < lastScrollY) || (window.scrollY < 20); lastScrollY = window.scrollY"
+         :class="{ '-translate-y-full': !showNavbar }"
+         class="fixed top-0 w-full z-50 transition-transform duration-300 p-4">
         <div class="max-w-7xl mx-auto bg-slate-900/40 backdrop-blur-3xl border border-white/10 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] ring-1 ring-white/10 px-6 relative">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
