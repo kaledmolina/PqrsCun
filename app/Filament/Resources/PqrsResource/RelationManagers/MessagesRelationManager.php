@@ -152,6 +152,12 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     'status' => 'in_progress',
                 ]);
 
+                // Record Attendant
+                $pqrs->attendants()->create([
+                    'user_id' => auth()->id(),
+                    'action' => 'Respuesta Rápida',
+                ]);
+
                 // Send Email
                 try {
                     \Illuminate\Support\Facades\Mail::to($pqrs->email)->send(new \App\Mail\PqrsResponseMail(
@@ -228,6 +234,12 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     'status' => 'resolved',
                     'answer' => $data['content'],
                     'answered_at' => now(),
+                ]);
+
+                // Record Attendant
+                $pqrs->attendants()->create([
+                    'user_id' => auth()->id(),
+                    'action' => 'Respuesta Oficial',
                 ]);
 
                 // Send Email

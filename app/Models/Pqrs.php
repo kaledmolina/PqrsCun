@@ -82,4 +82,9 @@ class Pqrs extends Model
     {
         return $this->hasMany(PqrsMessage::class);
     }
+
+    public function attendants()
+    {
+        return $this->hasMany(PqrsAttendant::class);
+    }
 }

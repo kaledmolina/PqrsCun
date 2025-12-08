@@ -226,6 +226,7 @@ class PqrsResource extends Resource
     {
         return [
             RelationManagers\MessagesRelationManager::class,
+            RelationManagers\AttendantsRelationManager::class,
         ];
     }
 
