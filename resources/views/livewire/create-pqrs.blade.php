@@ -192,7 +192,7 @@
                             <div class="group">
                                 <label class="block text-sm font-medium text-slate-600 mb-1">Adjuntar soportes/anexos (PDF, JPG y JPEG, max 5mb)</label>
                                 <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 border-dashed border-2 hover:border-blue-300 transition-colors cursor-pointer relative group">
-                                    <input type="file" wire:model="attachments" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                                    <input type="file" wire:model.live="attachments" multiple accept=".pdf,.jpg,.jpeg,.png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                                     <div class="flex items-center justify-between">
                                         <span class="text-sm font-medium text-blue-900">SELECCIONAR ARCHIVO</span>
                                         <button type="button" class="px-4 py-2 bg-cyan-400 text-white font-bold rounded-lg uppercase text-sm">Seleccionar Archivo</button>
