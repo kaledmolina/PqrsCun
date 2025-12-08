@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://www.example.org/WSConsultaOperador/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WSConsultaOperador"
+    targetNamespace="http://www.example.org/WSConsultaOperador/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.example.org/WSConsultaOperador/">
+            <xsd:element name="consultaCUN">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="identificadorOperador" type="xsd:int" default="0" />
+                        <xsd:element name="anoRadicacionCun" type="xsd:int" default="0" />
+                        <xsd:element name="ConsecutivoRadCun" type="xsd:int" default="0" />
+                        <xsd:element name="tipoIdentificacion" type="xsd:string" default="%%" />
+                        <xsd:element name="numeroIdentificacion" type="xsd:int" default="0" />
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="consultaCUNResponse">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="respuesta" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="consultaCUNRequest">
+        <wsdl:part element="tns:consultaCUN" name="parameters"/>
+    </wsdl:message>
+    <wsdl:message name="consultaCUNResponse">
+        <wsdl:part element="tns:consultaCUNResponse" name="parameters"/>
+    </wsdl:message>
+    <wsdl:portType name="WSConsultaOperador">
+        <wsdl:operation name="consultaCUN">
+            <wsdl:input message="tns:consultaCUNRequest"/>
+            <wsdl:output message="tns:consultaCUNResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WSConsultaOperadorSOAP" type="tns:WSConsultaOperador">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="consultaCUN">
+            <soap:operation soapAction="http://www.example.org/WSConsultaOperador/consultaCUN"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WSConsultaOperador">
+        <wsdl:port binding="tns:WSConsultaOperadorSOAP" name="WSConsultaOperadorSOAP">
+            <soap:address location="https://pqr.intalnet.com/api/cun-service" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
