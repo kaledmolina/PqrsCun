@@ -233,34 +233,45 @@
                     </div>
 
                     <!-- Regulators -->
-                    <div class="bg-slate-900 rounded-[2rem] p-8 text-white relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                        <h3 class="text-xl font-bold mb-6 relative z-10">Entidades de Vigilancia</h3>
+                    <div class="bg-gradient-to-br from-indigo-50 to-white rounded-[2rem] p-8 border border-indigo-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-indigo-100/50 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-6 relative z-10">Entidades de Vigilancia</h3>
                         <div class="space-y-4 relative z-10">
-                            <a href="https://www.crcom.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all group">
-                                <div class="w-10 h-10 bg-white text-slate-900 rounded-lg flex items-center justify-center font-bold text-xs">CRC</div>
+                            <a href="https://www.crcom.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-indigo-50 hover:shadow-md transition-all group">
+                                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-xs">CRC</div>
                                 <div>
-                                    <h4 class="font-bold text-sm">Comisión de Regulación</h4>
-                                    <p class="text-xs text-slate-300">Regula el mercado de comunicaciones</p>
+                                    <h4 class="font-bold text-slate-900 text-sm">Comisión de Regulación</h4>
+                                    <p class="text-xs text-slate-500">Regula el mercado de comunicaciones</p>
                                 </div>
-                                <svg class="w-5 h-5 ml-auto text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <svg class="w-5 h-5 ml-auto text-slate-300 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                             </a>
-                            <a href="https://www.mintic.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all group">
-                                <div class="w-10 h-10 bg-white text-slate-900 rounded-lg flex items-center justify-center font-bold text-xs">TIC</div>
+                            <a href="https://www.mintic.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-indigo-50 hover:shadow-md transition-all group">
+                                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-xs">TIC</div>
                                 <div>
-                                    <h4 class="font-bold text-sm">Ministerio TIC</h4>
-                                    <p class="text-xs text-slate-300">Diseña la política pública</p>
+                                    <h4 class="font-bold text-slate-900 text-sm">Ministerio TIC</h4>
+                                    <p class="text-xs text-slate-500">Diseña la política pública</p>
                                 </div>
-                                <svg class="w-5 h-5 ml-auto text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <svg class="w-5 h-5 ml-auto text-slate-300 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                             </a>
-                            <a href="https://www.sic.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all group">
-                                <div class="w-10 h-10 bg-white text-slate-900 rounded-lg flex items-center justify-center font-bold text-xs">SIC</div>
+                            <a href="https://www.sic.gov.co" target="_blank" class="flex items-center gap-4 p-4 bg-white rounded-xl border border-indigo-50 hover:shadow-md transition-all group">
+                                <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-xs">SIC</div>
                                 <div>
-                                    <h4 class="font-bold text-sm">Superintendencia</h4>
-                                    <p class="text-xs text-slate-300">Protege tus derechos como consumidor</p>
+                                    <h4 class="font-bold text-slate-900 text-sm">Superintendencia</h4>
+                                    <p class="text-xs text-slate-500">Protege tus derechos como consumidor</p>
                                 </div>
-                                <svg class="w-5 h-5 ml-auto text-slate-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                <svg class="w-5 h-5 ml-auto text-slate-300 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                             </a>
+                            
+                            <!-- Habeas Data Info -->
+                            <div class="mt-4 p-4 bg-indigo-100/50 rounded-xl border border-indigo-100 flex gap-3 items-start">
+                                <svg class="w-5 h-5 text-indigo-600 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                <div>
+                                    <h4 class="font-bold text-indigo-900 text-sm">Habeas Data</h4>
+                                    <p class="text-xs text-indigo-800 leading-relaxed">
+                                        Tienes derecho a conocer, actualizar y rectificar tu información personal. La SIC vigila el cumplimiento de la Ley 1581 de 2012.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
