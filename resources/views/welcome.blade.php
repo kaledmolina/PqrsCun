@@ -67,7 +67,7 @@
     <div id="stacking-context" class="relative pb-40">
 
         <!-- CARD 1: ENTENDIENDO TU TRÁMITE (Original - Sin Cambios) -->
-        <div class="stacking-card sticky top-[120px] z-10 pt-10 transition-all duration-500 ease-out origin-top">
+        <div class="stacking-card lg:sticky lg:top-[120px] z-10 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
                     <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Paso 1: Identificación</h2>
@@ -120,7 +120,7 @@
         </div>
 
         <!-- CARD 2: TUS GARANTÍAS (Original - Sin Cambios) -->
-        <div class="stacking-card sticky top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
+        <div class="stacking-card lg:sticky lg:top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
                     <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-3">Paso 2: Protección</h2>
@@ -194,7 +194,7 @@
         </div>
 
         <!-- CARD 3: DEBERES Y REGULADOR (Original - Sin Cambios) -->
-        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
+        <div class="stacking-card lg:sticky lg:top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
                     <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-3">Paso 3: Responsabilidad</h2>
@@ -280,7 +280,7 @@
         </div>
 
         <!-- CARD 4: DIRECTORIO Y CANALES (ACTUALIZADA con Información Detallada del Documento) -->
-        <div class="stacking-card sticky top-[120px] z-40 pt-10 transition-all duration-500 ease-out origin-top pb-20">
+        <div class="stacking-card lg:sticky lg:top-[120px] z-40 pt-10 transition-all duration-500 ease-out origin-top pb-20">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 
                 <div class="text-center mb-10">
@@ -467,6 +467,15 @@
         const stickyTopPoint = 120; 
 
         function handleScroll() {
+            if (window.innerWidth < 1024) {
+                cards.forEach(card => {
+                    card.style.transform = '';
+                    card.style.opacity = '';
+                    card.style.filter = '';
+                });
+                return;
+            }
+
             cards.forEach((card, index) => {
                 if (index === cards.length - 1) return;
 
