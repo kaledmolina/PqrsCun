@@ -39,6 +39,111 @@
             </div>
         @endif
 
+        @if(!$pqrs)
+            <!-- Help Center Section -->
+            <div class="mt-16 animate-fade-in">
+                <!-- Where is my CUN? -->
+                <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[2rem] p-8 md:p-12 shadow-xl mb-12">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="md:w-1/2">
+                            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold uppercase tracking-wider mb-4">
+                                <span class="w-2 h-2 rounded-full bg-blue-500 mr-2"></span>
+                                Guía de Ayuda
+                            </div>
+                            <h2 class="text-3xl font-bold text-slate-900 mb-4">¿Dónde encuentro mi CUN?</h2>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                El <strong>Código Único Numérico</strong> es enviado automáticamente a tu correo electrónico al momento de radicar tu solicitud.
+                            </p>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs">✓</div>
+                                    Revisa tu bandeja de entrada y spam
+                                </li>
+                                <li class="flex items-center gap-3 text-sm text-slate-700">
+                                    <div class="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xs">✓</div>
+                                    Busca el asunto "Confirmación de Radicado"
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/2 relative">
+                            <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-20"></div>
+                            <div class="relative bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
+                                <div class="flex items-center gap-3 mb-4 border-b border-slate-100 pb-4">
+                                    <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center text-red-500">📧</div>
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-bold">Asunto</p>
+                                        <p class="text-sm font-bold text-slate-800">Confirmación de Radicado - Intalnet</p>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="h-2 bg-slate-100 rounded w-3/4"></div>
+                                    <div class="h-2 bg-slate-100 rounded w-full"></div>
+                                    <div class="h-2 bg-slate-100 rounded w-5/6"></div>
+                                </div>
+                                <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-100 flex items-center gap-3">
+                                    <div class="w-8 h-8 bg-white rounded flex items-center justify-center font-mono font-bold text-primary text-xs border border-blue-100">
+                                        1234
+                                    </div>
+                                    <p class="text-xs text-blue-800 font-medium">Tu CUN es: <span class="font-bold">1234-5678-90</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alternative Channels & FAQs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Channels -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">Canales de Atención</h3>
+                        <a href="tel:018000123456" class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:shadow-md transition-all group">
+                            <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Línea Gratuita</h4>
+                                <p class="text-sm text-slate-500">01 8000 123 456</p>
+                            </div>
+                        </a>
+                        <a href="mailto:contacto@intalnet.com" class="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:shadow-md transition-all group">
+                            <div class="w-12 h-12 bg-secondary/10 text-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Correo Electrónico</h4>
+                                <p class="text-sm text-slate-500">contacto@intalnet.com</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- FAQs -->
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-6">Preguntas Frecuentes</h3>
+                        <div class="space-y-3">
+                            <div x-data="{ open: false }" class="bg-white rounded-xl border border-slate-100 overflow-hidden">
+                                <button @click="open = !open" class="w-full flex items-center justify-between p-4 text-left font-bold text-slate-800 text-sm hover:bg-slate-50 transition-colors">
+                                    ¿Cuánto tarda la respuesta?
+                                    <svg class="w-4 h-4 transform transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div x-show="open" class="p-4 pt-0 text-xs text-slate-600 leading-relaxed">
+                                    El tiempo máximo legal es de 15 días hábiles. Si no respondemos en ese plazo, aplica el silencio administrativo positivo.
+                                </div>
+                            </div>
+                            <div x-data="{ open: false }" class="bg-white rounded-xl border border-slate-100 overflow-hidden">
+                                <button @click="open = !open" class="w-full flex items-center justify-between p-4 text-left font-bold text-slate-800 text-sm hover:bg-slate-50 transition-colors">
+                                    ¿Puedo apelar la decisión?
+                                    <svg class="w-4 h-4 transform transition-transform" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </button>
+                                <div x-show="open" class="p-4 pt-0 text-xs text-slate-600 leading-relaxed">
+                                    Sí. Si no estás de acuerdo con la respuesta, puedes interponer un recurso de reposición y en subsidio apelación dentro de los 10 días siguientes.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         @if($pqrs)
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-slide-up">
                 <!-- Sidebar: Details -->
