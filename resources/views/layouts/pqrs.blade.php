@@ -224,7 +224,7 @@
                             </div>
                             <div>
                                 <p class="font-bold text-slate-900">Línea Nacional</p>
-                                <p>01 8000 123 456</p>
+                                <p>322 580 2429</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
@@ -233,7 +233,7 @@
                             </div>
                             <div>
                                 <p class="font-bold text-slate-900">Correo Electrónico</p>
-                                <p>contacto@intalnet.com</p>
+                                <p>servicioalcliente@intalnet.com</p>
                             </div>
                         </li>
                     </ul>
