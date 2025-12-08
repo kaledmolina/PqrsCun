@@ -15,7 +15,7 @@ class CunService
     {
         try {
             // 1. Obtener parámetros enviados por la SIC
-            // Nota: La SIC envía esto como enteros, ejemplo: 4436, 25, 1
+            // Nota: La SIC envía esto como enteros, ejemplo: 7714, 25, 1
             $io = $params->identificadorOperador; 
             $anio = $params->anoRadicacionCun;
             $consecutivoInput = $params->ConsecutivoRadCun;
@@ -24,7 +24,7 @@ class CunService
             // Tu generador usa %010d, así que debemos rellenar con ceros a la izquierda
             $consecutivoPadded = sprintf('%010d', $consecutivoInput);
             
-            // Armamos el string: "4436-25-0000000001"
+            // Armamos el string: "7714-25-0000000001"
             $cunString = "{$io}-{$anio}-{$consecutivoPadded}";
 
             Log::info("SIC consultando CUN: " . $cunString);

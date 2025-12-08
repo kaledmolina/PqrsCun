@@ -61,7 +61,7 @@ class Pqrs extends Model
     public static function generateCun($type = null)
     {
         $isSugerencia = $type === 'sugerencia';
-        $prefix = $isSugerencia ? 'RAD' : (\App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '4436');
+        $prefix = $isSugerencia ? 'RAD' : (\App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '7714');
         $year = date('y'); // 2 digits
         
         // Get the last sequence number for the current year and prefix

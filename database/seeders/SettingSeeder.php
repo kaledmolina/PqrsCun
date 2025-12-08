@@ -16,7 +16,7 @@ class SettingSeeder extends Seeder
             ['key' => 'cun_provider_code'],
             [
                 'label' => 'Código de Proveedor CUN (Prefijo)',
-                'value' => '4436',
+                'value' => '7714',
             ]
         );
     }
