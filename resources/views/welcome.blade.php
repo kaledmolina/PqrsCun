@@ -5,6 +5,7 @@
 @section('content')
 <div class="relative">
     
+    <!-- HERO SECTION (Original - Sin Cambios) -->
     <div class="relative z-10 mb-10">
         <div class="pt-10 pb-16 lg:pt-20 lg:pb-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -65,7 +66,7 @@
 
     <div id="stacking-context" class="relative pb-40">
 
-        <!-- CARD 1: ENTENDIENDO TU TRÁMITE -->
+        <!-- CARD 1: ENTENDIENDO TU TRÁMITE (Original - Sin Cambios) -->
         <div class="stacking-card sticky top-[120px] z-10 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
@@ -118,7 +119,7 @@
             </div>
         </div>
 
-        <!-- CARD 2: TUS GARANTÍAS -->
+        <!-- CARD 2: TUS GARANTÍAS (Original - Sin Cambios) -->
         <div class="stacking-card sticky top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
@@ -192,8 +193,8 @@
             </div>
         </div>
 
-        <!-- CARD 3: DEBERES Y REGULADOR -->
-        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top pb-20">
+        <!-- CARD 3: DEBERES Y REGULADOR (Original - Sin Cambios) -->
+        <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
                     <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-3">Paso 3: Responsabilidad</h2>
@@ -272,6 +273,183 @@
                                     </p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4: DIRECTORIO Y CANALES (ACTUALIZADA con Información Detallada del Documento) -->
+        <div class="stacking-card sticky top-[120px] z-40 pt-10 transition-all duration-500 ease-out origin-top pb-20">
+            <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
+                
+                <div class="text-center mb-10">
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Paso 4: Directorio</h2>
+                    <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
+                        Canales y Centros de Atención
+                    </p>
+                    <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
+                        Radica tus PQR a través de nuestros canales presenciales y electrónicos. Te garantizamos atención completa y sin cláusulas de permanencia.
+                    </p>
+                </div>
+
+                <!-- INFO DE CONTACTO PRINCIPAL -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                     <!-- Línea Telefónica -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Línea de Atención</p>
+                            <p class="text-xl font-extrabold text-slate-900">314 804 2601</p>
+                        </div>
+                    </div>
+
+                    <!-- Correo Electrónico -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Correo PQR</p>
+                            <a href="mailto:pqr@intalnet.com" class="text-lg font-bold text-slate-900 hover:text-primary transition-colors">pqr@intalnet.com</a>
+                        </div>
+                    </div>
+
+                    <!-- Web -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex items-center gap-4 md:col-span-2 lg:col-span-1">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-full flex items-center justify-center shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Trámites Web</p>
+                            <p class="text-sm font-semibold text-slate-700">Formulario PQR 24/7</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Directorio de Oficinas -->
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="flex h-3 w-3 rounded-full bg-green-500 shadow-lg shadow-green-500/30"></span>
+                            <h3 class="text-xl font-bold text-slate-900">Ubicación Oficinas Físicas</h3>
+                        </div>
+
+                        <!-- Card Montería (Principal) -->
+                        <div class="bg-gradient-to-r from-slate-50 to-white border border-slate-200 p-6 rounded-2xl relative overflow-hidden group hover:shadow-md transition-all">
+                            <div class="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full -mr-10 -mt-10"></div>
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+                                <div>
+                                    <div class="flex items-center gap-2 mb-1">
+                                        <h4 class="font-bold text-lg text-primary">Montería</h4>
+                                        <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Sede Principal</span>
+                                    </div>
+                                    <p class="text-slate-700 font-medium text-sm flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        Cr. 25 No. 23-74 Calle la Pradera
+                                    </p>
+                                </div>
+                                <div class="text-right md:text-right text-sm text-slate-500 bg-white/50 p-2 rounded-lg border border-slate-100">
+                                    <p><span class="font-bold text-slate-700">Lun-Vie:</span> 8am-12pm & 2pm-6pm</p>
+                                    <p><span class="font-bold text-slate-700">Sábados:</span> 8am-12pm</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Grid de otras oficinas -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Tierralta -->
+                            <div class="bg-white border border-slate-100 p-5 rounded-xl hover:border-primary/30 transition-colors">
+                                <h4 class="font-bold text-slate-800 mb-2">Tierralta</h4>
+                                <p class="text-xs text-slate-600 mb-1 flex items-start gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    Cr. 13 # 5-31 Barrio El Prado
+                                </p>
+                                <p class="text-xs text-slate-500 flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                    311 393 4218
+                                </p>
+                            </div>
+
+                            <!-- Valencia -->
+                            <div class="bg-white border border-slate-100 p-5 rounded-xl hover:border-primary/30 transition-colors">
+                                <h4 class="font-bold text-slate-800 mb-2">Valencia</h4>
+                                <p class="text-xs text-slate-600 mb-1 flex items-start gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    Carrera 14 # 12-26 Barrio Centro
+                                </p>
+                                <p class="text-xs text-slate-500 flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                    315 252 2215
+                                </p>
+                            </div>
+
+                            <!-- San Pedro -->
+                            <div class="bg-white border border-slate-100 p-5 rounded-xl hover:border-primary/30 transition-colors">
+                                <h4 class="font-bold text-slate-800 mb-2">San Pedro</h4>
+                                <p class="text-xs text-slate-600 mb-1 flex items-start gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    Calle 49 No 45-00 Barrio Alfonso López
+                                </p>
+                                <p class="text-xs text-slate-500 flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                    313 574 5320
+                                </p>
+                            </div>
+
+                            <!-- Puerto Libertador -->
+                            <div class="bg-white border border-slate-100 p-5 rounded-xl hover:border-primary/30 transition-colors">
+                                <h4 class="font-bold text-slate-800 mb-2">Puerto Libertador</h4>
+                                <p class="text-xs text-slate-600 mb-1 flex items-start gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    Carrera 10 # 11-20 Barrio Camilo Jiménez
+                                </p>
+                                <p class="text-xs text-slate-500 flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                    321 791 5903
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Información Adicional Lateral -->
+                    <div class="lg:col-span-4 space-y-4">
+                        <!-- Cláusula de Permanencia -->
+                        <div class="bg-indigo-50/50 rounded-2xl p-6 border border-indigo-100/50">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <h4 class="font-bold text-slate-900 text-sm">Libertad Contractual</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                                En Intalnet <strong>no aplica cláusula de permanencia mínima</strong>. Eres libre de modificar o cancelar tus servicios sin penalidades.
+                            </p>
+                        </div>
+
+                        <!-- Control Parental -->
+                        <div class="bg-orange-50/50 rounded-2xl p-6 border border-orange-100/50">
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                                </div>
+                                <h4 class="font-bold text-slate-900 text-sm">Control Parental</h4>
+                            </div>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Protege a los menores. Solicita la guía de configuración para bloqueo de contenidos en TV e Internet a través de nuestros canales.
+                            </p>
+                        </div>
+                        
+                        <!-- Instrucción Correo -->
+                        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                             <h4 class="font-bold text-slate-800 text-xs uppercase mb-2">Instrucción PQR por Correo</h4>
+                             <p class="text-xs text-slate-500 mb-2">Para agilizar tu solicitud vía email, usa este asunto:</p>
+                             <div class="bg-white p-2 rounded border border-slate-200 text-[10px] font-mono text-slate-600">
+                                Asunto: Tipo de Solicitud - Cédula
+                             </div>
                         </div>
                     </div>
                 </div>
