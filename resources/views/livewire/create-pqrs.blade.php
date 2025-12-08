@@ -200,6 +200,25 @@
                                     @error('attachments.*') <span class="text-red-500 text-sm mt-2 block">{{ $message }}</span> @enderror
                                     <div wire:loading wire:target="attachments" class="text-center mt-2 text-sm text-blue-600 font-medium animate-pulse">Subiendo archivos...</div>
                                 </div>
+
+                                <!-- File Preview List -->
+                                @if($attachments)
+                                    <div class="mt-4 space-y-2">
+                                        @foreach($attachments as $index => $attachment)
+                                            <div class="flex items-center justify-between p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                                                <div class="flex items-center gap-3 overflow-hidden">
+                                                    <div class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                                                    </div>
+                                                    <span class="text-sm text-slate-700 truncate">{{ $attachment->getClientOriginalName() }}</span>
+                                                </div>
+                                                <button type="button" wire:click="removeAttachment({{ $index }})" class="text-slate-400 hover:text-red-500 transition-colors p-1">
+                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                                </button>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                         </div>
 

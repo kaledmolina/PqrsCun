@@ -153,6 +153,11 @@ class CreatePqrs extends Component
         $this->successCun = '';
     }
 
+    public function removeAttachment($index)
+    {
+        array_splice($this->attachments, $index, 1);
+    }
+
     public function render()
     {
         return view('livewire.create-pqrs');
