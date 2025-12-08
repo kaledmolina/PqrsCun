@@ -8,7 +8,6 @@
     <div class="relative z-10 mb-10">
         <div class="pt-10 pb-16 lg:pt-20 lg:pb-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                
                 <div class="text-center lg:text-left animate-fade-in">
                     <div class="inline-flex items-center px-4 py-2 rounded-full border border-primary/20 bg-white/40 backdrop-blur-md text-primary text-sm font-semibold mb-8 shadow-sm">
                         <span class="flex h-2.5 w-2.5 rounded-full bg-green-500 mr-3 animate-pulse"></span>
@@ -62,10 +61,12 @@
             </div>
         </div>
     </div>
+
+
     <div id="stacking-context" class="relative pb-40">
 
         <div class="stacking-card sticky top-[120px] z-10 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-white/80 backdrop-blur-xl border border-white/60 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/50 mx-4 md:mx-0">
+            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-12">
                     <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Información Vital</h2>
                     <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -74,7 +75,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="group relative bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-8 hover:bg-white/70 transition-all duration-300 shadow-lg">
+                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-8 hover:bg-white/60 transition-all duration-300 shadow-lg">
                         <div class="flex items-start gap-6">
                             <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -82,7 +83,7 @@
                             <div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">¿Para qué sirve el CUN?</h3>
                                 <p class="text-slate-600 leading-relaxed mb-4 text-sm">
-                                    Es tu "cédula" de trámite. Te permite identificar tu solicitud desde el inicio hasta el final, garantizando trazabilidad total de tu petición, queja o recurso.
+                                    Es tu "cédula" de trámite. Te permite identificar tu solicitud desde el inicio hasta el final, garantizando trazabilidad total.
                                 </p>
                                 <a href="#" class="inline-flex items-center text-primary font-bold text-sm hover:text-secondary transition-colors">
                                     Leer más información <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
@@ -90,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="group relative bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-8 hover:bg-white/70 transition-all duration-300 shadow-lg">
+                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-8 hover:bg-white/60 transition-all duration-300 shadow-lg">
                         <div class="flex items-start gap-6">
                             <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-secondary to-cyan-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-secondary/30 group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -98,7 +99,7 @@
                             <div>
                                 <h3 class="text-xl font-bold text-slate-900 mb-3">Servicio en Línea</h3>
                                 <p class="text-slate-600 leading-relaxed mb-4 text-sm">
-                                    El CUN unifica el proceso a nivel nacional. Úsalo en nuestra plataforma para procesar apelaciones y realizar seguimiento en tiempo real.
+                                    El CUN unifica el proceso a nivel nacional. Úsalo en nuestra plataforma para procesar apelaciones y realizar seguimiento.
                                 </p>
                                 <a href="{{ route('pqrs.consult') }}" class="inline-flex items-center text-secondary font-bold text-sm hover:text-primary transition-colors">
                                     Ir al servicio en línea <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
@@ -112,58 +113,58 @@
 
 
         <div class="stacking-card sticky top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
-            <div class="bg-white/85 backdrop-blur-xl border border-white/60 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/50 mx-4 md:mx-0">
+            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-12">
                     <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-3">Régimen de Protección</h2>
                     <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
                         Tus Derechos Protegidos
                     </p>
-                    <p class="mt-4 text-slate-500 max-w-2xl mx-auto">
+                    <p class="mt-4 text-slate-500 max-w-2xl mx-auto font-medium">
                         Conforme a la Resolución CRC 5111 de 2017, garantizamos el cumplimiento de tus derechos fundamentales.
                     </p>
                 </div>
 
                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="group relative bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-6 hover:bg-white/80 transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
                         <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-14 h-14 bg-green-100/80 rounded-2xl flex items-center justify-center text-green-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Compensación Automática</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
                                 Derecho a compensación automática por fallas o interrupciones en el servicio.
                             </p>
                         </div>
                     </div>
-                    <div class="group relative bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-6 hover:bg-white/80 transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
                         <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-14 h-14 bg-red-100/80 rounded-2xl flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Terminación de Contrato</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
                                 Puedes terminar tu contrato en cualquier momento a través de cualquier medio de atención.
                             </p>
                         </div>
                     </div>
-                     <div class="group relative bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-6 hover:bg-white/80 transition-all duration-300 shadow-md hover:shadow-xl">
+                     <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
                         <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-14 h-14 bg-blue-100/80 rounded-2xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Claridad en Tarifas</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
                                 Derecho a conocer siempre las tarifas que aplican sin cobros sorpresa.
                             </p>
                         </div>
                     </div>
-                    <div class="group relative bg-white/50 backdrop-blur-xl border border-white/50 rounded-[2rem] p-6 hover:bg-white/80 transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div class="group relative bg-white/40 backdrop-blur-md border border-white/40 rounded-[2rem] p-6 hover:bg-white/60 transition-all duration-300 shadow-md hover:shadow-xl">
                         <div class="flex flex-col h-full">
-                            <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <div class="w-14 h-14 bg-purple-100/80 rounded-2xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform duration-300">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
                             </div>
                             <h3 class="text-lg font-bold text-slate-900 mb-3">Atención Integral</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed flex-grow">
+                            <p class="text-slate-700 text-sm leading-relaxed flex-grow">
                                 Presenta PQR por cualquier medio y recibe respuesta oportuna sin abogado.
                             </p>
                         </div>
@@ -174,90 +175,75 @@
 
 
         <div class="stacking-card sticky top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top pb-20">
-            <div class="bg-white/90 backdrop-blur-xl border border-white/60 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/50 mx-4 md:mx-0">
+            <div class="bg-white/40 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <h2 class="text-2xl font-bold text-slate-900 mb-8 border-l-4 border-primary pl-4">Entidades Regulatorias</h2>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <a href="https://www.crcom.gov.co" target="_blank" class="flex items-center p-4 bg-white/60 border border-white/50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">CRC</div>
+                    <a href="https://www.crcom.gov.co" target="_blank" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">CRC</div>
                         <div>
                             <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Comisión de Regulación</h4>
-                            <p class="text-slate-500 text-xs">Comunicaciones</p>
+                            <p class="text-slate-600 text-xs">Comunicaciones</p>
                         </div>
                     </a>
-                    <a href="https://www.mintic.gov.co" target="_blank" class="flex items-center p-4 bg-white/60 border border-white/50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">TIC</div>
+                    <a href="https://www.mintic.gov.co" target="_blank" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">TIC</div>
                         <div>
                             <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Ministerio TIC</h4>
-                            <p class="text-slate-500 text-xs">Políticas del sector</p>
+                            <p class="text-slate-600 text-xs">Políticas del sector</p>
                         </div>
                     </a>
-                    <a href="#" class="flex items-center p-4 bg-white/60 border border-white/50 rounded-2xl hover:bg-white hover:shadow-lg transition-all duration-300 group">
-                        <div class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">ANTV</div>
+                    <a href="#" class="flex items-center p-4 bg-white/40 border border-white/50 rounded-2xl hover:bg-white/80 hover:shadow-lg transition-all duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100/80 flex items-center justify-center text-slate-600 font-bold text-xs mr-4 group-hover:bg-primary group-hover:text-white transition-colors">ANTV</div>
                         <div>
                             <h4 class="text-slate-900 font-bold text-sm group-hover:text-primary transition-colors">Autoridad Nacional TV</h4>
-                            <p class="text-slate-500 text-xs">Servicio público</p>
+                            <p class="text-slate-600 text-xs">Servicio público</p>
                         </div>
                     </a>
                 </div>
             </div>
         </div>
 
-    </div> </div>
+    </div>
+
+</div>
 
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const cards = document.querySelectorAll('.stacking-card');
-        // Altura del viewport para cálculos relativos
         const viewportHeight = window.innerHeight;
-        // El punto donde las tarjetas se vuelven 'sticky' (debe coincidir aprox con el CSS top:120px)
         const stickyTopPoint = 120; 
 
         function handleScroll() {
             cards.forEach((card, index) => {
-                // No necesitamos animar la última tarjeta ya que nada la empuja
                 if (index === cards.length - 1) return;
 
                 const nextCard = cards[index + 1];
                 const rect = card.getBoundingClientRect();
                 const nextRect = nextCard.getBoundingClientRect();
 
-                // Lógica: Si la tarjeta actual está pegada arriba (cerca del stickyTopPoint)
-                // Y la siguiente tarjeta está subiendo hacia ella.
                 if (rect.top <= stickyTopPoint + 20 && nextRect.top <= viewportHeight) {
-                    
-                    // Calculamos la distancia de la siguiente tarjeta hasta el punto de pegado
                     const distanceToSticky = Math.max(0, nextRect.top - stickyTopPoint);
-                    // Altura total disponible para la animación
                     const totalDistance = viewportHeight - stickyTopPoint;
-                    
-                    // Ratio de completado: 0 cuando la siguiente tarjeta está lejos, 1 cuando está encima
                     let progressRatio = 1 - (distanceToSticky / totalDistance);
-                    // Aseguramos que esté entre 0 y 1
                     progressRatio = Math.max(0, Math.min(1, progressRatio));
 
-                    // Calculamos la escala. La tarjeta se reducirá hasta un 92% (0.92) de su tamaño
                     const scale = 1 - (progressRatio * 0.08); 
-                    // Opcional: añadir un ligero desenfoque y reducir opacidad para más profundidad
-                    // const blur = progressRatio * 2;
-                    // const opacity = 1 - (progressRatio * 0.2);
+                    
+                    // Añadimos un pequeño fade-out al empujar hacia el fondo para mejorar el efecto glass
+                    const opacity = 1 - (progressRatio * 0.3);
 
                     card.style.transform = `scale(${scale})`;
-                    // card.style.filter = `blur(${blur}px)`;
-                    // card.style.opacity = `${opacity}`;
+                    card.style.opacity = `${opacity}`;
 
                 } else {
-                    // Si no está en la zona de animación, reseteamos
                     card.style.transform = 'scale(1)';
-                    // card.style.filter = 'blur(0px)';
-                    // card.style.opacity = '1';
+                    card.style.opacity = '1';
                 }
             });
         }
 
-        // Escuchar el evento scroll
         window.addEventListener('scroll', handleScroll, { passive: true });
-        // Ejecutar una vez al inicio para establecer estados iniciales
         handleScroll();
     });
 </script>
