@@ -289,7 +289,7 @@
                         </div>
                         <div>
                             <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Línea de Atención</p>
-                            <p class="text-xl font-extrabold text-slate-900">314 804 2601</p>
+                            <p class="text-xl font-extrabold text-slate-900">322 580 2429</p>
                         </div>
                     </div>
 
