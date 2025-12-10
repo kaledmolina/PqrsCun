@@ -26,47 +26,38 @@ class PqrsResource extends Resource
                 Forms\Components\Section::make('Información del Cliente')
                     ->schema([
                         Forms\Components\TextInput::make('contract_number')
-                            ->label('Número de Contrato')
+                            ->label('Código de Contrato')
                             ->maxLength(255),
                         Forms\Components\TextInput::make('document_type')
                             ->label('Tipo de Documento')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('document_number')
                             ->label('Número de Documento')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('first_name')
                             ->label('Nombres / Razón Social')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('last_name')
                             ->label('Apellidos')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('email')
                             ->label('Correo Electrónico')
                             ->email()
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('phone')
                             ->label('Celular')
                             ->tel()
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('landline')
                             ->label('Teléfono Fijo')
                             ->tel()
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('address')
                             ->label('Dirección')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('city')
                             ->label('Sede')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Detalles de la PQR')
@@ -85,20 +76,16 @@ class PqrsResource extends Resource
                                 'reposicion' => 'Reposición',
                                 'apelacion' => 'Apelación',
                             ])
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TagsInput::make('services')
                             ->label('Servicios Afectados')
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('motive')
                             ->label('Motivo') // Note: User said "el campo motivo alla no sale", checking if it was missing. It was in the code but maybe not filled? Or maybe they meant it wasn't shown to client? The user said "agrega campos que no le sale al cliente". Wait, "el camapo motivo alla no sale agrega campos que no le sale al cliente". This is confusing. "motive" is in the admin form. Maybe they mean "motive" is NOT in the client form so it's empty? In CreatePqrs.php, 'motive' is in rules but NOT in the blade form! So it's always null. I should probably remove it or keep it if they plan to use it internally. But the user said "el unico campo editable es de contrato". So I will keep it disabled or remove it if it's useless. Let's keep it disabled for now as per "read only".
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\Textarea::make('description')
                             ->label('Descripción')
-                            ->disabled()
-                            ->dehydrated(false)
+                            ->disabled(fn (string $operation) => $operation === 'edit')
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('attachments')
                             ->label('Adjuntos')
@@ -106,8 +93,7 @@ class PqrsResource extends Resource
                             ->downloadable()
                             ->disk('local')
                             ->visibility('private')
-                            ->disabled()
-                            ->dehydrated(false)
+                            ->disabled(fn (string $operation) => $operation === 'edit')
                             ->columnSpanFull(),
                         Forms\Components\Select::make('status')
                             ->label('Estado')
@@ -117,8 +103,7 @@ class PqrsResource extends Resource
                                 'resolved' => 'Resuelto',
                                 'closed' => 'Cerrado',
                             ])
-                            ->disabled()
-                            ->dehydrated(false),
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\Section::make('Satisfacción del Cliente')
                             ->schema([
                                 Forms\Components\TextInput::make('rating')
