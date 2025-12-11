@@ -119,73 +119,118 @@
             </div>
         </div>
 
-        <!-- CARD 2: TUS GARANTÍAS (Original - Sin Cambios) -->
+        <!-- CARD 2: DERECHOS Y CONDICIONES (Actualizada) -->
         <div class="stacking-card lg:sticky lg:top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-12 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-10">
-                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-3">Paso 2: Protección</h2>
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-3">Paso 2: Tu Contrato</h2>
                     <p class="text-3xl sm:text-4xl font-extrabold text-slate-900">
-                        Tus Garantías y Derechos
+                        Derechos y Condiciones
                     </p>
                     <p class="mt-4 text-slate-600 max-w-2xl mx-auto">
-                        La regulación colombiana te protege. Conoce los tiempos y mecanismos que aseguran una respuesta justa.
+                        Conoce tus derechos, las condiciones de prestación del servicio y los mecanismos de protección al usuario.
                     </p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Timeline & Silence -->
-                    <div class="bg-slate-50/50 rounded-[2rem] p-8 border border-slate-100">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center shadow-sm">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-900">15 Días Hábiles</h3>
-                                <p class="text-sm text-slate-500">Tiempo máximo de respuesta</p>
-                            </div>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Columna Izquierda -->
+                    <div class="space-y-4">
+                        <!-- Calidad y Compensación -->
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white transition-all">
+                            <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-sm">💎</span>
+                                Calidad y Compensación
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-2">
+                                Cuando se presente indisponibilidad del servicio o este se suspenda a pesar de su pago oportuno, <strong>lo compensaremos en su próxima factura</strong>.
+                            </p>
+                            <a href="https://www.mintic.gov.co" target="_blank" class="text-[10px] text-primary font-bold hover:underline">Ver condiciones CRC (MinTIC) →</a>
                         </div>
-                        
-                        <div class="space-y-4">
-                            <div class="flex gap-4 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                                <span class="text-2xl">🤫</span>
-                                <div>
-                                    <h4 class="font-bold text-slate-800 text-sm">Silencio Administrativo Positivo</h4>
-                                    <p class="text-xs text-slate-500 mt-1">Si no respondemos a tiempo, tu solicitud se entiende resuelta a tu favor automáticamente en 72 horas.</p>
-                                </div>
-                            </div>
-                            <div class="flex gap-4 items-start p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
-                                <span class="text-2xl">💰</span>
-                                <div>
-                                    <h4 class="font-bold text-slate-800 text-sm">Sin Pago Previo</h4>
-                                    <p class="text-xs text-slate-500 mt-1">No debes pagar los valores en reclamo para ser atendido. Solo paga lo que no estás disputando.</p>
-                                </div>
-                            </div>
+
+                        <!-- Suspensión -->
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white transition-all">
+                            <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-sm">⏸</span>
+                                Suspensión Temporal
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Tiene derecho a solicitar la suspensión del servicio por un <strong>máximo de 2 meses al año</strong>. Debe solicitarlo antes del inicio del ciclo de facturación.
+                            </p>
+                        </div>
+
+                        <!-- Terminación -->
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white transition-all">
+                            <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-sm">🚪</span>
+                                Terminación del Contrato
+                            </h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                Puede terminar el contrato en cualquier momento <strong>sin penalidades</strong> (salvo cláusula de permanencia pactada). Debe avisar con mínimo <strong>3 días hábiles</strong> antes del corte de facturación (día 1 de cada mes).
+                            </p>
                         </div>
                     </div>
 
-                    <!-- Rights Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="bg-gradient-to-br from-red-50 to-white p-6 rounded-2xl border border-red-100 hover:shadow-md transition-all">
-                            <div class="w-10 h-10 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-3">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <!-- Columna Derecha -->
+                    <div class="space-y-4">
+                        <!-- Modificación y Cesión -->
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white transition-all">
+                            <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm">📝</span>
+                                Modificación y Cesión
+                            </h3>
+                            <div class="space-y-2">
+                                <details class="group">
+                                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none text-xs text-slate-800">
+                                        <span>Cesión de Contrato</span>
+                                        <span class="transition group-open:rotate-180">
+                                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                        </span>
+                                    </summary>
+                                    <p class="text-xs text-slate-600 mt-2 group-open:animate-fadeIn">
+                                        Puede ceder el contrato presentando solicitud escrita acompañada de la aceptación del nuevo titular. Respuesta en 15 días hábiles.
+                                    </p>
+                                </details>
+                                <details class="group">
+                                    <summary class="flex justify-between items-center font-medium cursor-pointer list-none text-xs text-slate-800">
+                                        <span>Modificación de Servicios</span>
+                                        <span class="transition group-open:rotate-180">
+                                            <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                                        </span>
+                                    </summary>
+                                    <p class="text-xs text-slate-600 mt-2 group-open:animate-fadeIn">
+                                        Puede modificar su plan en cualquier momento. El cambio aplica en el siguiente periodo. Solicitud 3 días antes del corte. No podemos modificar el contrato sin su autorización.
+                                    </p>
+                                </details>
                             </div>
-                            <h4 class="font-bold text-slate-900 text-sm mb-2">Terminación</h4>
-                            <p class="text-xs text-slate-600">Cancela tu contrato cuando quieras, avisando 3 días antes del corte.</p>
                         </div>
-                        <div class="bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100 hover:shadow-md transition-all">
-                            <div class="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-3">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <h4 class="font-bold text-slate-900 text-sm mb-2">Compensación</h4>
-                            <p class="text-xs text-slate-600">Recibe saldo a favor automáticamente si tu servicio falla.</p>
+
+                        <!-- Pago y Facturación -->
+                        <div class="bg-white/50 rounded-2xl p-6 border border-white/60 hover:bg-white transition-all">
+                            <h3 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                                <span class="w-8 h-8 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-sm">💳</span>
+                                Pago y Facturación
+                            </h3>
+                            <ul class="text-xs text-slate-600 space-y-2 list-disc pl-4">
+                                <li>La factura llega mín. 5 días antes del pago.</li>
+                                <li>Reconexión en 3 días hábiles tras pago.</li>
+                                <li>Reporte a centrales de riesgo con aviso de 20 días.</li>
+                                <li>Reclamos de facturación: No debe pagar las sumas reclamadas mientras se resuelve.</li>
+                            </ul>
                         </div>
-                        <div class="col-span-1 sm:col-span-2 bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border border-blue-100 hover:shadow-md transition-all flex items-center gap-4">
-                            <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+
+                        <!-- Otros -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-[10px] text-slate-800 uppercase mb-1">Cambio Domicilio</h4>
+                                <p class="text-[10px] text-slate-500">Posible si hay viabilidad técnica. Costo de materiales a cargo del usuario.</p>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-slate-900 text-sm">Tarifas Claras</h4>
-                                <p class="text-xs text-slate-600">Sin letra menuda ni cobros sorpresa.</p>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-[10px] text-slate-800 uppercase mb-1">Reconexión</h4>
+                                <p class="text-[10px] text-slate-500">Costo: $20.000 (solo costos operativos).</p>
+                            </div>
+                            <div class="col-span-2 bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-[10px] text-slate-800 uppercase mb-1">Larga Distancia</h4>
+                                <p class="text-[10px] text-slate-500">Usamos el operador que usted elija marcando su código respectivo.</p>
                             </div>
                         </div>
                     </div>
@@ -193,74 +238,83 @@
             </div>
         </div>
 
-        <!-- CARD 3: DEBERES Y REGULADOR (Original - Sin Cambios) -->
+        <!-- CARD 3: OBLIGACIONES Y LEGAL (Actualizada) -->
         <div class="stacking-card lg:sticky lg:top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2">Paso 3: Responsabilidad</h2>
+                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2">Paso 3: Marco Legal</h2>
                     <p class="text-3xl font-extrabold text-slate-900">
-                        Tus Deberes y el Regulador
+                        Obligaciones y Anexos
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <!-- Duties List -->
+                    <!-- Obligaciones -->
                     <div>
                         <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
                             <span class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-sm">📋</span>
-                            Tus Obligaciones
+                            Principales Obligaciones
                         </h3>
-                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
-                                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-[10px] shrink-0">✓</div>
-                                <span class="text-xs text-slate-700 font-medium leading-tight">Pagar oportunamente tu factura</span>
-                            </li>
-                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
-                                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-[10px] shrink-0">✓</div>
-                                <span class="text-xs text-slate-700 font-medium leading-tight">No realizar fraudes</span>
-                            </li>
-                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
-                                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-[10px] shrink-0">✓</div>
-                                <span class="text-xs text-slate-700 font-medium leading-tight">Usar equipos homologados</span>
-                            </li>
-                            <li class="flex items-center gap-3 p-3 bg-white/50 rounded-xl border border-white/60">
-                                <div class="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-[10px] shrink-0">✓</div>
-                                <span class="text-xs text-slate-700 font-medium leading-tight">Respeto al personal</span>
-                            </li>
+                        <ul class="space-y-2">
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">1.</span> Pagar oportunamente los servicios e intereses de mora.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">2.</span> Suministrar información verdadera.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">3.</span> Hacer uso adecuado de equipos y servicios.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">4.</span> No divulgar ni acceder a pornografía infantil.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">5.</span> Avisar a autoridades sobre robo de elementos de red.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">6.</span> No cometer fraude.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">7.</span> Hacer uso adecuado del derecho a PQR.</li>
+                            <li class="flex gap-3 text-xs text-slate-600"><span class="text-primary font-bold">8.</span> Actuar de buena fe.</li>
                         </ul>
                     </div>
 
-                    <!-- Regulators -->
-                    <div class="bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-6 border border-indigo-100 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-100/50 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                        <h3 class="text-lg font-bold text-slate-900 mb-4 relative z-10">Entidades de Vigilancia</h3>
-                        <div class="space-y-3 relative z-10">
-                            <div class="grid grid-cols-3 gap-3">
-                                <a href="https://www.crcom.gov.co" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white rounded-xl border border-indigo-50 hover:shadow-md transition-all group text-center h-full">
-                                    <div class="w-8 h-8 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-[10px] mb-2">CRC</div>
-                                    <span class="text-[10px] font-bold text-slate-900 leading-tight">Comisión</span>
-                                </a>
-                                <a href="https://www.mintic.gov.co" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white rounded-xl border border-indigo-50 hover:shadow-md transition-all group text-center h-full">
-                                    <div class="w-8 h-8 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-[10px] mb-2">TIC</div>
-                                    <span class="text-[10px] font-bold text-slate-900 leading-tight">MinTIC</span>
-                                </a>
-                                <a href="https://www.sic.gov.co" target="_blank" class="flex flex-col items-center justify-center p-3 bg-white rounded-xl border border-indigo-50 hover:shadow-md transition-all group text-center h-full">
-                                    <div class="w-8 h-8 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center font-bold text-[10px] mb-2">SIC</div>
-                                    <span class="text-[10px] font-bold text-slate-900 leading-tight">Super</span>
-                                </a>
+                    <!-- Anexos Legales (Acordeón) -->
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+                            <span class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center text-sm">⚖️</span>
+                            Anexos Legales
+                        </h3>
+                        
+                        <details class="group bg-white/50 rounded-xl border border-white/60 overflow-hidden">
+                            <summary class="flex justify-between items-center p-3 font-bold cursor-pointer list-none text-xs text-slate-800 bg-slate-50/50 hover:bg-slate-100/50 transition-colors">
+                                <span>Disposiciones Generales</span>
+                                <span class="transition group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-32 overflow-y-auto custom-scrollbar">
+                                <p class="mb-2"><strong>Obligaciones Usuario:</strong> Permitir ingreso de personal INTALNET para auditorias/mantenimiento. Responder por daño en equipos. Devolver equipos al terminar contrato. No realizar conexiones fraudulentas (Phishing, Spamming).</p>
+                                <p class="mb-2"><strong>Equipos:</strong> Son propiedad de INTALNET (comodato). El usuario responde por custodia. Deben devolverse al terminar.</p>
+                                <p><strong>Velocidad:</strong> Factores limitantes: Latencia, congestión, uso de WiFi, consumo excesivo de ancho de banda.</p>
                             </div>
-                            
-                            <!-- Habeas Data Info -->
-                            <div class="mt-3 p-3 bg-indigo-100/50 rounded-xl border border-indigo-100 flex gap-3 items-center">
-                                <svg class="w-4 h-4 text-indigo-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                                <div>
-                                    <h4 class="font-bold text-indigo-900 text-xs">Habeas Data</h4>
-                                    <p class="text-[10px] text-indigo-800 leading-tight">
-                                        Derecho a conocer y rectificar tu info. Ley 1581/2012.
-                                    </p>
-                                </div>
+                        </details>
+
+                        <details class="group bg-white/50 rounded-xl border border-white/60 overflow-hidden">
+                            <summary class="flex justify-between items-center p-3 font-bold cursor-pointer list-none text-xs text-slate-800 bg-slate-50/50 hover:bg-slate-100/50 transition-colors">
+                                <span>Habeas Data (Anexo 1)</span>
+                                <span class="transition group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-32 overflow-y-auto custom-scrollbar">
+                                <p>Autoriza a INTALNET a consultar/reportar en centrales de riesgo. Autoriza tratamiento de datos sensibles (huella/voz/rostro) para validar identidad. Derecho a conocer, actualizar y rectificar datos (Ley 1581/2012).</p>
                             </div>
-                        </div>
+                        </details>
+
+                        <details class="group bg-white/50 rounded-xl border border-white/60 overflow-hidden">
+                            <summary class="flex justify-between items-center p-3 font-bold cursor-pointer list-none text-xs text-slate-800 bg-slate-50/50 hover:bg-slate-100/50 transition-colors">
+                                <span>Pornografía Infantil (Anexo 2)</span>
+                                <span class="transition group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-32 overflow-y-auto custom-scrollbar">
+                                <p>El usuario declara conocer normas que prohíben pornografía infantil (Ley 679/2001). Se obliga a prevenir acceso de menores a dichos contenidos y a no alojar/distribuir material ilegal. Obligación de denunciar.</p>
+                            </div>
+                        </details>
+
+                        <details class="group bg-white/50 rounded-xl border border-white/60 overflow-hidden">
+                            <summary class="flex justify-between items-center p-3 font-bold cursor-pointer list-none text-xs text-slate-800 bg-slate-50/50 hover:bg-slate-100/50 transition-colors">
+                                <span>SARLAFT</span>
+                                <span class="transition group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-32 overflow-y-auto custom-scrollbar">
+                                <p>Terminación automática si el usuario es relacionado con lavado de activos/terrorismo. Obligación de actualizar información anualmente.</p>
+                            </div>
+                        </details>
                     </div>
                 </div>
             </div>
