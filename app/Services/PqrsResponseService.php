@@ -15,12 +15,12 @@ class PqrsResponseService
         $date = now()->format('d/m/Y');
         
         return match ($type) {
-            'peticion' => $this->getQuickPeticionTemplate($name, $cun, $date, $pqrs->city),
-            'queja' => $this->getQuickQuejaTemplate($name, $cun, $date, $pqrs->city),
-            'reclamo' => $this->getQuickReclamoTemplate($name, $cun, $date, $pqrs->city),
-            'sugerencia' => $this->getQuickSugerenciaTemplate($name, $cun, $date, $pqrs->city),
-            'reposicion' => $this->getQuickReposicionTemplate($name, $cun, $date, $pqrs->city),
-            'apelacion' => $this->getQuickApelacionTemplate($name, $cun, $date, $pqrs->city),
+            'peticion' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
+            'queja' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
+            'reclamo' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
+            'sugerencia' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
+            'reposicion' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
+            'apelacion' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
             default => '',
         };
     }
@@ -58,93 +58,24 @@ class PqrsResponseService
         return $path;
     }
 
-    // --- Quick Response Templates (Acknowledgment) ---
+    // --- Quick Response Template (General) ---
 
-    protected function getQuickPeticionTemplate($name, $cun, $date, $city): string
+    protected function getQuickResponseGeneralTemplate($name, $cun, $date, $description): string
     {
         return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Rápida a Petición CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Reciba un cordial saludo de parte de Intalnet. Por medio de la presente confirmamos el recibo de su petición.</p>
-            <p>Le informamos que su solicitud será atendida dentro del término legal establecido de <strong>10 días hábiles</strong>.</p>
-            <p>Agradecemos su confianza en nuestros servicios.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
-
-    protected function getQuickQuejaTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Rápida a Queja CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Reciba un cordial saludo de parte de Intalnet. Por medio de la presente confirmamos el recibo de su queja.</p>
-            <p>Le informamos que su solicitud será atendida dentro del término legal establecido de <strong>15 días hábiles</strong> (prorrogables por 15 días más si se requiere).</p>
-            <p>Agradecemos su retroalimentación para mejorar nuestro servicio.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
-
-    protected function getQuickReclamoTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Rápida a Reclamo CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Reciba un cordial saludo de parte de Intalnet. Por medio de la presente confirmamos el recibo de su reclamo.</p>
-            <p>Le informamos que su solicitud será atendida dentro del término legal establecido de <strong>15 días hábiles</strong> (prorrogables por 15 días más si se requiere).</p>
-            <p>Estaremos revisando su caso detalladamente.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
-
-    protected function getQuickSugerenciaTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Rápida a Sugerencia Radicado No. $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Reciba un cordial saludo de parte de Intalnet. Agradecemos su sugerencia, la cual es muy valiosa para nosotros.</p>
-            <p>Le informamos que su solicitud ha sido recibida y será evaluada dentro del término de <strong>30 días hábiles</strong>.</p>
-            <p>Gracias por ayudarnos a mejorar.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
-
-    protected function getQuickReposicionTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Rápida a Recurso de Reposición CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Reciba un cordial saludo de parte de Intalnet. Por medio de la presente confirmamos el recibo de su recurso de reposición.</p>
-            <p>Le informamos que su solicitud será resuelta dentro del término legal establecido de <strong>15 días hábiles</strong>.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
-
-    protected function getQuickApelacionTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Rápida a Recurso de Apelación CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Reciba un cordial saludo de parte de Intalnet. Por medio de la presente confirmamos el recibo de su recurso de apelación.</p>
-            <p>Le informamos que su solicitud será resuelta dentro del término legal establecido de <strong>15 días hábiles</strong>.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
+            <p>Estimado(a) <strong>$name</strong>,</p>
+            <p>Su solicitud ha sido recibida y registrada con la siguiente información:</p>
+            <ul>
+                <li><strong>Número de radicado:</strong> $cun</li>
+                <li><strong>Fecha de radicación:</strong> $date</li>
+                <li><strong>Usuario:</strong> $name</li>
+                <li><strong>Descripción del requerimiento:</strong> $description</li>
+            </ul>
+            <p>Para consultar el estado de su solicitud, puede ingresar con su código CUN en el siguiente enlace:</p>
+            <p><a href=\"https://pqr.intalnet.com\">https://pqr.intalnet.com</a></p>
+            <p>Este mensaje es generado automáticamente. Por favor, no responda a este correo.</p>
+            <p>Si requiere más información, comuníquese directamente con Intalnet Telecomunicaciones por nuestros canales oficiales.</p>
+            <p style=\"font-size: 10px; color: #999;\">Este correo es informativo y de uso exclusivo del destinatario. Puede contener información confidencial. Si usted no es el destinatario, elimine el mensaje de inmediato. La reproducción o difusión no autorizada está estrictamente prohibida.</p>
         ";
     }
 

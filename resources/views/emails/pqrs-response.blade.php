@@ -13,20 +13,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2>Respuesta a su Solicitud</h2>
-            <p><strong>CUN:</strong> {{ $pqrs->cun }}</p>
+            <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="logo">
         </div>
         
         <div class="content">
-            <p>Hola <strong>{{ $pqrs->first_name }} {{ $pqrs->last_name }}</strong>,</p>
-            
-            <p>Hemos generado una respuesta a su solicitud de tipo <strong>{{ ucfirst($pqrs->type) }}</strong>.</p>
-            
-            <div style="background-color: #f8f9fa; padding: 15px; border-left: 4px solid #00aaff; margin: 20px 0;">
-                {!! $responseContent !!}
-            </div>
-            
-            <p>Si tiene alguna duda adicional, no dude en contactarnos.</p>
+            {!! $responseContent !!}
         </div>
         
         <div class="footer">

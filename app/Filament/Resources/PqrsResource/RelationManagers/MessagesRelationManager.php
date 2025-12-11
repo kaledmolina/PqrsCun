@@ -164,7 +164,7 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                         $pqrs,
                         $data['content'],
                         [$pdfPath],
-                        'Respuesta Rápida a su PQR'
+                        'Confirmación de Radicación de PQR – Intalnet Telecomunicaciones'
                     ));
                 } catch (\Exception $e) {
                     \Filament\Notifications\Notification::make()
