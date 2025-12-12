@@ -70,8 +70,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-10 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">Paso 1: Identificación</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Entendiendo tu Trámite</p>
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">PASO 1: IDENTIFICACIÓN</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">ENTENDIENDO TU TRÁMITE</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -95,7 +95,7 @@
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">P</div>
                             <h4 class="font-bold text-slate-900 mb-1 text-sm">Petición</h4>
-                            <p class="text-[10px] text-slate-500 leading-relaxed">Solicitud de información o servicios. Cualquier manifestación sobre tus derechos.</p>
+                            <p class="text-[10px] text-slate-500 leading-relaxed">Solicitud para requerir información, copias de documentos o la prestación del servicio. Incluye peticiones de interés general o particular.</p>
                         </div>
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">Q</div>
@@ -116,8 +116,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-20 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Paso 2: Tu Contrato</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Derechos Fundamentales</p>
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">PASO 2: TU CONTRATO</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">DERECHOS FUNDAMENTALES</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -162,8 +162,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-30 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">Paso 3: Gestión</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Administración del Servicio</p>
+                    <h2 class="text-secondary font-bold tracking-widest uppercase text-sm mb-2">PASO 3: GESTIÓN</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">ADMINISTRACIÓN DEL SERVICIO</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -232,8 +232,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-40 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2">Paso 4: Deberes</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Principales Obligaciones</p>
+                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2">PASO 4: DEBERES</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">PRINCIPALES OBLIGACIONES</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -246,8 +246,6 @@
                     <div class="space-y-2">
                         <div class="flex gap-3 text-xs text-slate-600 bg-white/50 p-3 rounded-xl border border-white/60"><span class="text-primary font-bold">5.</span> Avisar sobre robo de elementos de red.</div>
                         <div class="flex gap-3 text-xs text-slate-600 bg-white/50 p-3 rounded-xl border border-white/60"><span class="text-primary font-bold">6.</span> No cometer fraude.</div>
-                        <div class="flex gap-3 text-xs text-slate-600 bg-white/50 p-3 rounded-xl border border-white/60"><span class="text-primary font-bold">7.</span> Hacer uso adecuado del derecho a PQR.</div>
-                        <div class="flex gap-3 text-xs text-slate-600 bg-white/50 p-3 rounded-xl border border-white/60"><span class="text-primary font-bold">8.</span> Actuar de buena fe.</div>
                     </div>
                 </div>
             </div>
@@ -257,8 +255,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-50 pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2">Paso 5: Marco Legal</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Anexos Legales</p>
+                    <h2 class="text-slate-500 font-bold tracking-widest uppercase text-sm mb-2">PASO 5: MARCO LEGAL</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">ANEXOS LEGALES</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -310,8 +308,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-[60] pt-10 transition-all duration-500 ease-out origin-top">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">Paso 6: Contacto</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Canales de Atención</p>
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">PASO 6: CONTACTO</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">CANALES DE ATENCIÓN</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -367,8 +365,8 @@
         <div class="stacking-card lg:sticky lg:top-[120px] z-[70] pt-10 transition-all duration-500 ease-out origin-top pb-20">
             <div class="bg-white/60 backdrop-blur-xl border border-white/50 rounded-[3rem] p-8 md:p-10 shadow-2xl shadow-slate-300/40 mx-4 md:mx-0 ring-1 ring-white/40">
                 <div class="text-center mb-8">
-                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">Paso 7: Ubicación</h2>
-                    <p class="text-3xl font-extrabold text-slate-900">Oficinas Físicas</p>
+                    <h2 class="text-primary font-bold tracking-widest uppercase text-sm mb-2">PASO 7: UBICACIÓN</h2>
+                    <p class="text-3xl font-extrabold text-slate-900">OFICINAS FÍSICAS</p>
                 </div>
 
                 <div class="space-y-4">
