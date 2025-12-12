@@ -98,6 +98,7 @@
                                         <option value="queja">Queja (Inconformidad)</option>
                                         <option value="reclamo">Reclamo (Falla en servicio)</option>
                                         <option value="sugerencia">Sugerencia</option>
+                                        <option value="recurso_subsidio">Recurso de Reposición en Subsidio de Apelación</option>
                                         <option value="reposicion">Reposición</option>
                                         <option value="apelacion">Apelación</option>
                                     </select>
