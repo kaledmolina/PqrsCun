@@ -176,10 +176,10 @@
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-3 mb-6">
                         <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                        
                     </div>
                     <p class="text-slate-500 text-sm leading-relaxed mb-6">
                         Conectando personas, empresas y comunidades con la mejor tecnología de fibra óptica. Comprometidos con la calidad y el servicio.
@@ -194,24 +194,46 @@
                     </div>
                 </div>
                 
-                <div>
-                    <h4 class="font-bold text-slate-900 mb-6 text-lg">Normatividad</h4>
-                    <ul class="space-y-3 text-sm text-slate-600">
-                        <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Acuerdo 001 CNTV</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Acuerdo 10 CNTV</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución 3066</a></li>
-                    </ul>
+                <!-- Vigilancia -->
+                <div class="col-span-1">
+                    <h4 class="font-bold text-slate-900 mb-6 text-lg">Entidades de Vigilancia</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="https://www.sic.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">🏛️</div>
+                            <div>
+                                <p class="font-bold text-slate-700 text-xs uppercase">SIC</p>
+                                <p class="text-[10px] text-slate-500">Superintendencia de Industria y Comercio</p>
+                            </div>
+                        </a>
+                        <a href="https://www.mintic.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📡</div>
+                            <div>
+                                <p class="font-bold text-slate-700 text-xs uppercase">MinTIC</p>
+                                <p class="text-[10px] text-slate-500">Ministerio de Tecnologías</p>
+                            </div>
+                        </a>
+                        <a href="https://www.crcom.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
+                            <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📊</div>
+                            <div>
+                                <p class="font-bold text-slate-700 text-xs uppercase">CRC</p>
+                                <p class="text-[10px] text-slate-500">Comisión de Regulación</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Normatividad & Protección -->
                 <div>
-                    <h4 class="font-bold text-slate-900 mb-6 text-lg">Protección al Usuario</h4>
+                    <h4 class="font-bold text-slate-900 mb-6 text-lg">Marco Legal</h4>
                     <ul class="space-y-3 text-sm text-slate-600">
+                        <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Acuerdo 001 CNTV</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución 3066</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Políticas de servicio</a></li>
-                        <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Circular única - SIC PQR</a></li>
                         <li><a href="#" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Habeas Data</a></li>
                     </ul>
                 </div>
 
+                <!-- Contacto -->
                 <div>
                     <h4 class="font-bold text-slate-900 mb-6 text-lg">Contacto</h4>
                     <ul class="space-y-4 text-sm text-slate-600">
