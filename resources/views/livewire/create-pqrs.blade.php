@@ -250,14 +250,41 @@
         </div>
         
         <!-- Trust Indicators -->
-        <div class="mt-8 grid grid-cols-3 gap-4 text-center">
-            <div class="p-4 bg-white/50 rounded-xl backdrop-blur-sm">
-                <div class="text-2xl mb-1">🔒</div>
-                <p class="text-xs font-bold text-slate-500 uppercase">Datos Seguros</p>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="p-6 bg-white/60 rounded-2xl backdrop-blur-sm border border-white/50 shadow-sm flex flex-col items-center text-center hover:bg-white/80 transition-colors">
+                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-2xl mb-3">🔒</div>
+                <h3 class="text-sm font-bold text-slate-800 uppercase mb-2">Datos Seguros</h3>
+                <p class="text-xs text-slate-600 leading-relaxed max-w-xs">
+                    Tu información está protegida bajo estrictos estándares de seguridad y cifrado, garantizando la confidencialidad de tus datos personales.
+                </p>
             </div>
-            <div class="p-4 bg-white/50 rounded-xl backdrop-blur-sm">
-                <div class="text-2xl mb-1">📄</div>
-                <p class="text-xs font-bold text-slate-500 uppsercase">Trámite Legal</p>
+            <div class="p-6 bg-white/60 rounded-2xl backdrop-blur-sm border border-white/50 shadow-sm flex flex-col items-center text-center hover:bg-white/80 transition-colors">
+                <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-2xl mb-3">⚖️</div>
+                <h3 class="text-sm font-bold text-slate-800 uppercase mb-2">Respaldo Legal</h3>
+                
+                <details class="group w-full">
+                    <summary class="flex justify-center items-center gap-2 cursor-pointer list-none text-xs text-slate-600 hover:text-primary transition-colors font-medium">
+                        <span>Entidades de Vigilancia</span>
+                        <span class="transition group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-4 grid grid-cols-3 gap-2 animate-fade-in">
+                        <a href="https://www.sic.gov.co" target="_blank" class="flex flex-col items-center p-2 bg-white rounded-lg border border-slate-100 hover:shadow-md transition-all">
+                            <span class="text-xl mb-1">🏛️</span>
+                            <span class="text-[10px] font-bold text-slate-700">SIC</span>
+                        </a>
+                        <a href="https://www.mintic.gov.co" target="_blank" class="flex flex-col items-center p-2 bg-white rounded-lg border border-slate-100 hover:shadow-md transition-all">
+                            <span class="text-xl mb-1">📡</span>
+                            <span class="text-[10px] font-bold text-slate-700">MinTIC</span>
+                        </a>
+                        <a href="https://www.crcom.gov.co" target="_blank" class="flex flex-col items-center p-2 bg-white rounded-lg border border-slate-100 hover:shadow-md transition-all">
+                            <span class="text-xl mb-1">📊</span>
+                            <span class="text-[10px] font-bold text-slate-700">CRC</span>
+                        </a>
+                    </div>
+                    <p class="text-[10px] text-slate-500 mt-3 leading-relaxed">
+                        Tu solicitud genera un <strong>Código CUN</strong> oficial, validado por estas entidades.
+                    </p>
+                </details>
             </div>
         </div>
     </div>
