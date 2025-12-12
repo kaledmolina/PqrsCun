@@ -256,12 +256,8 @@
                 <p class="text-xs font-bold text-slate-500 uppercase">Datos Seguros</p>
             </div>
             <div class="p-4 bg-white/50 rounded-xl backdrop-blur-sm">
-                <div class="text-2xl mb-1">⚡</div>
-                <p class="text-xs font-bold text-slate-500 uppercase">Respuesta Rápida</p>
-            </div>
-            <div class="p-4 bg-white/50 rounded-xl backdrop-blur-sm">
                 <div class="text-2xl mb-1">📄</div>
-                <p class="text-xs font-bold text-slate-500 uppercase">Trámite Legal</p>
+                <p class="text-xs font-bold text-slate-500 uppsercase">Trámite Legal</p>
             </div>
         </div>
     </div>
