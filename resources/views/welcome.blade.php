@@ -82,7 +82,7 @@
                             <div class="w-12 h-12 bg-primary text-white rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-primary/30 text-xl font-bold">#</div>
                             <h3 class="text-xl font-bold text-slate-900 mb-2">El CUN</h3>
                             <p class="text-sm text-slate-600 mb-4 leading-relaxed">
-                                El <strong>Código Único Numérico</strong> es tu "identificadion" de trámite. Te permite rastrear tu solicitud con trazabilidad total.
+                                El <strong>Código Único Numérico</strong> es tu "identificación" de trámite. Te permite rastrear tu solicitud con trazabilidad total.
                             </p>
                             <a href="{{ route('pqrs.consult') }}" class="inline-flex items-center px-4 py-2 bg-white text-primary font-bold rounded-xl shadow-sm hover:shadow-md transition-all text-sm group-hover:scale-105">
                                 Consultar con CUN <span class="ml-2">→</span>
