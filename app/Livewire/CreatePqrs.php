@@ -44,7 +44,7 @@ class CreatePqrs extends Component
             'data.document_number' => 'required|max:255',
             'data.first_name' => 'required|max:255',
             'data.last_name' => 'required|max:255',
-            'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,reposicion,apelacion',
+            'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,recurso_subsidio',
             'data.services' => 'nullable|array',
             'data.email' => 'required|email|confirmed|max:255',
             'data.phone' => 'required|max:255',
