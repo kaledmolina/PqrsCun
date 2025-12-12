@@ -151,7 +151,7 @@
                             Terminación
                         </h3>
                         <p class="text-[10px] text-slate-600 leading-relaxed">
-                            Termine el contrato en cualquier momento <strong>sin penalidades</strong> (salvo permanencia). Aviso mín. <strong>3 días hábiles</strong> antes del corte.
+                            Termine el contrato en cualquier momento <strong>sin penalidades</strong>. Aviso mín. <strong>3 días hábiles</strong> antes del corte.
                         </p>
                     </div>
                 </div>
@@ -204,8 +204,6 @@
                         <ul class="text-[10px] text-slate-600 space-y-1 list-disc pl-4">
                             <li>Factura llega 5 días antes del pago.</li>
                             <li>Reconexión en 3 días hábiles tras pago.</li>
-                            <li>Reporte a centrales con aviso de 20 días.</li>
-                            <li>No pague sumas en reclamación.</li>
                         </ul>
                     </div>
 
@@ -277,7 +275,8 @@
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
                         <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-24 overflow-y-auto custom-scrollbar">
-                            <p>Autoriza a INTALNET a consultar/reportar en centrales. Tratamiento de datos sensibles. Derecho a conocer y rectificar (Ley 1581/2012).</p>
+                            <p><strong>¿Qué es?</strong> Es tu derecho fundamental a conocer, actualizar y rectificar la información que tenemos sobre ti.</p>
+                            <p class="mt-1"><strong>Protección:</strong> Implementamos estrictas medidas de seguridad para garantizar la confidencialidad de tus datos, usándolos exclusivamente para la prestación del servicio.</p>
                         </div>
                     </details>
 
@@ -318,7 +317,7 @@
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
                         </div>
                         <div>
-                            <p class="text-[10px] text-slate-500 font-bold uppercase">Línea</p>
+                            <p class="text-[10px] text-slate-500 font-bold uppercase">WhatsApp Chatbot</p>
                             <p class="text-sm font-extrabold text-slate-900">322 580 2429</p>
                         </div>
                     </div>
@@ -390,22 +389,22 @@
                         <div class="bg-white border border-slate-100 p-3 rounded-xl hover:border-primary/30 transition-colors">
                             <h4 class="font-bold text-slate-800 text-sm mb-1">Tierralta</h4>
                             <p class="text-[10px] text-slate-600">Cr. 13 # 5-31 Barrio El Prado</p>
-                            <p class="text-[10px] text-slate-500 mt-1">311 393 4218</p>
+
                         </div>
                         <div class="bg-white border border-slate-100 p-3 rounded-xl hover:border-primary/30 transition-colors">
                             <h4 class="font-bold text-slate-800 text-sm mb-1">Valencia</h4>
                             <p class="text-[10px] text-slate-600">Carrera 14 # 12-26 Barrio Centro</p>
-                            <p class="text-[10px] text-slate-500 mt-1">315 252 2215</p>
+
                         </div>
                         <div class="bg-white border border-slate-100 p-3 rounded-xl hover:border-primary/30 transition-colors">
                             <h4 class="font-bold text-slate-800 text-sm mb-1">San Pedro</h4>
                             <p class="text-[10px] text-slate-600">Calle 49 No 45-00 Barrio Alfonso López</p>
-                            <p class="text-[10px] text-slate-500 mt-1">313 574 5320</p>
+
                         </div>
                         <div class="bg-white border border-slate-100 p-3 rounded-xl hover:border-primary/30 transition-colors">
                             <h4 class="font-bold text-slate-800 text-sm mb-1">Puerto Libertador</h4>
                             <p class="text-[10px] text-slate-600">Carrera 10 # 11-20 Barrio Camilo Jiménez</p>
-                            <p class="text-[10px] text-slate-500 mt-1">321 791 5903</p>
+
                         </div>
                     </div>
                 </div>
