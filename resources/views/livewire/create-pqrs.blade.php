@@ -222,6 +222,19 @@
                             </div>
                         </div>
 
+                        <!-- Data Privacy Policy -->
+                        <div class="group">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <div class="flex items-center h-5">
+                                    <input type="checkbox" wire:model="data.data_treatment_accepted" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
+                                </div>
+                                <div class="text-sm text-slate-600">
+                                    He leído y acepto la <a href="#" class="text-primary font-bold hover:underline">Política de Tratamiento de Datos Personales</a>. Entiendo que mis datos serán utilizados para gestionar mi solicitud conforme a la ley.
+                                </div>
+                            </label>
+                            @error('data.data_treatment_accepted') <span class="text-red-500 text-sm mt-1 block">Debes aceptar la política de tratamiento de datos para continuar.</span> @enderror
+                        </div>
+
                         <!-- Actions -->
                         <div class="pt-4">
                             <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary to-slate-800 text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex items-center justify-center gap-2 group">

@@ -35,6 +35,7 @@ class Pqrs extends Model
         'services',
         'address',
         'landline',
+        'data_treatment_accepted',
     ];
 
     protected $casts = [
@@ -42,6 +43,7 @@ class Pqrs extends Model
         'services' => 'array',
         'deadline_at' => 'date',
         'answered_at' => 'datetime',
+        'data_treatment_accepted' => 'boolean',
     ];
 
     protected static function booted()

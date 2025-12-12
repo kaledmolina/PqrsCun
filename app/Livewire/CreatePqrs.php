@@ -33,6 +33,7 @@ class CreatePqrs extends Component
         'document_number' => '',
         'motive' => '',
         'description' => '',
+        'data_treatment_accepted' => false,
     ];
 
     protected function rules()
@@ -52,6 +53,7 @@ class CreatePqrs extends Component
             'data.landline' => 'nullable|max:255',
             'data.motive' => 'nullable|max:255',
             'data.description' => 'required',
+            'data.data_treatment_accepted' => 'accepted',
             'attachments.*' => 'nullable|file|max:51200', // 50MB max
         ];
     }
@@ -117,6 +119,7 @@ class CreatePqrs extends Component
             'attachments' => $attachmentPaths, 
             'cun' => $cun,
             'status' => 'pending',
+            'data_treatment_accepted' => $this->data['data_treatment_accepted'] ?? false,
         ]);
 
         // Guardar el CUN generado para mostrarlo en la vista
@@ -144,6 +147,7 @@ class CreatePqrs extends Component
             'document_number' => '',
             'motive' => '',
             'description' => '',
+            'data_treatment_accepted' => false,
         ];
     }
     
