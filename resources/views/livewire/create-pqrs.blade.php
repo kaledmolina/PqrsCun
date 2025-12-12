@@ -46,7 +46,7 @@
                             <!-- Row 1 -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Número de contrato de reclamación</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Código de contrato</label>
                                     <input type="text" wire:model="data.contract_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                     @error('data.contract_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
