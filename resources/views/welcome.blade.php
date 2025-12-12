@@ -104,8 +104,8 @@
                         </div>
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">R</div>
-                            <h4 class="font-bold text-slate-900 mb-1 text-sm">Recurso</h4>
-                            <p class="text-[10px] text-slate-500 leading-relaxed">Si no estás de acuerdo con la respuesta a tu queja, puedes apelar la decisión.</p>
+                            <h4 class="font-bold text-slate-900 mb-1 text-sm">Recurso de Reposición en Subsidio de Apelación</h4>
+                            <p class="text-[10px] text-slate-500 leading-relaxed">Derecho a solicitar que la empresa revise su decisión (Reposición) y, si la mantiene, que la SIC resuelva definitivamente (Apelación).</p>
                         </div>
                     </div>
                 </div>
