@@ -226,9 +226,8 @@
                 <div>
                     <h4 class="font-bold text-slate-900 mb-6 text-lg">Marco Legal</h4>
                     <ul class="space-y-3 text-sm text-slate-600">
-                        <li><a href="https://normograma.mintic.gov.co/mintic/docs/resolucion_crc_5050_2016.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5050 de 2016</a></li>
-                        <li><a href="https://normograma.mintic.gov.co/mintic/docs/resolucion_crc_5111_2017.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5111 de 2017</a></li>
-                        <li><a href="https://www.crcom.gov.co/es/proteccion-al-usuario/normatividad-vigente" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Otras Resoluciones PQR</a></li>
+                        <li><a href="https://gestornormativo.creg.gov.co/gestor/entorno/docs/resolucion_crc_5050_2016.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5050 de 2016</a></li>
+                        <li><a href="https://colombiatic.mintic.gov.co/679/articles-62266_doc_norma.pdf" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5111 de 2017</a></li>
                     </ul>
                 </div>
 
