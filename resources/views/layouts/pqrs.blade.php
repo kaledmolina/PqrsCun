@@ -226,10 +226,9 @@
                 <div>
                     <h4 class="font-bold text-slate-900 mb-6 text-lg">Marco Legal</h4>
                     <ul class="space-y-3 text-sm text-slate-600">
-                        <li><a href="https://www.crcom.gov.co/es/acuerdo/acuerdo-1-de-2011-cntv" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Acuerdo 001 CNTV</a></li>
-                        <li><a href="https://normograma.mintic.gov.co/mintic/docs/resolucion_crc_3066_2011.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución 3066</a></li>
-                        <li><a href="{{ url('/#contract') }}" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Políticas de servicio</a></li>
-                        <li><a href="http://www.secretariasenado.gov.co/senado/basedoc/ley_1581_2012.html" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Habeas Data</a></li>
+                        <li><a href="https://normograma.mintic.gov.co/mintic/docs/resolucion_crc_5050_2016.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5050 de 2016</a></li>
+                        <li><a href="https://normograma.mintic.gov.co/mintic/docs/resolucion_crc_5111_2017.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5111 de 2017</a></li>
+                        <li><a href="https://www.crcom.gov.co/es/proteccion-al-usuario/normatividad-vigente" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Otras Resoluciones PQR</a></li>
                     </ul>
                 </div>
 
