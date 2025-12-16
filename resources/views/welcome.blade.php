@@ -323,7 +323,7 @@
                         </div>
                         <div>
                             <p class="text-[10px] text-slate-500 font-bold uppercase">WhatsApp Chatbot</p>
-                            <p class="text-sm font-extrabold text-slate-900">322 580 2429</p>
+                            <p class="text-sm font-extrabold text-slate-900">3148042601</p>
                         </div>
                     </div>
 

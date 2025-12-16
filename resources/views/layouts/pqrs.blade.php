@@ -243,7 +243,7 @@
                             </div>
                             <div>
                                 <p class="font-bold text-slate-900">Línea Nacional</p>
-                                <p>322 580 2429</p>
+                                <p>3148042601</p>
                             </div>
                         </li>
                         <li class="flex items-start gap-3">
