@@ -379,10 +379,10 @@
                         <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 relative z-10">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
-                                    <h4 class="font-bold text-lg text-primary">Montería</h4>
+                                    <h4 class="font-bold text-lg text-primary">Valencia</h4>
                                     <span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Sede Principal</span>
                                 </div>
-                                <p class="text-slate-700 font-medium text-xs">Cr. 25 No. 23-74 Calle la Pradera</p>
+                                <p class="text-slate-700 font-medium text-xs">Carrera 14 # 12-26 Barrio Centro</p>
                             </div>
                             <div class="text-right text-[10px] text-slate-500 bg-white/50 p-2 rounded-lg border border-slate-100">
                                 <p>Lun-Vie: 8-12 & 2-6 | Sáb: 8-12</p>
@@ -397,8 +397,8 @@
 
                         </div>
                         <div class="bg-white border border-slate-100 p-3 rounded-xl hover:border-primary/30 transition-colors">
-                            <h4 class="font-bold text-slate-800 text-sm mb-1">Valencia</h4>
-                            <p class="text-[10px] text-slate-600">Carrera 14 # 12-26 Barrio Centro</p>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">Montería</h4>
+                            <p class="text-[10px] text-slate-600">Cr. 25 No. 23-74 Calle la Pradera</p>
 
                         </div>
                         <div class="bg-white border border-slate-100 p-3 rounded-xl hover:border-primary/30 transition-colors">
