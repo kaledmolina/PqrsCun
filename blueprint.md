@@ -43,6 +43,7 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 **Implementation Details**:
 - **File**: `resources/views/layouts/pqrs.blade.php`
 - **Change**: Updated the label "Línea de PQR" to "Línea WhatsApp Chatbot".
+- **Change**: Increased the size of the footer logo for better visibility.
 
 ### Welcome Page Regulatory Sections
 **Goal**: Add mandatory regulatory and vigilance information to the public home page.

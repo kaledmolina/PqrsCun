@@ -179,7 +179,7 @@
                 <!-- Brand -->
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-3 mb-6">
-                        <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-10 w-auto grayscale hover:grayscale-0 transition-all duration-300">
+                        <img src="{{ asset('images/logo.png') }}" alt="Intalnet Logo" class="h-20 w-auto grayscale hover:grayscale-0 transition-all duration-300">
                     </div>
                     <p class="text-slate-500 text-sm leading-relaxed mb-6">
                         Conectando personas, empresas y comunidades con la mejor tecnología de fibra óptica. Comprometidos con la calidad y el servicio.
