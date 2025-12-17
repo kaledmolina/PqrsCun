@@ -53,7 +53,7 @@
                                 <div class="group">
                                     <label class="block text-sm font-medium text-slate-600 mb-1">Tipo de documento de Identidad o de tu empresa *</label>
                                     <div class="relative">
-                                        <select wire:model="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
+                                        <select wire:model.live="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
                                             <option value="">Selecciona...</option>
                                             <option value="CC">Cédula de ciudadanía</option>
                                             <option value="TI">Tarjeta de Identidad</option>

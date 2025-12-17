@@ -36,6 +36,7 @@ class Pqrs extends Model
         'address',
         'landline',
         'data_treatment_accepted',
+        'authorize_email_documents',
     ];
 
     protected $casts = [
@@ -44,6 +45,7 @@ class Pqrs extends Model
         'deadline_at' => 'date',
         'answered_at' => 'datetime',
         'data_treatment_accepted' => 'boolean',
+        'authorize_email_documents' => 'boolean',
     ];
 
     protected static function booted()

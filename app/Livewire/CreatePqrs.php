@@ -122,6 +122,7 @@ class CreatePqrs extends Component
             'cun' => $cun,
             'status' => 'pending',
             'data_treatment_accepted' => $this->data['data_treatment_accepted'] ?? false,
+            'authorize_email_documents' => $this->data['authorize_email_documents'] ?? false,
         ]);
 
         // Guardar el CUN generado para mostrarlo en la vista
