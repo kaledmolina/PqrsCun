@@ -35,4 +35,11 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
   - Apply `-translate-y-full` class to hide the navbar when `showNavbar` is false.
   - Ensure navbar is always visible at the very top of the page.
 
-**Status**: Implemented and ready for verification.
+**Status**: Implemented and verified.
+
+### Footer Contact Info Update
+**Goal**: Clarify that the contact number provided in the footer is for a WhatsApp chatbot.
+
+**Implementation Details**:
+- **File**: `resources/views/layouts/pqrs.blade.php`
+- **Change**: Updated the label "Línea de PQR" to "Línea WhatsApp Chatbot".
