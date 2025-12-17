@@ -50,6 +50,7 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 **Implementation Details**:
 - **File**: `resources/views/welcome.blade.php`
 - **Feature**: Added "Entidades de Vigilancia y Regulación" section immediately after the Hero banner.
-    - Updated to use official logos for **SIC**, **CRC**, and **MinTIC**.
-    - Adopted a card-based layout with "glass" styling.
+    - **Design**: Centered grid of 3 premium cards.
+    - **Style**: Cards feature a deep blue/cyan gradient header to support white logos, with a white content area below.
+    - **Interactions**: Hover effects include shadow lift and "View Official Site" text reveal.
 - **Feature**: Added "Marco Normativo" section (Res 5050, Res 5111, Circular SIC, Ley 1336) at the bottom of the page content.

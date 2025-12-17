@@ -65,56 +65,96 @@
 
     <!-- ENTIDADES REGULATORIAS Y DE VIGILANCIA -->
     <div class="relative z-10 mb-20 px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            
-            <!-- Entes Regulatorios -->
-            <div>
-                <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center md:text-left">Entes Regulatorios</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- CRC -->
-                    <a href="https://www.crcom.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-3xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl hover:-translate-y-1">
-                        <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center shrink-0 p-6 shadow-inner relative overflow-hidden group-hover:shadow-primary/20 transition-all">
-                             <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                             <img src="https://crcom.gov.co/sites/default/files/webcrc/images/header/logo-comision-regulacion-comunicaciones-colombia.svg" alt="Logo CRC" class="w-full h-full object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div>
-                            <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">CRC</span>
-                            <span class="text-xs text-slate-500 leading-tight">Comisión de Regulación de Comunicaciones</span>
-                        </div>
-                    </a>
-
-                    <!-- MinTIC -->
-                    <a href="https://www.mintic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-3xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl hover:-translate-y-1">
-                        <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center shrink-0 p-6 shadow-inner relative overflow-hidden group-hover:shadow-primary/20 transition-all">
-                             <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                             <img src="https://css.mintic.gov.co/mt/mintic/new/img/logo_mintic_24_dark.svg" alt="Logo MinTIC" class="w-full h-full object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div>
-                            <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">MinTIC</span>
-                            <span class="text-xs text-slate-500 leading-tight">Ministerio de Tecnologías de la Información</span>
-                        </div>
-                    </a>
-                </div>
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 animate-fade-in">
+                <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    Respaldo y <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Vigilancia</span>
+                </h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">
+                    Operamos bajo la estricta supervisión de las entidades nacionales para garantizarte un servicio transparente y de calidad.
+                </p>
             </div>
 
-            <!-- Entes de Vigilancia -->
-            <div>
-                <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center md:text-left">Entes de Vigilancia</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <!-- SIC -->
-                    <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-3xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl hover:-translate-y-1">
-                         <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center shrink-0 p-6 shadow-inner relative overflow-hidden group-hover:shadow-primary/20 transition-all">
-                             <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                             <img src="https://sedeelectronica.sic.gov.co/themes/custom/sictheme/assets/img/LogoSICv1.png" alt="Logo SIC" class="w-full h-full object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
-                        </div>
-                        <div>
-                            <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">SIC</span>
-                            <span class="text-xs text-slate-500 leading-tight">Superintendencia de Industria y Comercio</span>
-                        </div>
-                    </a>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+                
+                <!-- CRC -->
+                <a href="https://www.crcom.gov.co" target="_blank" rel="noopener noreferrer" class="group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-slate-100">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary group-hover:h-2 transition-all"></div>
+                    
+                    <!-- Logo Area with Modern Gradient -->
+                    <div class="h-40 bg-gradient-to-br from-slate-900 via-[#1e3a8a] to-primary flex items-center justify-center p-8 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-20"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                        
+                        <img src="https://crcom.gov.co/sites/default/files/webcrc/images/header/logo-comision-regulacion-comunicaciones-colombia.svg" 
+                             alt="Logo CRC" 
+                             class="w-full h-full object-contain brightness-0 invert drop-shadow-md relative z-10 transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="p-6 text-center">
+                        <div class="w-10 h-1 rounded-full bg-slate-100 mx-auto mb-4 group-hover:bg-primary/20 transition-colors"></div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2 group-hover:text-primary transition-colors">CRC</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Comisión de Regulación de Comunicaciones
+                        </p>
+                        <span class="inline-block mt-4 text-xs font-bold text-primary opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Ver Sitio Oficial &rarr;
+                        </span>
+                    </div>
+                </a>
+
+                <!-- MinTIC -->
+                <a href="https://www.mintic.gov.co" target="_blank" rel="noopener noreferrer" class="group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-slate-100">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary group-hover:h-2 transition-all"></div>
+                    
+                    <div class="h-40 bg-gradient-to-br from-slate-900 via-[#1e3a8a] to-primary flex items-center justify-center p-8 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-20"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                        
+                        <img src="https://css.mintic.gov.co/mt/mintic/new/img/logo_mintic_24_dark.svg" 
+                             alt="Logo MinTIC" 
+                             class="w-full h-full object-contain brightness-0 invert drop-shadow-md relative z-10 transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+
+                    <div class="p-6 text-center">
+                        <div class="w-10 h-1 rounded-full bg-slate-100 mx-auto mb-4 group-hover:bg-primary/20 transition-colors"></div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2 group-hover:text-primary transition-colors">MinTIC</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Ministerio de Tecnologías de la Información
+                        </p>
+                        <span class="inline-block mt-4 text-xs font-bold text-primary opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Ver Sitio Oficial &rarr;
+                        </span>
+                    </div>
+                </a>
+
+                <!-- SIC -->
+                <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer" class="group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-slate-100">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-primary group-hover:h-2 transition-all"></div>
+                    
+                    <div class="h-40 bg-gradient-to-br from-slate-900 via-[#1e3a8a] to-primary flex items-center justify-center p-8 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==')] opacity-20"></div>
+                        <div class="absolute -bottom-10 -right-10 w-32 h-32 bg-secondary/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+                        
+                        <img src="https://sedeelectronica.sic.gov.co/themes/custom/sictheme/assets/img/LogoSICv1.png" 
+                             alt="Logo SIC" 
+                             class="w-full h-full object-contain brightness-0 invert drop-shadow-md relative z-10 transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+
+                    <div class="p-6 text-center">
+                        <div class="w-10 h-1 rounded-full bg-slate-100 mx-auto mb-4 group-hover:bg-primary/20 transition-colors"></div>
+                        <h3 class="font-bold text-xl text-slate-900 mb-2 group-hover:text-primary transition-colors">SIC</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Superintendencia de Industria y Comercio
+                        </p>
+                        <span class="inline-block mt-4 text-xs font-bold text-primary opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all">
+                            Ver Sitio Oficial &rarr;
+                        </span>
+                    </div>
+                </a>
+
             </div>
-            
         </div>
     </div>
 
