@@ -392,22 +392,22 @@
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
                         <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
-                            <p class="mb-2">Prohibición pornografía infantil (Ley 679/2001). Obligación de prevenir acceso de menores y denunciar.</p>
-                            <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=5346" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
-                                Ver Ley 679 de 2001 &rarr;
+                            <p class="mb-2">Prohibición pornografía infantil (Ley 1336 de 2009). Obligación de prevenir acceso de menores y denunciar.</p>
+                            <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=36841" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
+                                Ver Ley 1336 de 2009 &rarr;
                             </a>
                         </div>
                     </details>
 
                     <details class="group bg-white/50 rounded-xl border border-white/60 overflow-hidden">
                         <summary class="flex justify-between items-center p-3 font-bold cursor-pointer list-none text-xs text-slate-800 bg-slate-50/50 hover:bg-slate-100/50 transition-colors">
-                            <span>SARLAFT</span>
+                            <span>SAGRILAFT / FPADM</span>
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
                         <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
-                            <p class="mb-2">Terminación automática si el usuario es relacionado con lavado de activos/terrorismo. Actualizar información anualmente.</p>
+                            <p class="mb-2">Sistema de Autocontrol y Gestión del Riesgo Integral de Lavado de Activos, Financiación del Terrorismo y FPADM.</p>
                             <a href="https://www.mintic.gov.co/portal/inicio/61109:Prevencion-de-Lavado-de-Activos-Financiacion-del-Terrorismo-y-Financiacion-de-la-Proliferacion-de-Armas-de-Destruccion-Masiva-LA-FT-FPADM" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
-                                Ver Normativa SARLAFT (MinTIC) &rarr;
+                                Ver Normativa LA/FT/FPADM (MinTIC) &rarr;
                             </a>
                         </div>
                     </details>
