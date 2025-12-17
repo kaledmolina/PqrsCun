@@ -190,7 +190,7 @@
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">P</div>
                             <h4 class="font-bold text-slate-900 mb-1 text-sm">Petición</h4>
-                            <p class="text-[10px] text-slate-500 leading-relaxed">Solicitud para requerir información, copias de documentos o la prestación del servicio. Incluye peticiones de interés general o particular.</p>
+                            <p class="text-[10px] text-slate-500 leading-relaxed">Solicitud para requerir información, copias de documentos o la prestación del servicio.</p>
                         </div>
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">Q</div>
@@ -200,7 +200,7 @@
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">R</div>
                             <h4 class="font-bold text-slate-900 mb-1 text-sm">Recurso de Reposición en Subsidio de Apelación</h4>
-                            <p class="text-[10px] text-slate-500 leading-relaxed">Derecho a solicitar que la empresa revise su decisión (Reposición) y, si la mantiene, que la SIC resuelva definitivamente (Apelación).</p>
+                            <p class="text-[10px] text-slate-500 leading-relaxed">Derecho a solicitar que la empresa revise su decisión (reposición) y en caso de ser desfavorable o si continúa inconforme, a que la SIC revise y resuelva definitivamente la decisión (apelación)</p>
                         </div>
                         <div class="bg-white/50 rounded-2xl p-4 border border-white/60 hover:bg-white hover:shadow-lg transition-all">
                             <div class="w-10 h-10 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-3 text-lg font-bold">S</div>
