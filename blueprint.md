@@ -52,8 +52,9 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 - **Change**: Made "Last Name" field optional and hidden when Document Type is "NIT".
 - **Change**: Made "Email" field optional.
 - **Change**: Verified "Address" field is mandatory.
-- **Change**: Added an optional checkbox for "Authorization to send documents via email".
+- **Change**: Added an optional checkbox for "Authorization to send documents via email" and ensured it saves to the database.
 - **Change**: Made "Phone" (Celular) field optional.
+- **Change**: Translated validation messages and field names to Spanish (e.g., "data.description" -> "descripción de la solicitud").
 
 ### Welcome Page Regulatory Sections
 **Goal**: Add mandatory regulatory and vigilance information to the public home page.

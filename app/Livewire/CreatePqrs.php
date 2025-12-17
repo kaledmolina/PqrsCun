@@ -60,6 +60,35 @@ class CreatePqrs extends Component
         ];
     }
 
+    protected $validationAttributes = [
+        'data.contract_number' => 'número de contrato',
+        'data.document_type' => 'tipo de documento',
+        'data.document_number' => 'número de documento',
+        'data.first_name' => 'nombres',
+        'data.last_name' => 'apellidos',
+        'data.type' => 'tipo de solicitud',
+        'data.services' => 'servicios',
+        'data.email' => 'correo electrónico',
+        'data.email_confirmation' => 'confirmación de correo',
+        'data.phone' => 'número celular',
+        'data.address' => 'dirección física',
+        'data.city' => 'ciudad/sede',
+        'data.landline' => 'teléfono fijo',
+        'data.motive' => 'motivo',
+        'data.description' => 'descripción de la solicitud',
+        'data.data_treatment_accepted' => 'política de tratamiento de datos',
+        'attachments' => 'archivos adjuntos',
+    ];
+
+    protected $messages = [
+        'required' => 'El campo :attribute es obligatorio.',
+        'email' => 'El campo :attribute debe ser una dirección de correo válida.',
+        'max' => 'El campo :attribute no debe exceder :max caracteres.',
+        'in' => 'El seleccionado en :attribute no es válido.',
+        'accepted' => 'Debes aceptar :attribute para continuar.',
+        'confirmed' => 'La confirmación de :attribute no coincide.',
+    ];
+
     // Helper to generate CUN
     private function generateCun()
     {
