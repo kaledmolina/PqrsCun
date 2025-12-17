@@ -72,24 +72,26 @@
                 <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center md:text-left">Entes Regulatorios</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- CRC -->
-                    <a href="https://www.crcom.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-2xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl">
-                        <div class="w-full h-32 rounded-xl bg-white flex items-center justify-center shrink-0 p-4 shadow-inner">
-                             <img src="https://crcom.gov.co/sites/default/files/webcrc/images/header/logo-comision-regulacion-comunicaciones-colombia.svg" alt="Logo CRC" class="w-full h-full object-contain">
+                    <a href="https://www.crcom.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-3xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl hover:-translate-y-1">
+                        <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center shrink-0 p-6 shadow-inner relative overflow-hidden group-hover:shadow-primary/20 transition-all">
+                             <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                             <img src="https://crcom.gov.co/sites/default/files/webcrc/images/header/logo-comision-regulacion-comunicaciones-colombia.svg" alt="Logo CRC" class="w-full h-full object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div>
                             <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">CRC</span>
-                            <span class="text-xs text-slate-500">Comisión de Regulación de Comunicaciones</span>
+                            <span class="text-xs text-slate-500 leading-tight">Comisión de Regulación de Comunicaciones</span>
                         </div>
                     </a>
 
                     <!-- MinTIC -->
-                    <a href="https://www.mintic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-2xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl">
-                        <div class="w-full h-32 rounded-xl bg-white flex items-center justify-center shrink-0 p-4 shadow-inner">
-                             <img src="https://css.mintic.gov.co/mt/mintic/new/img/logo_mintic_24_dark.svg" alt="Logo MinTIC" class="w-full h-full object-contain">
+                    <a href="https://www.mintic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-3xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl hover:-translate-y-1">
+                        <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center shrink-0 p-6 shadow-inner relative overflow-hidden group-hover:shadow-primary/20 transition-all">
+                             <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                             <img src="https://css.mintic.gov.co/mt/mintic/new/img/logo_mintic_24_dark.svg" alt="Logo MinTIC" class="w-full h-full object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div>
                             <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">MinTIC</span>
-                            <span class="text-xs text-slate-500">Ministerio de Tecnologías de la Información</span>
+                            <span class="text-xs text-slate-500 leading-tight">Ministerio de Tecnologías de la Información</span>
                         </div>
                     </a>
                 </div>
@@ -100,13 +102,14 @@
                 <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center md:text-left">Entes de Vigilancia</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- SIC -->
-                    <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-2xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl">
-                         <div class="w-full h-32 rounded-xl bg-white flex items-center justify-center shrink-0 p-4 shadow-inner">
-                             <img src="https://sedeelectronica.sic.gov.co/themes/custom/sictheme/assets/img/LogoSICv1.png" alt="Logo SIC" class="w-full h-full object-contain">
+                    <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-3xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl hover:-translate-y-1">
+                         <div class="w-full h-32 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center shrink-0 p-6 shadow-inner relative overflow-hidden group-hover:shadow-primary/20 transition-all">
+                             <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                             <img src="https://sedeelectronica.sic.gov.co/themes/custom/sictheme/assets/img/LogoSICv1.png" alt="Logo SIC" class="w-full h-full object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
                         </div>
                         <div>
                             <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">SIC</span>
-                            <span class="text-xs text-slate-500">Superintendencia de Industria y Comercio</span>
+                            <span class="text-xs text-slate-500 leading-tight">Superintendencia de Industria y Comercio</span>
                         </div>
                     </a>
                 </div>
