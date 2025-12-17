@@ -406,8 +406,8 @@
                         </summary>
                         <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
                             <p class="mb-2">Sistema de Autocontrol y Gestión del Riesgo Integral de Lavado de Activos, Financiación del Terrorismo y FPADM.</p>
-                            <a href="https://www.mintic.gov.co/portal/inicio/61109:Prevencion-de-Lavado-de-Activos-Financiacion-del-Terrorismo-y-Financiacion-de-la-Proliferacion-de-Armas-de-Destruccion-Masiva-LA-FT-FPADM" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
-                                Ver Normativa LA/FT/FPADM (MinTIC) &rarr;
+                            <a href="https://www.mintic.gov.co/portal/715/articles-237602_recurso_1.docx" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
+                                Descargar Recurso Oficial (MinTIC) &rarr;
                             </a>
                         </div>
                     </details>
