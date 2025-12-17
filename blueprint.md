@@ -43,3 +43,13 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 **Implementation Details**:
 - **File**: `resources/views/layouts/pqrs.blade.php`
 - **Change**: Updated the label "Línea de PQR" to "Línea WhatsApp Chatbot".
+
+### Welcome Page Regulatory Sections
+**Goal**: Add mandatory regulatory and vigilance information to the public home page.
+
+**Implementation Details**:
+- **File**: `resources/views/welcome.blade.php`
+- **Feature**: Added "Entidades de Vigilancia y Regulación" section immediately after the Hero banner.
+    - Updated to use official logos for **SIC**, **CRC**, and **MinTIC**.
+    - Adopted a card-based layout with "glass" styling.
+- **Feature**: Added "Marco Normativo" section (Res 5050, Res 5111, Circular SIC, Ley 1336) at the bottom of the page content.

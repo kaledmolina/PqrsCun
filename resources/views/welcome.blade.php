@@ -63,6 +63,58 @@
         </div>
     </div>
 
+    <!-- ENTIDADES REGULATORIAS Y DE VIGILANCIA -->
+    <div class="relative z-10 mb-20 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Entes Regulatorios -->
+            <div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center md:text-left">Entes Regulatorios</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- CRC -->
+                    <a href="https://www.crcom.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-2xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl">
+                        <div class="w-full h-32 rounded-xl bg-white flex items-center justify-center shrink-0 p-4 shadow-inner">
+                             <img src="https://crcom.gov.co/sites/default/files/webcrc/images/header/logo-comision-regulacion-comunicaciones-colombia.svg" alt="Logo CRC" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">CRC</span>
+                            <span class="text-xs text-slate-500">Comisión de Regulación de Comunicaciones</span>
+                        </div>
+                    </a>
+
+                    <!-- MinTIC -->
+                    <a href="https://www.mintic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-2xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl">
+                        <div class="w-full h-32 rounded-xl bg-white flex items-center justify-center shrink-0 p-4 shadow-inner">
+                             <img src="https://css.mintic.gov.co/mt/mintic/new/img/logo_mintic_24_dark.svg" alt="Logo MinTIC" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">MinTIC</span>
+                            <span class="text-xs text-slate-500">Ministerio de Tecnologías de la Información</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Entes de Vigilancia -->
+            <div>
+                <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center md:text-left">Entes de Vigilancia</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- SIC -->
+                    <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-4 group p-6 rounded-2xl bg-white/60 backdrop-blur-md hover:bg-white/80 transition-all border border-white/50 hover:border-primary/30 text-center shadow-lg hover:shadow-xl">
+                         <div class="w-full h-32 rounded-xl bg-white flex items-center justify-center shrink-0 p-4 shadow-inner">
+                             <img src="https://sedeelectronica.sic.gov.co/themes/custom/sictheme/assets/img/LogoSICv1.png" alt="Logo SIC" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <span class="block text-slate-900 font-bold text-lg group-hover:text-primary transition-colors mb-1">SIC</span>
+                            <span class="text-xs text-slate-500">Superintendencia de Industria y Comercio</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
 
     <div id="stacking-context" class="relative pb-40">
 
@@ -415,7 +467,52 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <!-- SECCIÓN DE NORMATIVIDAD -->
+    <div class="relative py-20 px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Marco Normativo</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">Cumplimos con todas las disposiciones legales vigentes para garantizar la protección de tus derechos y la calidad del servicio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Resolución 5050 -->
+            <a href="https://gestornormativo.creg.gov.co/gestor/entorno/docs/resolucion_crc_5050_2016.htm" target="_blank" class="group bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Resolución CRC 5050</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Régimen de Protección de los Derechos de los Usuarios de Servicios de Comunicaciones.</p>
+            </a>
+
+            <!-- Resolución 5111 -->
+            <a href="https://colombiatic.mintic.gov.co/679/articles-62266_doc_norma.pdf" target="_blank" class="group bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Resolución CRC 5111</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Protección de usuarios, simplificación de trámites y mecanismos de atención.</p>
+            </a>
+
+            <!-- Circular Única SIC -->
+            <a href="https://www.sic.gov.co/circular-unica" target="_blank" class="group bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Circular Única SIC</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Directrices de la Superintendencia de Industria y Comercio sobre protección al consumidor.</p>
+            </a>
+
+            <!-- Ley 1336 -->
+            <div class="group bg-white/60 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="w-12 h-12 bg-red-50 text-red-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Ley 1336 de 2009</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Informamos que la explotación y el abuso sexual de menores de edad son sancionados penalmente en Colombia.</p>
+            </div>
+        </div>
     </div>
 
 </div>
