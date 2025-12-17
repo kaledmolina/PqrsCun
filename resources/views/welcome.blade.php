@@ -93,7 +93,7 @@
 
                     <!-- Content -->
                     <div class="p-6 text-center">
-                        <div class="w-10 h-1 rounded-full bg-slate-100 mx-auto mb-4 group-hover:bg-primary/20 transition-colors"></div>
+                        <span class="inline-block px-3 py-1 bg-blue-50 text-primary text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 border border-blue-100">Ente Regulatorio</span>
                         <h3 class="font-bold text-xl text-slate-900 mb-2 group-hover:text-primary transition-colors">CRC</h3>
                         <p class="text-sm text-slate-500 leading-relaxed">
                             Comisión de Regulación de Comunicaciones
@@ -118,7 +118,7 @@
                     </div>
 
                     <div class="p-6 text-center">
-                        <div class="w-10 h-1 rounded-full bg-slate-100 mx-auto mb-4 group-hover:bg-primary/20 transition-colors"></div>
+                        <span class="inline-block px-3 py-1 bg-blue-50 text-primary text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 border border-blue-100">Ente Regulatorio</span>
                         <h3 class="font-bold text-xl text-slate-900 mb-2 group-hover:text-primary transition-colors">MinTIC</h3>
                         <p class="text-sm text-slate-500 leading-relaxed">
                             Ministerio de Tecnologías de la Información
@@ -143,7 +143,7 @@
                     </div>
 
                     <div class="p-6 text-center">
-                        <div class="w-10 h-1 rounded-full bg-slate-100 mx-auto mb-4 group-hover:bg-primary/20 transition-colors"></div>
+                        <span class="inline-block px-3 py-1 bg-amber-50 text-amber-600 text-[10px] font-bold uppercase tracking-wider rounded-full mb-3 border border-amber-100">Ente de Vigilancia</span>
                         <h3 class="font-bold text-xl text-slate-900 mb-2 group-hover:text-primary transition-colors">SIC</h3>
                         <p class="text-sm text-slate-500 leading-relaxed">
                             Superintendencia de Industria y Comercio
