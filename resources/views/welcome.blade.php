@@ -363,9 +363,12 @@
                             <span>Disposiciones Generales</span>
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
-                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-24 overflow-y-auto custom-scrollbar">
+                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
                             <p class="mb-2"><strong>Obligaciones Usuario:</strong> Permitir ingreso de personal INTALNET. Responder por equipos en comodato.</p>
-                            <p><strong>Velocidad:</strong> Factores limitantes: Latencia, congestión, WiFi.</p>
+                            <p class="mb-2"><strong>Velocidad:</strong> Factores limitantes: Latencia, congestión, WiFi.</p>
+                            <a href="https://gestornormativo.creg.gov.co/gestor/entorno/docs/resolucion_crc_5050_2016.htm" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
+                                Ver Normativa Oficial (CRC 5050) &rarr;
+                            </a>
                         </div>
                     </details>
 
@@ -374,9 +377,12 @@
                             <span>Habeas Data (Anexo 1)</span>
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
-                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-24 overflow-y-auto custom-scrollbar">
+                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
                             <p><strong>¿Qué es?</strong> Es tu derecho fundamental a conocer, actualizar y rectificar la información que tenemos sobre ti.</p>
-                            <p class="mt-1"><strong>Protección:</strong> Implementamos estrictas medidas de seguridad para garantizar la confidencialidad de tus datos, usándolos exclusivamente para la prestación del servicio.</p>
+                            <p class="mt-1 mb-2"><strong>Protección:</strong> Implementamos estrictas medidas de seguridad para garantizar la confidencialidad de tus datos.</p>
+                            <a href="https://www.sic.gov.co/ley-1581-de-2012" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
+                                Ver Ley 1581 de 2012 (SIC) &rarr;
+                            </a>
                         </div>
                     </details>
 
@@ -385,8 +391,11 @@
                             <span>Pornografía Infantil (Anexo 2)</span>
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
-                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-24 overflow-y-auto custom-scrollbar">
-                            <p>Prohibición pornografía infantil (Ley 679/2001). Obligación de prevenir acceso de menores y denunciar.</p>
+                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
+                            <p class="mb-2">Prohibición pornografía infantil (Ley 679/2001). Obligación de prevenir acceso de menores y denunciar.</p>
+                            <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=5346" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
+                                Ver Ley 679 de 2001 &rarr;
+                            </a>
                         </div>
                     </details>
 
@@ -395,8 +404,11 @@
                             <span>SARLAFT</span>
                             <span class="transition group-open:rotate-180">▼</span>
                         </summary>
-                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-24 overflow-y-auto custom-scrollbar">
-                            <p>Terminación automática si el usuario es relacionado con lavado de activos/terrorismo. Actualizar información anualmente.</p>
+                        <div class="p-3 text-[10px] text-slate-500 leading-relaxed h-auto custom-scrollbar">
+                            <p class="mb-2">Terminación automática si el usuario es relacionado con lavado de activos/terrorismo. Actualizar información anualmente.</p>
+                            <a href="https://www.mintic.gov.co/portal/inicio/61109:Prevencion-de-Lavado-de-Activos-Financiacion-del-Terrorismo-y-Financiacion-de-la-Proliferacion-de-Armas-de-Destruccion-Masiva-LA-FT-FPADM" target="_blank" class="text-primary hover:text-secondary font-bold text-[10px] flex items-center gap-1 mt-2">
+                                Ver Normativa SARLAFT (MinTIC) &rarr;
+                            </a>
                         </div>
                     </details>
                 </div>

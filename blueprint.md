@@ -56,6 +56,7 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 - **Change**: Made "Phone" (Celular) field optional.
 - **Change**: Translated validation messages and field names to Spanish (e.g., "data.description" -> "descripción de la solicitud").
 - **Change**: Updated Footer to categorize entities into "Vigilancia" (SIC) and "Regulatorias" (MinTIC, CRC) and added "Circular Única" to Legal Framework.
+- **Change**: Added official government links to the "Anexos Legales" (Disposiciones Generales, Habeas Data, Pornografía Infantil, SARLAFT).
 
 ### Welcome Page Regulatory Sections
 **Goal**: Add mandatory regulatory and vigilance information to the public home page.
