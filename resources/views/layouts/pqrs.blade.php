@@ -194,10 +194,13 @@
                     </div>
                 </div>
                 
-                <!-- Vigilancia -->
+                <!-- Entidades -->
                 <div class="col-span-1">
-                    <h4 class="font-bold text-slate-900 mb-6 text-lg">Entidades de Vigilancia</h4>
-                    <div class="flex flex-col gap-3">
+                    <h4 class="font-bold text-slate-900 mb-6 text-lg">Entidades</h4>
+                    
+                    <!-- Vigilancia -->
+                    <div class="mb-6">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Vigilancia</p>
                         <a href="https://www.sic.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
                             <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">🏛️</div>
                             <div>
@@ -205,20 +208,27 @@
                                 <p class="text-[10px] text-slate-500">Superintendencia de Industria y Comercio</p>
                             </div>
                         </a>
-                        <a href="https://www.mintic.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
-                            <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📡</div>
-                            <div>
-                                <p class="font-bold text-slate-700 text-xs uppercase">MinTIC</p>
-                                <p class="text-[10px] text-slate-500">Ministerio de Tecnologías</p>
-                            </div>
-                        </a>
-                        <a href="https://www.crcom.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
-                            <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📊</div>
-                            <div>
-                                <p class="font-bold text-slate-700 text-xs uppercase">CRC</p>
-                                <p class="text-[10px] text-slate-500">Comisión de Regulación</p>
-                            </div>
-                        </a>
+                    </div>
+
+                    <!-- Regulatorias -->
+                    <div>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">Regulatorias</p>
+                        <div class="flex flex-col gap-3">
+                            <a href="https://www.mintic.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
+                                <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📡</div>
+                                <div>
+                                    <p class="font-bold text-slate-700 text-xs uppercase">MinTIC</p>
+                                    <p class="text-[10px] text-slate-500">Ministerio de Tecnologías</p>
+                                </div>
+                            </a>
+                            <a href="https://www.crcom.gov.co" target="_blank" class="group flex items-center gap-3 p-3 rounded-xl bg-slate-50 hover:bg-white hover:shadow-md transition-all border border-slate-100">
+                                <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-xl shadow-sm group-hover:scale-110 transition-transform">📊</div>
+                                <div>
+                                    <p class="font-bold text-slate-700 text-xs uppercase">CRC</p>
+                                    <p class="text-[10px] text-slate-500">Comisión de Regulación</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -228,6 +238,7 @@
                     <ul class="space-y-3 text-sm text-slate-600">
                         <li><a href="https://gestornormativo.creg.gov.co/gestor/entorno/docs/resolucion_crc_5050_2016.htm" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5050 de 2016</a></li>
                         <li><a href="https://colombiatic.mintic.gov.co/679/articles-62266_doc_norma.pdf" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Resolución CRC 5111 de 2017</a></li>
+                        <li><a href="https://www.sic.gov.co/circular-unica" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2"><span class="w-1.5 h-1.5 bg-secondary rounded-full"></span>Circular Única de la SIC</a></li>
                     </ul>
                 </div>
 

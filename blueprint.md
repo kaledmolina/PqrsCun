@@ -55,6 +55,7 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 - **Change**: Added an optional checkbox for "Authorization to send documents via email" and ensured it saves to the database.
 - **Change**: Made "Phone" (Celular) field optional.
 - **Change**: Translated validation messages and field names to Spanish (e.g., "data.description" -> "descripción de la solicitud").
+- **Change**: Updated Footer to categorize entities into "Vigilancia" (SIC) and "Regulatorias" (MinTIC, CRC) and added "Circular Única" to Legal Framework.
 
 ### Welcome Page Regulatory Sections
 **Goal**: Add mandatory regulatory and vigilance information to the public home page.
