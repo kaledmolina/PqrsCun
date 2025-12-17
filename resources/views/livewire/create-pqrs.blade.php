@@ -81,11 +81,13 @@
                                     <input type="text" wire:model="data.first_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                     @error('data.first_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Apellidos *</label>
-                                    <input type="text" wire:model="data.last_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
-                                    @error('data.last_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
-                                </div>
+                                @if($data['document_type'] !== 'NIT')
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Apellidos *</label>
+                                        <input type="text" wire:model="data.last_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                        @error('data.last_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    </div>
+                                @endif
                             </div>
 
                             <!-- Row 3 -->
@@ -130,12 +132,12 @@
                             <!-- Row 5 -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">¿Cuál es el correo al cual quiere que llegue la respuesta? *</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">¿Cuál es el correo al cual quiere que llegue la respuesta?</label>
                                     <input type="email" wire:model="data.email" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                     @error('data.email') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Confirma el correo electrónico *</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Confirma el correo electrónico</label>
                                     <input type="email" wire:model="data.email_confirmation" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                 </div>
                             </div>
@@ -169,7 +171,7 @@
                             <!-- Row 7 -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Número de contacto celular *</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Número de contacto celular</label>
                                     <input type="tel" wire:model="data.phone" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                     @error('data.phone') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
@@ -221,17 +223,30 @@
                             </div>
                         </div>
 
-                        <!-- Data Privacy Policy -->
-                        <div class="group">
-                            <label class="flex items-start gap-3 cursor-pointer">
-                                <div class="flex items-center h-5">
-                                    <input type="checkbox" wire:model="data.data_treatment_accepted" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
-                                </div>
-                                <div class="text-sm text-slate-600">
-                                    He leído y acepto la <a href="#" class="text-primary font-bold hover:underline">Política de Tratamiento de Datos Personales</a>. Entiendo que mis datos serán utilizados para gestionar mi solicitud conforme a la ley.
-                                </div>
-                            </label>
-                            @error('data.data_treatment_accepted') <span class="text-red-500 text-sm mt-1 block">Debes aceptar la política de tratamiento de datos para continuar.</span> @enderror
+                        <!-- Data Privacy Policy & Authorization -->
+                        <div class="space-y-4">
+                            <div class="group">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <div class="flex items-center h-5">
+                                        <input type="checkbox" wire:model="data.authorize_email_documents" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
+                                    </div>
+                                    <div class="text-sm text-slate-600">
+                                        Autorizo el envío de notificaciones y documentos relacionados con esta solicitud al correo electrónico proporcionado. (Opcional)
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="group">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <div class="flex items-center h-5">
+                                        <input type="checkbox" wire:model="data.data_treatment_accepted" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
+                                    </div>
+                                    <div class="text-sm text-slate-600">
+                                        He leído y acepto la <a href="#" class="text-primary font-bold hover:underline">Política de Tratamiento de Datos Personales</a>. Entiendo que mis datos serán utilizados para gestionar mi solicitud conforme a la ley.
+                                    </div>
+                                </label>
+                                @error('data.data_treatment_accepted') <span class="text-red-500 text-sm mt-1 block">Debes aceptar la política de tratamiento de datos para continuar.</span> @enderror
+                            </div>
                         </div>
 
                         <!-- Actions -->

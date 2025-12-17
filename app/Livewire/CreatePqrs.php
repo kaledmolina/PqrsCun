@@ -34,6 +34,7 @@ class CreatePqrs extends Component
         'motive' => '',
         'description' => '',
         'data_treatment_accepted' => false,
+        'authorize_email_documents' => false,
     ];
 
     protected function rules()
@@ -43,17 +44,18 @@ class CreatePqrs extends Component
             'data.document_type' => 'required|in:CC,TI,CE,NIT,PAS',
             'data.document_number' => 'required|max:255',
             'data.first_name' => 'required|max:255',
-            'data.last_name' => 'required|max:255',
+            'data.last_name' => $this->data['document_type'] === 'NIT' ? 'nullable|max:255' : 'required|max:255',
             'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,recurso_subsidio',
             'data.services' => 'nullable|array',
-            'data.email' => 'required|email|confirmed|max:255',
-            'data.phone' => 'required|max:255',
+            'data.email' => 'nullable|email|confirmed|max:255',
+            'data.phone' => 'nullable|max:255',
             'data.address' => 'required|max:255',
             'data.city' => 'required|max:255',
             'data.landline' => 'nullable|max:255',
             'data.motive' => 'nullable|max:255',
             'data.description' => 'required',
             'data.data_treatment_accepted' => 'accepted',
+            'data.authorize_email_documents' => 'boolean',
             'attachments.*' => 'nullable|file|max:51200', // 50MB max
         ];
     }

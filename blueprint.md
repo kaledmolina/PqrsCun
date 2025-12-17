@@ -45,6 +45,16 @@ This project is a full-stack web application built with **Laravel 11** and **Fil
 - **Change**: Updated the label "Línea de PQR" to "Línea WhatsApp Chatbot".
 - **Change**: Increased the size of the footer logo for better visibility.
 
+### PQR Form Updates
+**Goal**: Improve PQR creation form usability and data collection flexibility.
+**Implementation Details**:
+- **File**: `app/Livewire/CreatePqrs.php`, `resources/views/livewire/create-pqrs.blade.php`
+- **Change**: Made "Last Name" field optional and hidden when Document Type is "NIT".
+- **Change**: Made "Email" field optional.
+- **Change**: Verified "Address" field is mandatory.
+- **Change**: Added an optional checkbox for "Authorization to send documents via email".
+- **Change**: Made "Phone" (Celular) field optional.
+
 ### Welcome Page Regulatory Sections
 **Goal**: Add mandatory regulatory and vigilance information to the public home page.
 
