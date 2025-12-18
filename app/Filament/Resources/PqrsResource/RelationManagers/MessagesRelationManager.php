@@ -111,8 +111,9 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     ->label('Tipo de Plantilla')
                     ->options([
                         'peticion' => 'Petición (10 días)',
-                        'queja' => 'Queja (15 días)',
-                        'reclamo' => 'Reclamo (15 días)',
+                        'queja_reclamo' => 'Queja / Reclamo',
+                        'queja' => 'Queja (Legacy)',
+                        'reclamo' => 'Reclamo (Legacy)',
                         'sugerencia' => 'Sugerencia (30 días)',
                         'reposicion' => 'Reposición (15 días)',
                         'apelacion' => 'Apelación (15 días)',
@@ -193,8 +194,9 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     ->label('Tipo de Plantilla')
                     ->options([
                         'peticion' => 'Petición',
-                        'queja' => 'Queja',
-                        'reclamo' => 'Reclamo',
+                        'queja_reclamo' => 'Queja / Reclamo',
+                        'queja' => 'Queja (Legacy)',
+                        'reclamo' => 'Reclamo (Legacy)',
                         'sugerencia' => 'Sugerencia',
                         'reposicion' => 'Reposición',
                         'apelacion' => 'Apelación',

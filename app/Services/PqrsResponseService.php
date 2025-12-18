@@ -16,6 +16,7 @@ class PqrsResponseService
         
         return match ($type) {
             'peticion' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
+            'queja_reclamo' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
             'queja' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
             'reclamo' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
             'sugerencia' => $this->getQuickResponseGeneralTemplate($name, $cun, $date, $pqrs->description),
@@ -33,6 +34,7 @@ class PqrsResponseService
         
         return match ($type) {
             'peticion' => $this->getOfficialPeticionTemplate($name, $cun, $date, $pqrs->city),
+            'queja_reclamo' => $this->getOfficialQuejaTemplate($name, $cun, $date, $pqrs->city), // Using Queja template for unified type for now
             'queja' => $this->getOfficialQuejaTemplate($name, $cun, $date, $pqrs->city),
             'reclamo' => $this->getOfficialReclamoTemplate($name, $cun, $date, $pqrs->city),
             'sugerencia' => $this->getOfficialSugerenciaTemplate($name, $cun, $date, $pqrs->city),
