@@ -70,8 +70,9 @@ class PqrsResource extends Resource
                             ->label('Tipo de Solicitud')
                             ->options([
                                 'peticion' => 'Petición',
-                                'queja' => 'Queja',
-                                'reclamo' => 'Reclamo',
+                                'queja_reclamo' => 'Queja / Reclamo',
+                                'queja' => 'Queja (Legacy)',
+                                'reclamo' => 'Reclamo (Legacy)',
                                 'sugerencia' => 'Sugerencia',
                                 'reposicion' => 'Reposición',
                                 'apelacion' => 'Apelación',
@@ -104,18 +105,7 @@ class PqrsResource extends Resource
                                 'closed' => 'Cerrado',
                             ])
                             ->disabled(fn (string $operation) => $operation === 'edit'),
-                        Forms\Components\Select::make('type')
-                            ->label('Tipo de Solicitud')
-                            ->options([
-                                'peticion' => 'Petición',
-                                'queja_reclamo' => 'Queja / Reclamo',
-                                'queja' => 'Queja (Legacy)',
-                                'reclamo' => 'Reclamo (Legacy)',
-                                'sugerencia' => 'Sugerencia',
-                                'reposicion' => 'Reposición',
-                                'apelacion' => 'Apelación',
-                            ])
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+
                         Forms\Components\TextInput::make('typology')
                             ->label('Tipología')
                             ->disabled(fn (string $operation) => $operation === 'edit'),
