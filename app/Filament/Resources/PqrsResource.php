@@ -104,6 +104,24 @@ class PqrsResource extends Resource
                                 'closed' => 'Cerrado',
                             ])
                             ->disabled(fn (string $operation) => $operation === 'edit'),
+                        Forms\Components\Select::make('type')
+                            ->label('Tipo de Solicitud')
+                            ->options([
+                                'peticion' => 'Petición',
+                                'queja_reclamo' => 'Queja / Reclamo',
+                                'queja' => 'Queja (Legacy)',
+                                'reclamo' => 'Reclamo (Legacy)',
+                                'sugerencia' => 'Sugerencia',
+                                'reposicion' => 'Reposición',
+                                'apelacion' => 'Apelación',
+                            ])
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                        Forms\Components\TextInput::make('typology')
+                            ->label('Tipología')
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                        Forms\Components\TextInput::make('sub_typology')
+                            ->label('Detalle Tipología')
+                            ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\Section::make('Satisfacción del Cliente')
                             ->schema([
                                 Forms\Components\TextInput::make('rating')
@@ -132,6 +150,7 @@ class PqrsResource extends Resource
                 Tables\Columns\TextColumn::make('type')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
+                        'queja_reclamo' => 'warning',
                         'peticion' => 'info',
                         'queja' => 'warning',
                         'reclamo' => 'danger',
@@ -187,11 +206,13 @@ class PqrsResource extends Resource
                 Tables\Filters\Filter::make('overdue')
                     ->label('Vencidos')
                     ->query(fn (Builder $query): Builder => $query->where('deadline_at', '<', now())->whereNotIn('status', ['resolved', 'closed'])),
+
                 Tables\Filters\SelectFilter::make('type')
                     ->options([
                         'peticion' => 'Petición',
-                        'queja' => 'Queja',
-                        'reclamo' => 'Reclamo',
+                        'queja_reclamo' => 'Queja / Reclamo',
+                        'queja' => 'Queja (Legacy)',
+                        'reclamo' => 'Reclamo (Legacy)',
                         'sugerencia' => 'Sugerencia',
                         'reposicion' => 'Reposición',
                         'apelacion' => 'Apelación',

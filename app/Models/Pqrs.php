@@ -37,6 +37,8 @@ class Pqrs extends Model
         'landline',
         'data_treatment_accepted',
         'authorize_email_documents',
+        'typology',
+        'sub_typology',
     ];
 
     protected $casts = [

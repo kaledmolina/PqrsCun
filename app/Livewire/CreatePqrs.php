@@ -35,6 +35,50 @@ class CreatePqrs extends Component
         'description' => '',
         'data_treatment_accepted' => false,
         'authorize_email_documents' => false,
+        'typology' => '',
+        'sub_typology' => '',
+    ];
+
+    const TYPOLOGIES = [
+        'Facturación' => [
+            'Cobros no reconocidos',
+            'Doble facturación',
+            'Factura no entregada',
+            'Errores en el valor facturado',
+        ],
+        'Calidad del servicio' => [
+            'Interrupciones frecuentes',
+            'Lentitud o baja velocidad (en internet)',
+            'Caídas de señal',
+            'Mala calidad de audio o video',
+        ],
+        'Atención al usuario' => [
+            'Mal trato del personal',
+            'Falta de respuesta oportuna',
+            'Información errónea o incompleta',
+        ],
+        'Suspensión o corte del servicio' => [
+            'Corte sin previo aviso',
+            'Suspensión injustificada',
+            'No reconexión tras pago',
+        ],
+        'Instalación y activación' => [
+            'Retrasos en la instalación',
+            'Incumplimiento de fechas',
+            'Activación incompleta',
+        ],
+        'Terminación del contrato' => [
+            'Dificultades para cancelar el servicio',
+            'Cargos posteriores a la cancelación',
+        ],
+        'Promociones y ofertas' => [
+            'Publicidad engañosa',
+            'Condiciones no informadas',
+            'No aplicación de descuentos',
+        ],
+        'Otros' => [
+            'Quejas no clasificables en las categorías anteriores',
+        ],
     ];
 
     protected function rules()
@@ -45,7 +89,9 @@ class CreatePqrs extends Component
             'data.document_number' => 'required|max:255',
             'data.first_name' => 'required|max:255',
             'data.last_name' => $this->data['document_type'] === 'NIT' ? 'nullable|max:255' : 'required|max:255',
-            'data.type' => 'required|in:peticion,queja,reclamo,sugerencia,recurso_subsidio',
+            'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
+            'data.typology' => 'required_if:data.type,queja_reclamo',
+            'data.sub_typology' => 'required_if:data.type,queja_reclamo',
             'data.services' => 'nullable|array',
             'data.email' => 'nullable|email|confirmed|max:255',
             'data.phone' => 'nullable|max:255',
@@ -55,6 +101,7 @@ class CreatePqrs extends Component
             'data.motive' => 'nullable|max:255',
             'data.description' => 'required',
             'data.data_treatment_accepted' => 'accepted',
+            'data.authorize_email_documents' => 'boolean',
             'data.authorize_email_documents' => 'boolean',
             'attachments.*' => 'nullable|file|max:51200', // 50MB max
         ];
@@ -152,6 +199,12 @@ class CreatePqrs extends Component
             'status' => 'pending',
             'data_treatment_accepted' => $this->data['data_treatment_accepted'] ?? false,
             'authorize_email_documents' => $this->data['authorize_email_documents'] ?? false,
+            'cun' => $cun,
+            'status' => 'pending',
+            'data_treatment_accepted' => $this->data['data_treatment_accepted'] ?? false,
+            'authorize_email_documents' => $this->data['authorize_email_documents'] ?? false,
+            'typology' => $this->data['typology'] ?? null,
+            'sub_typology' => $this->data['sub_typology'] ?? null,
         ]);
 
         // Guardar el CUN generado para mostrarlo en la vista

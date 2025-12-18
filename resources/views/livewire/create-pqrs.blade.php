@@ -94,11 +94,10 @@
                             <div class="group">
                                 <label class="block text-sm font-medium text-slate-600 mb-1">¿Presentar una petición, queja / reclamo o recurso? *</label>
                                 <div class="relative">
-                                    <select wire:model="data.type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
+                                    <select wire:model.live="data.type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
                                         <option value="">Selecciona una opción...</option>
                                         <option value="peticion">Petición (Solicitud de información)</option>
-                                        <option value="queja">Queja (Inconformidad)</option>
-                                        <option value="reclamo">Reclamo (Falla en servicio)</option>
+                                        <option value="queja_reclamo">Queja / Reclamo (Inconformidad o Falla)</option>
                                         <option value="sugerencia">Sugerencia</option>
                                         <option value="recurso_subsidio">Recurso de Reposición en Subsidio de Apelación</option>
                                     </select>
@@ -108,6 +107,45 @@
                                 </div>
                                 @error('data.type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                             </div>
+
+                            @if($data['type'] === 'queja_reclamo')
+                                <!-- Row 3.5 Typologies -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Tipología *</label>
+                                        <div class="relative">
+                                            <select wire:model.live="data.typology" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
+                                                <option value="">Selecciona...</option>
+                                                @foreach(\App\Livewire\CreatePqrs::TYPOLOGIES as $typology => $subtypes)
+                                                    <option value="{{ $typology }}">{{ $typology }}</option>
+                                                @endforeach
+                                            </select>
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
+                                        </div>
+                                        @error('data.typology') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    </div>
+
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Detalle *</label>
+                                        <div class="relative" >
+                                            <select wire:model="data.sub_typology" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm" @if(empty($data['typology'])) disabled @endif>
+                                                <option value="">Selecciona...</option>
+                                                @if(!empty($data['typology']) && isset(\App\Livewire\CreatePqrs::TYPOLOGIES[$data['typology']]))
+                                                    @foreach(\App\Livewire\CreatePqrs::TYPOLOGIES[$data['typology']] as $subTypology)
+                                                        <option value="{{ $subTypology }}">{{ $subTypology }}</option>
+                                                    @endforeach
+                                                @endif
+                                            </select>
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
+                                        </div>
+                                        @error('data.sub_typology') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
+                            @endif
 
                             <!-- Row 4 -->
                             <div class="group">
