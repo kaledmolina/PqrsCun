@@ -91,8 +91,8 @@ class PqrsResource extends Resource
                             ->label('Adjuntos')
                             ->multiple()
                             ->downloadable()
-                            ->disk('local')
-                            ->visibility('private')
+                            ->disk('public')
+                            ->visibility('public')
                             ->disabled(fn (string $operation) => $operation === 'edit')
                             ->columnSpanFull(),
                         Forms\Components\Select::make('status')
