@@ -101,6 +101,7 @@ class PqrsResponseService
         $email = $pqrs->email ?? '[Correo]';
         $cun = $pqrs->cun;
         $createdDate = $pqrs->created_at ? $pqrs->created_at->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha recibida]';
+        $responseDate = $pqrs->created_at ? $pqrs->created_at->addWeekdays(15)->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha calculada]';
         
         // Handling description safely
         $description = $pqrs->description ?? '[describir brevemente la queja, petición o reclamo]';
@@ -115,6 +116,8 @@ class PqrsResponseService
 
             <p><strong>Asunto:</strong> Respuesta a PQR presentada por el usuario<br>
             <strong>Referencia:</strong> PQR radicada No. $cun, recibida el día $createdDate</p>
+
+            <p><strong>Fecha de respuesta (máxima):</strong> $responseDate</p>
 
             <p>Agradecemos su comunicación y el interés en mejorar nuestro servicio. INTALNET TELECOMUNICACIONES, reafirma su compromiso con la atención oportuna y técnica de cada uno de los requerimientos de nuestros usuarios.</p>
 
@@ -145,6 +148,11 @@ class PqrsResponseService
             Teléfono: +57 314 8042601<br>
             Anexos (si aplica):<br>
             [Listado de documentos enviados con la respuesta]</p>
+
+            <br><br>
+            <div style=\"font-size: 10px; text-align: justify; color: #666;\">
+                De conformidad con lo dispuesto en la regulación vigente, INTALNET TELECOMUNICACIONES, informa al usuario que las PQRS presentados, serán atendidos y resueltos mediante una respuesta clara, completa y de fondo dentro de un término máximo de quince (15) días hábiles, contados a partir del día hábil siguiente a la fecha de su radicación. Si su PQR no es atendida en la fecha indicada, se entenderá que ha sido resuelta a su favor. (Esto se llama Silencio Administrativo Positivo). RECURSOS. Dentro de los 10 días hábiles siguientes a la notificación de la decisión y cuando INTALNET TELECOMUNICACIONES NO resuelva a su favor la petición o queja, en relación con actos de negativa del contrato, suspensión del servicio, terminación del contrato, corte y facturación, Ud, tendrá derecho a solicitar que se reconsidere la decisión tomada, a través de la presentación de recursos en cualquiera de los canales de atención, teniendo la opción de presentar RECURSO DE REPOSICIÓN bajo el cual solicita a INTALNET TELECOMUNICACIONES, que revise nuevamente la decisión o RECURSO DE REPOSICION Y EN SUBSIDIO APELACION para que INTALNET TELECOMUNICACIONES revise la decisión y si no se accede a lo solicitado remita el expediente a la Superintendencia de Industria y Comercio (SIC) para que esta entidad revise y adopte una decisión final y definitiva. Para estos efectos, INTALNET TELECOMUNICACIONES, tiene habilitados los siguientes canales de atención: Teléfono de Atención al Cliente 3148042601, correo electrónico pqr@intalnet.com, y la página web https://intalnettelecomunicaciones.com/, a través de los cuales el usuario podrá radicar sus solicitudes y hacer seguimiento a las mismas.
+            </div>
         ";
     }
 }
