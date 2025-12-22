@@ -14,10 +14,10 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         User::updateOrCreate(
-            ['email' => 'admin@intalnet.com'],
+            ['email' => 'adminpqrs@intalnet.com'],
             [
                 'name' => 'Administrador',
-                'password' => Hash::make('1234567'),
+                'password' => Hash::make('colombia2025**'),
                 'email_verified_at' => now(),
             ]
         );
