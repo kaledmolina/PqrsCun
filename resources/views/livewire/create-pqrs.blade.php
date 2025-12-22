@@ -1,4 +1,4 @@
-<div class="animate-fade-in">
+<div class="animate-fade-in" x-data="{ showDataAuthModal: false }">
     <!-- Hero Section -->
     <div class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
@@ -349,7 +349,7 @@
                                             <a href="https://intalnet.com/politica-tratamiento-datos" class="text-primary font-bold hover:underline">
                                                 Política de Tratamiento de Datos Personales
                                             </a>, y autorizo el 
-                                            <a href="#" class="text-primary font-bold hover:underline">
+                                            <a href="#" @click.prevent="showDataAuthModal = true" class="text-primary font-bold hover:underline">
                                                 Tratamiento de mis Datos Personales
                                             </a>.
                                         </div>
@@ -418,6 +418,231 @@
                         Tu solicitud genera un <strong>Código CUN</strong> oficial, validado por estas entidades.
                     </p>
                 </details>
+            </div>
+        
+    <!-- Data Treatment Modal -->
+    <div 
+        x-show="showDataAuthModal" 
+        style="display: none;"
+        class="fixed inset-0 z-50 overflow-y-auto" 
+        aria-labelledby="modal-title" 
+        role="dialog" 
+        aria-modal="true"
+    >
+        <!-- Backdrop -->
+        <div 
+            x-show="showDataAuthModal"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" 
+            @click="showDataAuthModal = false"
+        ></div>
+
+        <!-- Modal Panel -->
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div 
+                x-show="showDataAuthModal"
+                x-transition:enter="ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave="ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl"
+            >
+                <!-- Close Button -->
+                <div class="absolute right-0 top-0 pr-4 pt-4 z-10">
+                    <button @click="showDataAuthModal = false" type="button" class="rounded-md bg-white text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2">
+                        <span class="sr-only">Cerrar</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Content -->
+                <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4 max-h-[80vh] overflow-y-auto">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-left sm:mt-0 sm:text-left w-full">
+                            <h3 class="text-2xl font-bold leading-6 text-slate-900 mb-6 text-center" id="modal-title">
+                                FORMATO DE AUTORIZACIÓN PARA EL TRATAMIENTO DE DATOS PERSONALES – CENTRALES DE RIESGOS
+                            </h3>
+                            <div class="mt-2 text-sm text-slate-600 space-y-4 leading-relaxed text-justify">
+                                <p>
+                                    Yo, actuando en nombre propio o en mi calidad de representante legal, identificado(a) con los datos suministrados en el presente formulario, para efectos del tratamiento de datos personales, por medio del presente documento, autorizo a INVERSIONES ZULUAGA SEJIN S.A.S., en adelante, INTALNET TELECOMUNICACIONES, identificada con NIT. 900.888.246-0, como responsable del tratamiento de mis datos personales para: procesar, recolectar, almacenar, usar, circular, suprimir, compartir, actualizar, transferir y/o transmitir dentro o fuera del territorio de la República de Colombia, mis datos personales, bajo los lineamientos legales correspondientes y respetando los derechos de los titulares de los datos, principalmente, para hacer posible la relación de Usuario – Operador/Proveedor de Servicios de Comunicaciones, según aplique, así como también, para efectuar reportes a las autoridades de control y vigilancia cuando resulte aplicable, y/o para otros usos, con fines administrativos, comerciales, publicitarios y para efectos de contactar a los titulares de los mismos, y en general, para los asuntos relacionados con el objeto del contrato de prestación de servicios de comunicaciones suscrito entre el Titular e INTALNET TELECOMUNICACIONES; y, de forma específica según aplique en cada caso, para:
+                                </p>
+                                <ol class="list-decimal pl-5 space-y-2">
+                                    <li>Ejecutar el Contrato de Prestación de Servicios de Comunicaciones suscrito con INTALNET TELECOMUNICACIONES.</li>
+                                    <li>Realizar el pago de las obligaciones contractuales.</li>
+                                    <li>Enviar la información a entidades gubernamentales o de Control y Vigilancia por solicitud expresa de las mismas.</li>
+                                    <li>Soportar procesos de auditoría externa e interna.</li>
+                                    <li>Enviar y recibir mensajes con fines comerciales, publicitarios y/o de atención al cliente.</li>
+                                    <li>Registrar la información de los clientes, aliados y proveedores en las bases de datos de INTALNET TELECOMUNICACIONES, con la finalidad de analizar, evaluar y generar datos estadísticos, así como indicadores, resultados comerciales, investigaciones de mercados, variables de sus negocios y/o cualquier otra consideración relacionada directa o indirectamente con la actividad económica y comercial que realicen las partes y resulte necesaria para el desarrollo de las actividades para las cuales tienen una relación contractual o comercial, entre otras.</li>
+                                    <li>Contactar al cliente para el envío de información referida a la relación contractual, comercial y obligacional a que haya lugar.</li>
+                                    <li>Recolectar datos para el cumplimiento de los deberes que, como Responsable de la información y de los datos personales, le corresponden a INTALNET TELECOMUNICACIONES.</li>
+                                    <li>Contactarlo vía telefónica, vía redes sociales o por correo electrónico, para atender y dar seguimiento a las solicitudes de servicios y/o productos.</li>
+                                    <li>Elaboración de facturación física, facturación electrónica y notas de crédito, derivadas de la prestación de servicios de INTALNET TELECOMUNICACIONES.</li>
+                                    <li>Cualquier otra finalidad que resulte en el desarrollo del contrato o de la relación que existe entre el Titular e INTALNET TELECOMUNICACIONES.</li>
+                                </ol>
+                                <p>
+                                    En este mismo sentido, manifiesto que, INTALNET TELECOMUNICACIONES me informó sobre los derechos que me asisten como Titular de mis datos personales, especialmente a: acceder en forma gratuita a los datos proporcionados que hayan sido objeto de tratamiento; solicitar la actualización y rectificación de la información frente a datos parciales, inexactos, incompletos, fraccionados, que induzcan a error, o a aquellos cuyo tratamiento esté prohibido o no haya sido autorizado; solicitar prueba de la autorización otorgada y a presentar ante la Superintendencia de Industria y Comercio (SIC) quejas por infracciones a lo dispuesto en la normatividad vigente; revocar la autorización y/o solicitar la supresión del dato, a menos que exista un deber legal o contractual que haga imperativo conservar la información; abstenerse de responder las preguntas sobre datos sensibles o sobre datos de las niñas y niños y adolescentes.
+                                </p>
+                                <p>
+                                    Lo anterior conforme a lo establecido en la Constitución Política de Colombia, en la Ley 1581 de 2012 y demás normas que la modifiquen, complementen o adicionen, así como también en la Política de Tratamiento de Datos Personales adoptada por INTALNET TELECOMUNICACIONES, la cual está publicada en la página web https://intalnettelecomunicaciones.com/.
+                                </p>
+                                <p>
+                                    La presente autorización no impedirá que, el abajo firmante o a su representada, pueda ejercer el derecho a solicitar actualizar o modificar en cualquier tiempo ante INTALNET TELECOMUNICACIONES, la información suministrada y a ser informado sobre las correcciones efectuadas o a solicitar la revocatoria de sus datos, siempre y cuando no exista un deber legal o contractual que lo obligue a estar en la base de datos de INTALNET TELECOMUNICACIONES. La atención de requerimientos relacionados con el tratamiento de sus datos personales o el ejercicio de los derechos mencionados en esta autorización, serán atendidos en el correo electrónico: pqr@intalnet.com
+                                </p>
+                                <p>
+                                    Igualmente, por medio del presente documento, como Titular de los datos personales, declaro que conozco la Política de Tratamiento de Datos de INTALNET TELECOMUNICACIONES, la cual, fue puesta a mi disposición de manera previa a la recolección de mis datos personales y que se encuentra dispuesta en medio digital en la página web https://intalnettelecomunicaciones.com/, donde además, también se encuentra contenido el procedimiento para presentar consultas y reclamos, relacionados con el tratamiento de mis datos, entre otros aspectos.
+                                </p>
+                                <p>
+                                    De otra parte, por medio del presente documento, autorizo a INTALNET TELECOMUNICACIONES, en caso de que aplique, a realizar las consultas necesarias, sobre mi comportamiento crediticio y a efectuar el reporte negativo ante las Centrales de Riesgo frente a incumplimientos que puedan afectar a INTALNET TELECOMUNICACIONES.
+                                </p>
+                                <p>
+                                    Finalmente, manifiesto que la presente autorización me fue solicitada y puesta de presente antes de entregar mis datos personales y que la suscribo de forma libre y voluntaria una vez leída en su totalidad.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="bg-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button 
+                        type="button" 
+                        class="inline-flex w-full justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 transition-all sm:ml-3 sm:w-auto"
+                        @click="showDataAuthModal = false; @this.set('data.data_treatment_accepted', true)"
+                    >
+                        Aceptar y Continuar
+                    </button>
+                    <button 
+                        type="button" 
+                        class="mt-3 inline-flex w-full justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-auto transition-all"
+                        @click="showDataAuthModal = false"
+                    >
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+    <!-- Data Treatment Modal -->
+    <div 
+        x-show="showDataAuthModal" 
+        style="display: none;"
+        class="fixed inset-0 z-50 overflow-y-auto" 
+        aria-labelledby="modal-title" 
+        role="dialog" 
+        aria-modal="true"
+    >
+        <!-- Backdrop -->
+        <div 
+            x-show="showDataAuthModal"
+            x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0"
+            class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" 
+            @click="showDataAuthModal = false"
+        ></div>
+
+        <!-- Modal Panel -->
+        <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+            <div 
+                x-show="showDataAuthModal"
+                x-transition:enter="ease-out duration-300"
+                x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave="ease-in duration-200"
+                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                class="relative transform overflow-hidden rounded-2xl bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl"
+            >
+                <!-- Close Button -->
+                <div class="absolute right-0 top-0 pr-4 pt-4 z-10">
+                    <button @click="showDataAuthModal = false" type="button" class="rounded-md bg-white text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2">
+                        <span class="sr-only">Cerrar</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Content -->
+                <div class="px-4 pb-4 pt-5 sm:p-6 sm:pb-4 max-h-[80vh] overflow-y-auto">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mt-3 text-left sm:mt-0 sm:text-left w-full">
+                            <h3 class="text-2xl font-bold leading-6 text-slate-900 mb-6 text-center" id="modal-title">
+                                FORMATO DE AUTORIZACIÓN PARA EL TRATAMIENTO DE DATOS PERSONALES – CENTRALES DE RIESGOS
+                            </h3>
+                            <div class="mt-2 text-sm text-slate-600 space-y-4 leading-relaxed text-justify">
+                                <p>
+                                    Yo, actuando en nombre propio o en mi calidad de representante legal, identificado(a) con los datos suministrados en el presente formulario, para efectos del tratamiento de datos personales, por medio del presente documento, autorizo a INVERSIONES ZULUAGA SEJIN S.A.S., en adelante, INTALNET TELECOMUNICACIONES, identificada con NIT. 900.888.246-0, como responsable del tratamiento de mis datos personales para: procesar, recolectar, almacenar, usar, circular, suprimir, compartir, actualizar, transferir y/o transmitir dentro o fuera del territorio de la República de Colombia, mis datos personales, bajo los lineamientos legales correspondientes y respetando los derechos de los titulares de los datos, principalmente, para hacer posible la relación de Usuario – Operador/Proveedor de Servicios de Comunicaciones, según aplique, así como también, para efectuar reportes a las autoridades de control y vigilancia cuando resulte aplicable, y/o para otros usos, con fines administrativos, comerciales, publicitarios y para efectos de contactar a los titulares de los mismos, y en general, para los asuntos relacionados con el objeto del contrato de prestación de servicios de comunicaciones suscrito entre el Titular e INTALNET TELECOMUNICACIONES; y, de forma específica según aplique en cada caso, para:
+                                </p>
+                                <ol class="list-decimal pl-5 space-y-2">
+                                    <li>Ejecutar el Contrato de Prestación de Servicios de Comunicaciones suscrito con INTALNET TELECOMUNICACIONES.</li>
+                                    <li>Realizar el pago de las obligaciones contractuales.</li>
+                                    <li>Enviar la información a entidades gubernamentales o de Control y Vigilancia por solicitud expresa de las mismas.</li>
+                                    <li>Soportar procesos de auditoría externa e interna.</li>
+                                    <li>Enviar y recibir mensajes con fines comerciales, publicitarios y/o de atención al cliente.</li>
+                                    <li>Registrar la información de los clientes, aliados y proveedores en las bases de datos de INTALNET TELECOMUNICACIONES, con la finalidad de analizar, evaluar y generar datos estadísticos, así como indicadores, resultados comerciales, investigaciones de mercados, variables de sus negocios y/o cualquier otra consideración relacionada directa o indirectamente con la actividad económica y comercial que realicen las partes y resulte necesaria para el desarrollo de las actividades para las cuales tienen una relación contractual o comercial, entre otras.</li>
+                                    <li>Contactar al cliente para el envío de información referida a la relación contractual, comercial y obligacional a que haya lugar.</li>
+                                    <li>Recolectar datos para el cumplimiento de los deberes que, como Responsable de la información y de los datos personales, le corresponden a INTALNET TELECOMUNICACIONES.</li>
+                                    <li>Contactarlo vía telefónica, vía redes sociales o por correo electrónico, para atender y dar seguimiento a las solicitudes de servicios y/o productos.</li>
+                                    <li>Elaboración de facturación física, facturación electrónica y notas de crédito, derivadas de la prestación de servicios de INTALNET TELECOMUNICACIONES.</li>
+                                    <li>Cualquier otra finalidad que resulte en el desarrollo del contrato o de la relación que existe entre el Titular e INTALNET TELECOMUNICACIONES.</li>
+                                </ol>
+                                <p>
+                                    En este mismo sentido, manifiesto que, INTALNET TELECOMUNICACIONES me informó sobre los derechos que me asisten como Titular de mis datos personales, especialmente a: acceder en forma gratuita a los datos proporcionados que hayan sido objeto de tratamiento; solicitar la actualización y rectificación de la información frente a datos parciales, inexactos, incompletos, fraccionados, que induzcan a error, o a aquellos cuyo tratamiento esté prohibido o no haya sido autorizado; solicitar prueba de la autorización otorgada y a presentar ante la Superintendencia de Industria y Comercio (SIC) quejas por infracciones a lo dispuesto en la normatividad vigente; revocar la autorización y/o solicitar la supresión del dato, a menos que exista un deber legal o contractual que haga imperativo conservar la información; abstenerse de responder las preguntas sobre datos sensibles o sobre datos de las niñas y niños y adolescentes.
+                                </p>
+                                <p>
+                                    Lo anterior conforme a lo establecido en la Constitución Política de Colombia, en la Ley 1581 de 2012 y demás normas que la modifiquen, complementen o adicionen, así como también en la Política de Tratamiento de Datos Personales adoptada por INTALNET TELECOMUNICACIONES, la cual está publicada en la página web https://intalnettelecomunicaciones.com/.
+                                </p>
+                                <p>
+                                    La presente autorización no impedirá que, el abajo firmante o a su representada, pueda ejercer el derecho a solicitar actualizar o modificar en cualquier tiempo ante INTALNET TELECOMUNICACIONES, la información suministrada y a ser informado sobre las correcciones efectuadas o a solicitar la revocatoria de sus datos, siempre y cuando no exista un deber legal o contractual que lo obligue a estar en la base de datos de INTALNET TELECOMUNICACIONES. La atención de requerimientos relacionados con el tratamiento de sus datos personales o el ejercicio de los derechos mencionados en esta autorización, serán atendidos en el correo electrónico: pqr@intalnet.com
+                                </p>
+                                <p>
+                                    Igualmente, por medio del presente documento, como Titular de los datos personales, declaro que conozco la Política de Tratamiento de Datos de INTALNET TELECOMUNICACIONES, la cual, fue puesta a mi disposición de manera previa a la recolección de mis datos personales y que se encuentra dispuesta en medio digital en la página web https://intalnettelecomunicaciones.com/, donde además, también se encuentra contenido el procedimiento para presentar consultas y reclamos, relacionados con el tratamiento de mis datos, entre otros aspectos.
+                                </p>
+                                <p>
+                                    De otra parte, por medio del presente documento, autorizo a INTALNET TELECOMUNICACIONES, en caso de que aplique, a realizar las consultas necesarias, sobre mi comportamiento crediticio y a efectuar el reporte negativo ante las Centrales de Riesgo frente a incumplimientos que puedan afectar a INTALNET TELECOMUNICACIONES.
+                                </p>
+                                <p>
+                                    Finalmente, manifiesto que la presente autorización me fue solicitada y puesta de presente antes de entregar mis datos personales y que la suscribo de forma libre y voluntaria una vez leída en su totalidad.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="bg-slate-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                    <button 
+                        type="button" 
+                        class="inline-flex w-full justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 transition-all sm:ml-3 sm:w-auto"
+                        @click="showDataAuthModal = false; @this.set('data.data_treatment_accepted', true)"
+                    >
+                        Aceptar y Continuar
+                    </button>
+                    <button 
+                        type="button" 
+                        class="mt-3 inline-flex w-full justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-inset ring-slate-300 hover:bg-slate-50 sm:mt-0 sm:w-auto transition-all"
+                        @click="showDataAuthModal = false"
+                    >
+                        Cerrar
+                    </button>
+                </div>
             </div>
         </div>
     </div>
