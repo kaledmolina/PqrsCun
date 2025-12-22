@@ -90,7 +90,9 @@ class CreatePqrs extends Component
             'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
             'data.previous_cun' => 'required_if:data.type,recurso_subsidio',
             'data.description' => 'required',
-            'data.data_treatment_accepted' => 'accepted',
+            'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
+            // Data treatment is required unless type is recurso_subsidio
+            'data.data_treatment_accepted' => $this->data['type'] === 'recurso_subsidio' ? 'nullable' : 'accepted',
             'data.authorize_email_documents' => 'boolean',
             'attachments.*' => 'nullable|file|max:51200', // 50MB max
             'data.typology' => 'required_if:data.type,queja_reclamo',
@@ -165,7 +167,21 @@ class CreatePqrs extends Component
             return;
         }
 
-        $parentPqrs = Pqrs::where('cun', $this->previous_cun)->first();
+        $searchCun = trim($this->previous_cun);
+
+        // Allow search without hyphens (e.g., 7714250000000001 -> 7714-25-0000000001)
+        if (ctype_digit($searchCun) && strlen($searchCun) === 16) {
+            $searchCun = sprintf(
+                '%s-%s-%s',
+                substr($searchCun, 0, 4),
+                substr($searchCun, 4, 2),
+                substr($searchCun, 6)
+            );
+            // Optionally update the visible input to the formatted version
+            $this->previous_cun = $searchCun;
+        }
+
+        $parentPqrs = Pqrs::where('cun', $searchCun)->first();
 
         // Validate existence and status
         if (!$parentPqrs) {

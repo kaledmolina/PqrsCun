@@ -50,7 +50,19 @@ class ConsultPqrs extends Component
             'data.cun' => 'required|string|max:255',
         ]);
 
-        $this->pqrs = Pqrs::with('messages')->where('cun', $this->data['cun'])->first();
+        $searchCun = trim($this->data['cun']);
+
+        // Allow search without hyphens (e.g., 7714250000000001 -> 7714-25-0000000001)
+        if (ctype_digit($searchCun) && strlen($searchCun) === 16) {
+            $searchCun = sprintf(
+                '%s-%s-%s',
+                substr($searchCun, 0, 4),
+                substr($searchCun, 4, 2),
+                substr($searchCun, 6)
+            );
+        }
+
+        $this->pqrs = Pqrs::with('messages')->where('cun', $searchCun)->first();
         $this->notFound = !$this->pqrs;
     }
 

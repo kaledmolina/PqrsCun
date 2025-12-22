@@ -326,37 +326,39 @@
                         </div>
 
                         <!-- Data Privacy Policy & Authorization -->
-                        <div class="space-y-4">
-                            <div class="group">
-                                <label class="flex items-start gap-3 cursor-pointer">
-                                    <div class="flex items-center h-5">
-                                        <input type="checkbox" wire:model="data.authorize_email_documents" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
-                                    </div>
-                                    <div class="text-sm text-slate-600">
-                                        Autorizo el envío de notificaciones y documentos relacionados con esta solicitud al correo electrónico proporcionado. (Opcional)
-                                    </div>
-                                </label>
-                            </div>
+                        @if($data['type'] !== 'recurso_subsidio')
+                            <div class="space-y-4">
+                                <div class="group">
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <div class="flex items-center h-5">
+                                            <input type="checkbox" wire:model="data.authorize_email_documents" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
+                                        </div>
+                                        <div class="text-sm text-slate-600">
+                                            Autorizo el envío de notificaciones y documentos relacionados con esta solicitud al correo electrónico proporcionado. (Opcional)
+                                        </div>
+                                    </label>
+                                </div>
 
-                            <div class="group">
-                                <label class="flex items-start gap-3 cursor-pointer">
-                                    <div class="flex items-center h-5">
-                                        <input type="checkbox" wire:model="data.data_treatment_accepted" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
-                                    </div>
-                                    <div class="text-sm text-slate-600">
-                                        He leído y acepto la 
-                                        <a href="https://intalnet.com/politica-tratamiento-datos" class="text-primary font-bold hover:underline">
-                                            Política de Tratamiento de Datos Personales
-                                        </a>, y autorizo el 
-                                        <a href="#" class="text-primary font-bold hover:underline">
-                                            Tratamiento de mis Datos Personales
-                                        </a>.
-                                    </div>
+                                <div class="group">
+                                    <label class="flex items-start gap-3 cursor-pointer">
+                                        <div class="flex items-center h-5">
+                                            <input type="checkbox" wire:model="data.data_treatment_accepted" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
+                                        </div>
+                                        <div class="text-sm text-slate-600">
+                                            He leído y acepto la 
+                                            <a href="https://intalnet.com/politica-tratamiento-datos" class="text-primary font-bold hover:underline">
+                                                Política de Tratamiento de Datos Personales
+                                            </a>, y autorizo el 
+                                            <a href="#" class="text-primary font-bold hover:underline">
+                                                Tratamiento de mis Datos Personales
+                                            </a>.
+                                        </div>
 
-                                </label>
-                                @error('data.data_treatment_accepted') <span class="text-red-500 text-sm mt-1 block">Debes aceptar la política de tratamiento de datos para continuar.</span> @enderror
+                                    </label>
+                                    @error('data.data_treatment_accepted') <span class="text-red-500 text-sm mt-1 block">Debes aceptar la política de tratamiento de datos para continuar.</span> @enderror
+                                </div>
                             </div>
-                        </div>
+                        @endif
                        
                         <!-- Actions -->
                         <div class="pt-4">
