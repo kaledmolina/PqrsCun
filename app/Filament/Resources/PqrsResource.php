@@ -76,6 +76,7 @@ class PqrsResource extends Resource
                                 'sugerencia' => 'Sugerencia',
                                 'reposicion' => 'Reposición',
                                 'apelacion' => 'Apelación',
+                                'recurso_subsidio' => 'Recurso de Reposición en Subsidio de Apelación',
                             ])
                             ->disabled(fn (string $operation) => $operation === 'edit'),
                         Forms\Components\TagsInput::make('services')
@@ -207,6 +208,7 @@ class PqrsResource extends Resource
                         'sugerencia' => 'Sugerencia',
                         'reposicion' => 'Reposición',
                         'apelacion' => 'Apelación',
+                        'recurso_subsidio' => 'Recurso de Reposición en Subsidio de Apelación',
                     ]),
             ])
             ->actions([

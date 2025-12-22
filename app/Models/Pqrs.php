@@ -67,7 +67,7 @@ class Pqrs extends Model
 
     public static function generateCun($type = null)
     {
-        $isSugerencia = $type === 'sugerencia';
+        $isSugerencia = $type === 'sugerencia' || $type === 'recurso_subsidio';
         $prefix = $isSugerencia ? 'RAD' : (\App\Models\Setting::where('key', 'cun_provider_code')->value('value') ?? '7714');
         $year = date('y'); // 2 digits
         
