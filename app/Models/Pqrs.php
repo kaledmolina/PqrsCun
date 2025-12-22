@@ -99,4 +99,11 @@ class Pqrs extends Model
     {
         return $this->belongsTo(Pqrs::class, 'parent_pqrs_id');
     }
+
+    public function parentMessages()
+    {
+        // Fetch messages where the pqrs_id equals the parent_pqrs_id of this record
+        // SQL: select * from `pqrs_messages` where `pqrs_messages`.`pqrs_id` = [this->parent_pqrs_id]
+        return $this->hasMany(PqrsMessage::class, 'pqrs_id', 'parent_pqrs_id');
+    }
 }

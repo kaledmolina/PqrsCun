@@ -224,6 +224,7 @@ class PqrsResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RelationManagers\ParentMessagesRelationManager::class,
             RelationManagers\MessagesRelationManager::class,
             RelationManagers\AttendantsRelationManager::class,
         ];
