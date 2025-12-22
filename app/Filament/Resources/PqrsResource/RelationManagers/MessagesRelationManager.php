@@ -132,6 +132,8 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                         $service = new \App\Services\PqrsResponseService();
                         return $service->getQuickResponseTemplate($this->getOwnerRecord(), $this->getOwnerRecord()->type);
                     })
+                    ->disabled()
+                    ->dehydrated()
                     ->columnSpanFull(),
             ])
             ->action(function (array $data) {
