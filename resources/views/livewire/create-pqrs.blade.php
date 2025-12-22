@@ -346,7 +346,7 @@
                                         </div>
                                         <div class="text-sm text-slate-600">
                                             He leído y acepto la 
-                                            <a href="https://intalnet.com/politica-tratamiento-datos" class="text-primary font-bold hover:underline">
+                                            <a href="https://intalnet.com/politica-tratamiento-datos" target="_blank" class="text-primary font-bold hover:underline">
                                                 Política de Tratamiento de Datos Personales
                                             </a>, y autorizo el 
                                             <a href="#" @click.prevent="showDataAuthModal = true" class="text-primary font-bold hover:underline">
