@@ -280,7 +280,8 @@
                                         <input type="checkbox" wire:model="data.data_treatment_accepted" class="w-5 h-5 text-secondary border-slate-300 rounded focus:ring-secondary transition-all">
                                     </div>
                                     <div class="text-sm text-slate-600">
-                                        He leído y acepto la <a href="#" class="text-primary font-bold hover:underline">Política de Tratamiento de Datos Personales</a>. Entiendo que mis datos serán utilizados para gestionar mi solicitud conforme a la ley.
+                                        He leído y acepto la <a href="https://intalnet.com/politica-tratamiento-datos" class="text-primary font-bold hover:underline">Política de Tratamiento de Datos Personales</a>.
+                                        y Autorizo<a href="#" class="text-primary font-bold hover:underline">EL formato de Tratamiento de Datos Personales</a>.
                                     </div>
                                 </label>
                                 @error('data.data_treatment_accepted') <span class="text-red-500 text-sm mt-1 block">Debes aceptar la política de tratamiento de datos para continuar.</span> @enderror
