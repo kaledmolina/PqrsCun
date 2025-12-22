@@ -13,6 +13,9 @@ class CreatePqrs extends Component
     // Propiedades públicas
     public $successCun = '';
     public $attachments = [];
+    public $previous_cun = '';
+    public $validPreviousCun = false;
+    public $parentPqrsId = null;
     
     // Datos del formulario
     public $data = [
@@ -83,15 +86,28 @@ class CreatePqrs extends Component
 
     protected function rules()
     {
-        return [
+        $rules = [
+            'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
+            'data.previous_cun' => 'required_if:data.type,recurso_subsidio',
+            'data.description' => 'required',
+            'data.data_treatment_accepted' => 'accepted',
+            'data.authorize_email_documents' => 'boolean',
+            'attachments.*' => 'nullable|file|max:51200', // 50MB max
+            'data.typology' => 'required_if:data.type,queja_reclamo',
+            'data.sub_typology' => 'required_if:data.type,queja_reclamo',
+        ];
+
+        // If it's NOT a valid resource subsidy flow (which implies data is auto-filled)
+        // OR checks for validity are done manually. 
+        // Logic: If recurso_subsidio is selected, we rely on parent data, so these fields are technically present in $data but hidden.
+        // We generally keep validation to ensure data integrity, assuming autofill works.
+        
+        $rules = array_merge($rules, [
             'data.contract_number' => 'nullable|max:255',
             'data.document_type' => 'required|in:CC,TI,CE,NIT,PAS',
             'data.document_number' => 'required|max:255',
             'data.first_name' => 'required|max:255',
             'data.last_name' => $this->data['document_type'] === 'NIT' ? 'nullable|max:255' : 'required|max:255',
-            'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
-            'data.typology' => 'required_if:data.type,queja_reclamo',
-            'data.sub_typology' => 'required_if:data.type,queja_reclamo',
             'data.services' => 'nullable|array',
             'data.email' => 'nullable|email|confirmed|max:255',
             'data.phone' => 'nullable|max:255',
@@ -99,12 +115,9 @@ class CreatePqrs extends Component
             'data.city' => 'required|max:255',
             'data.landline' => 'nullable|max:255',
             'data.motive' => 'nullable|max:255',
-            'data.description' => 'required',
-            'data.data_treatment_accepted' => 'accepted',
-            'data.authorize_email_documents' => 'boolean',
-            'data.authorize_email_documents' => 'boolean',
-            'attachments.*' => 'nullable|file|max:51200', // 50MB max
-        ];
+        ]);
+
+        return $rules;
     }
 
     protected $validationAttributes = [
@@ -125,6 +138,7 @@ class CreatePqrs extends Component
         'data.description' => 'descripción de la solicitud',
         'data.data_treatment_accepted' => 'política de tratamiento de datos',
         'attachments' => 'archivos adjuntos',
+        'previous_cun' => 'CUN anterior',
     ];
 
     protected $messages = [
@@ -134,7 +148,63 @@ class CreatePqrs extends Component
         'in' => 'El seleccionado en :attribute no es válido.',
         'accepted' => 'Debes aceptar :attribute para continuar.',
         'confirmed' => 'La confirmación de :attribute no coincide.',
+        'required_if' => 'El campo :attribute es obligatorio cuando el tipo es :value.',
     ];
+
+    // Listen for updates to previous_cun
+    public function updatedPreviousCun()
+    {
+        $this->validatePreviousCun();
+    }
+
+    public function validatePreviousCun()
+    {
+        if (empty($this->previous_cun)) {
+            $this->validPreviousCun = false;
+            $this->parentPqrsId = null;
+            return;
+        }
+
+        $parentPqrs = Pqrs::where('cun', $this->previous_cun)->first();
+
+        // Validate existence and status
+        if (!$parentPqrs) {
+            $this->addError('previous_cun', 'El CUN ingresado no existe.');
+            $this->validPreviousCun = false;
+            $this->parentPqrsId = null;
+            return;
+        }
+
+        // Check if resolved or closed (logic: 15 business days passed or status is finalized)
+        // For now, checking status is safer + assumption mentioned in prompt
+        if (!in_array($parentPqrs->status, ['resolved', 'closed'])) {
+             // Optional: check deadline_at < now() if status isn't reliable enough
+            $this->addError('previous_cun', 'El PQR asociado debe estar cerrado o resuelto.');
+            $this->validPreviousCun = false;
+            $this->parentPqrsId = null;
+            return;
+        }
+
+        // Autofill data
+        $this->validPreviousCun = true;
+        $this->parentPqrsId = $parentPqrs->id;
+        
+        $this->data['first_name'] = $parentPqrs->first_name;
+        $this->data['last_name'] = $parentPqrs->last_name;
+        $this->data['document_type'] = $parentPqrs->document_type;
+        $this->data['document_number'] = $parentPqrs->document_number;
+        $this->data['email'] = $parentPqrs->email;
+        $this->data['email_confirmation'] = $parentPqrs->email;
+        $this->data['phone'] = $parentPqrs->phone;
+        $this->data['landline'] = $parentPqrs->landline;
+        $this->data['address'] = $parentPqrs->address;
+        $this->data['city'] = $parentPqrs->city;
+        $this->data['contract_number'] = $parentPqrs->contract_number;
+        $this->data['services'] = $parentPqrs->services ?? [];
+        
+        // Clear errors if any
+        $this->resetErrorBag('previous_cun');
+    }
 
     // Helper to generate CUN
     private function generateCun()
@@ -168,6 +238,14 @@ class CreatePqrs extends Component
 
     public function save()
     {
+        // Special validation trigger for Recurso
+        if ($this->data['type'] === 'recurso_subsidio') {
+            $this->validatePreviousCun();
+            if (!$this->validPreviousCun) {
+                return; // Stop if invalid
+            }
+        }
+
         $this->validate();
 
         $cun = $this->generateCun();
@@ -199,19 +277,16 @@ class CreatePqrs extends Component
             'status' => 'pending',
             'data_treatment_accepted' => $this->data['data_treatment_accepted'] ?? false,
             'authorize_email_documents' => $this->data['authorize_email_documents'] ?? false,
-            'cun' => $cun,
-            'status' => 'pending',
-            'data_treatment_accepted' => $this->data['data_treatment_accepted'] ?? false,
-            'authorize_email_documents' => $this->data['authorize_email_documents'] ?? false,
             'typology' => $this->data['typology'] ?? null,
             'sub_typology' => $this->data['sub_typology'] ?? null,
+            'parent_pqrs_id' => $this->parentPqrsId, // Link original PQR
         ]);
 
         // Guardar el CUN generado para mostrarlo en la vista
         $this->successCun = $cun;
         
         // Reset form data and attachments
-        $this->reset(['data', 'attachments']);
+        $this->reset(['data', 'attachments', 'previous_cun', 'validPreviousCun', 'parentPqrsId']);
         
         // Re-inicializar valores por defecto después del reset
         $this->data = [
@@ -233,6 +308,9 @@ class CreatePqrs extends Component
             'motive' => '',
             'description' => '',
             'data_treatment_accepted' => false,
+            'authorize_email_documents' => false,
+            'typology' => '',
+            'sub_typology' => '',
         ];
     }
     

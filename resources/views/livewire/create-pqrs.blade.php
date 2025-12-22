@@ -43,54 +43,93 @@
                     <!-- Form -->
                     <form wire:submit="save" class="space-y-8">
                         <div class="space-y-6">
-                            <!-- Row 1 -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Código de contrato</label>
-                                    <input type="text" wire:model="data.contract_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
-                                    @error('data.contract_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
-                                </div>
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Tipo de documento de Identidad o de tu empresa *</label>
-                                    <div class="relative">
-                                        <select wire:model.live="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
-                                            <option value="">Selecciona...</option>
-                                            <option value="CC">Cédula de ciudadanía</option>
-                                            <option value="TI">Tarjeta de Identidad</option>
-                                            <option value="CE">Cédula de Extranjería</option>
-                                            <option value="NIT">NIT</option>
-                                            <option value="PAS">Pasaporte</option>
-                                        </select>
-                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <!-- Conditional Personal Data Sections -->
+                            @if($validPreviousCun)
+                                <!-- Loaded Data Summary -->
+                                <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6 animate-fade-in">
+                                    <div class="flex items-start gap-4">
+                                        <div class="p-3 bg-blue-100 rounded-lg text-blue-600">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold text-slate-800 text-lg mb-1">Datos del Solicitante (Cargados del CUN Anterior)</h3>
+                                            <p class="text-slate-600 text-sm mb-4">La información ha sido recuperada exitosamente.</p>
+                                            
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
+                                                <div>
+                                                    <span class="block text-slate-500 text-xs uppercase tracking-wider">Nombre</span>
+                                                    <span class="font-medium text-slate-900">{{ $data['first_name'] }} {{ $data['last_name'] }}</span>
+                                                </div>
+                                                <div>
+                                                    <span class="block text-slate-500 text-xs uppercase tracking-wider">Documento</span>
+                                                    <span class="font-medium text-slate-900">{{ $data['document_type'] }} - {{ $data['document_number'] }}</span>
+                                                </div>
+                                                <div>
+                                                    <span class="block text-slate-500 text-xs uppercase tracking-wider">Correo</span>
+                                                    <span class="font-medium text-slate-900">{{ $data['email'] }}</span>
+                                                </div>
+                                                <div>
+                                                    <span class="block text-slate-500 text-xs uppercase tracking-wider">Celular</span>
+                                                    <span class="font-medium text-slate-900">{{ $data['phone'] }}</span>
+                                                </div>
+                                                <div class="col-span-1 md:col-span-2">
+                                                    <span class="block text-slate-500 text-xs uppercase tracking-wider">Dirección</span>
+                                                    <span class="font-medium text-slate-900">{{ $data['address'] }}, {{ $data['city'] }}</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    @error('data.document_type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
-                            </div>
-
-                            <!-- Row 2 -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1 {{ $errors->has('data.document_number') ? 'text-red-500' : '' }}">Número de documento *</label>
-                                    <input type="text" wire:model="data.document_number" class="w-full px-4 py-3 bg-white border {{ $errors->has('data.document_number') ? 'border-red-500' : 'border-slate-200' }} rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
-                                    @error('data.document_number') <span class="text-red-500 text-sm mt-1 block">El campo número de documento es obligatorio</span> @enderror
-                                </div>
-                                <div class="group">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Tu nombre o razón social de empresa *</label>
-                                    <input type="text" wire:model="data.first_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
-                                    @error('data.first_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
-                                </div>
-                                @if($data['document_type'] !== 'NIT')
+                            @else
+                                <!-- Row 1 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div class="group">
-                                        <label class="block text-sm font-medium text-slate-600 mb-1">Apellidos *</label>
-                                        <input type="text" wire:model="data.last_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
-                                        @error('data.last_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Código de contrato</label>
+                                        <input type="text" wire:model="data.contract_number" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                        @error('data.contract_number') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                     </div>
-                                @endif
-                            </div>
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Tipo de documento de Identidad o de tu empresa *</label>
+                                        <div class="relative">
+                                            <select wire:model.live="data.document_type" class="w-full pl-4 pr-10 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all appearance-none cursor-pointer text-slate-700 shadow-sm">
+                                                <option value="">Selecciona...</option>
+                                                <option value="CC">Cédula de ciudadanía</option>
+                                                <option value="TI">Tarjeta de Identidad</option>
+                                                <option value="CE">Cédula de Extranjería</option>
+                                                <option value="NIT">NIT</option>
+                                                <option value="PAS">Pasaporte</option>
+                                            </select>
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            </div>
+                                        </div>
+                                        @error('data.document_type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    </div>
+                                </div>
 
-                            <!-- Row 3 -->
+                                <!-- Row 2 -->
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-slate-600 mb-1 {{ $errors->has('data.document_number') ? 'text-red-500' : '' }}">Número de documento *</label>
+                                        <input type="text" wire:model="data.document_number" class="w-full px-4 py-3 bg-white border {{ $errors->has('data.document_number') ? 'border-red-500' : 'border-slate-200' }} rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                        @error('data.document_number') <span class="text-red-500 text-sm mt-1 block">El campo número de documento es obligatorio</span> @enderror
+                                    </div>
+                                    <div class="group">
+                                        <label class="block text-sm font-medium text-slate-600 mb-1">Tu nombre o razón social de empresa *</label>
+                                        <input type="text" wire:model="data.first_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                        @error('data.first_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                    </div>
+                                    @if($data['document_type'] !== 'NIT')
+                                        <div class="group">
+                                            <label class="block text-sm font-medium text-slate-600 mb-1">Apellidos *</label>
+                                            <input type="text" wire:model="data.last_name" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
+                                            @error('data.last_name') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
+
+                            <!-- Row 3: Type Selection -->
                             <div class="group">
                                 <label class="block text-sm font-medium text-slate-600 mb-1">¿Presentar una petición, queja / reclamo o recurso? *</label>
                                 <div class="relative">
@@ -107,6 +146,29 @@
                                 </div>
                                 @error('data.type') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                             </div>
+
+                            <!-- Row 3.1: Previous CUN for Recurso -->
+                            @if($data['type'] === 'recurso_subsidio')
+                                <div class="group animate-fade-in">
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">Código CUN Anterior (Resuelto o Cerrado) *</label>
+                                    <div class="relative">
+                                        <input type="text" wire:model.blur="previous_cun" placeholder="Ej: PQR-25-0000000001" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm {{ $validPreviousCun ? 'border-green-500 ring-1 ring-green-500' : '' }}">
+                                        @if($validPreviousCun)
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-3 text-green-500">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                            </div>
+                                        @endif
+                                    </div>
+                                    
+                                    @error('previous_cun') 
+                                        <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> 
+                                    @enderror
+                                    
+                                    <p class="text-xs text-slate-500 mt-2">
+                                        Debes ingresar el CUN de una PQR anterior que ya haya sido resuelta o cerrada. Los datos personales se cargarán automáticamente.
+                                    </p>
+                                </div>
+                            @endif
 
                             @if($data['type'] === 'queja_reclamo')
                                 <!-- Row 3.5 Typologies -->
@@ -148,6 +210,7 @@
                             @endif
 
                             <!-- Row 4 -->
+                            @if(!$validPreviousCun)
                             <div class="group">
                                 <label class="block text-sm font-medium text-slate-600 mb-3">Selecciona el servicio Objeto de la PQR:</label>
                                 <div class="flex flex-wrap gap-6">
@@ -219,6 +282,7 @@
                                     @error('data.landline') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
                                 </div>
                             </div>
+                            @endif
 
                             <!-- Row 8 -->
                             <div class="group">
@@ -304,7 +368,11 @@
                             </button>
                         </div>
                          <div class="text-[10px] text-justify text-slate-400 leading-tight mt-4">
-                            De conformidad con lo dispuesto en la regulación vigente, INTALNET TELECOMUNICACIONES, informa al usuario que las PQRS presentados, serán atendidos y resueltos mediante una respuesta clara, completa y de fondo dentro de un término máximo de quince (15) días hábiles, contados a partir del día hábil siguiente a la fecha de su radicación. Si su PQR no es atendida en la fecha indicada, se entenderá que ha sido resuelta a su favor. (Esto se llama Silencio Administrativo Positivo). RECURSOS. Dentro de los 10 días hábiles siguientes a la notificación de la decisión y cuando INTALNET TELECOMUNICACIONES NO resuelva a su favor la petición o queja, en relación con actos de negativa del contrato, suspensión del servicio, terminación del contrato, corte y facturación, Ud, tendrá derecho a solicitar que se reconsidere la decisión tomada, a través de la presentación de recursos en cualquiera de los canales de atención, teniendo la opción de presentar RECURSO DE REPOSICIÓN bajo el cual solicita a INTALNET TELECOMUNICACIONES, que revise nuevamente la decisión o RECURSO DE REPOSICION Y EN SUBSIDIO APELACION para que INTALNET TELECOMUNICACIONES revise la decisión y si no se accede a lo solicitado remita el expediente a la Superintendencia de Industria y Comercio (SIC) para que esta entidad revise y adopte una decisión final y definitiva. Para estos efectos, INTALNET TELECOMUNICACIONES, tiene habilitados los siguientes canales de atención: Teléfono de Atención al Cliente 3148042601, correo electrónico pqr@intalnet.com, y la página web https://intalnettelecomunicaciones.com/, a través de los cuales el usuario podrá radicar sus solicitudes y hacer seguimiento a las mismas.
+                            @if($data['type'] === 'recurso_subsidio')
+                                De conformidad con lo dispuesto en la regulación vigente, INTALNET TELECOMUNICACIONES, informa al usuario que su recurso será resuelto de fondo dentro de un término máximo de quince (15) días hábiles, contados a partir del día hábil siguiente a la fecha de su radicación. Si su recurso de reposición no es atendido en la fecha indicada, se entenderá que ha sido resuelto a su favor. (Esto se llama Silencio Administrativo Positivo). RECURSO DE REPOSICIÓN bajo el cual solicita a INTALNET TELECOMUNICACIONES, que revise nuevamente la decisión o RECURSO DE REPOSICION Y EN SUBSIDIO APELACION para que INTALNET TELECOMUNICACIONES revise la decisión y si no se accede a lo solicitado remita el expediente a la Superintendencia de Industria y Comercio (SIC) para que esta entidad revise y adopte una decisión final y definitiva. Para estos efectos, INTALNET TELECOMUNICACIONES, tiene habilitados los siguientes canales de atención: Teléfono de Atención al Cliente 3148042601, correo electrónico pqr@intalnet.com, y la página web https://intalnettelecomunicaciones.com/, a través de los cuales el usuario podrá radicar sus solicitudes y hacer seguimiento a las mismas.
+                            @else
+                                De conformidad con lo dispuesto en la regulación vigente, INTALNET TELECOMUNICACIONES, informa al usuario que las PQRS presentados, serán atendidos y resueltos mediante una respuesta clara, completa y de fondo dentro de un término máximo de quince (15) días hábiles, contados a partir del día hábil siguiente a la fecha de su radicación. Si su PQR no es atendida en la fecha indicada, se entenderá que ha sido resuelta a su favor. (Esto se llama Silencio Administrativo Positivo). RECURSOS. Dentro de los 10 días hábiles siguientes a la notificación de la decisión y cuando INTALNET TELECOMUNICACIONES NO resuelva a su favor la petición o queja, en relación con actos de negativa del contrato, suspensión del servicio, terminación del contrato, corte y facturación, Ud, tendrá derecho a solicitar que se reconsidere la decisión tomada, a través de la presentación de recursos en cualquiera de los canales de atención, teniendo la opción de presentar RECURSO DE REPOSICIÓN bajo el cual solicita a INTALNET TELECOMUNICACIONES, que revise nuevamente la decisión o RECURSO DE REPOSICION Y EN SUBSIDIO APELACION para que INTALNET TELECOMUNICACIONES revise la decisión y si no se accede a lo solicitado remita el expediente a la Superintendencia de Industria y Comercio (SIC) para que esta entidad revise y adopte una decisión final y definitiva. Para estos efectos, INTALNET TELECOMUNICACIONES, tiene habilitados los siguientes canales de atención: Teléfono de Atención al Cliente 3148042601, correo electrónico pqr@intalnet.com, y la página web https://intalnettelecomunicaciones.com/, a través de los cuales el usuario podrá radicar sus solicitudes y hacer seguimiento a las mismas.
+                            @endif
                         </div>
 
                     </form>

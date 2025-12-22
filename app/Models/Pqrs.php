@@ -39,6 +39,7 @@ class Pqrs extends Model
         'authorize_email_documents',
         'typology',
         'sub_typology',
+        'parent_pqrs_id',
     ];
 
     protected $casts = [
@@ -92,5 +93,10 @@ class Pqrs extends Model
     public function attendants()
     {
         return $this->hasMany(PqrsAttendant::class);
+    }
+
+    public function parentPqrs()
+    {
+        return $this->belongsTo(Pqrs::class, 'parent_pqrs_id');
     }
 }
