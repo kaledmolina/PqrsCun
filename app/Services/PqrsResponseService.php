@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Pqrs;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class PqrsResponseService
 {
@@ -28,20 +29,23 @@ class PqrsResponseService
 
     public function getOfficialResponseTemplate(Pqrs $pqrs, string $type): string
     {
-        $name = $pqrs->first_name . ' ' . $pqrs->last_name;
-        $cun = $pqrs->cun;
-        $date = now()->format('d/m/Y');
+        // For distinct bodies per type, we can pass distinct 'response body' placeholders or text
+        // But the user template request implies a unified structure.
+        // I will use specific response body placeholders for each type if helpful, 
+        // or just a generic placeholder if that corresponds better to the request.
+        // The user provided examples: "Según revisión técnica...", etc.
         
-        return match ($type) {
-            'peticion' => $this->getOfficialPeticionTemplate($name, $cun, $date, $pqrs->city),
-            'queja_reclamo' => $this->getOfficialQuejaTemplate($name, $cun, $date, $pqrs->city), // Using Queja template for unified type for now
-            'queja' => $this->getOfficialQuejaTemplate($name, $cun, $date, $pqrs->city),
-            'reclamo' => $this->getOfficialReclamoTemplate($name, $cun, $date, $pqrs->city),
-            'sugerencia' => $this->getOfficialSugerenciaTemplate($name, $cun, $date, $pqrs->city),
-            'reposicion' => $this->getOfficialReposicionTemplate($name, $cun, $date, $pqrs->city),
-            'apelacion' => $this->getOfficialApelacionTemplate($name, $cun, $date, $pqrs->city),
-            default => '',
+        $placeholders = match ($type) {
+            'peticion' => "En respuesta de fondo: [ESCRIBA AQUÍ LA RESPUESTA A LA PETICIÓN]",
+            'queja_reclamo', 'queja' => "Según revisión técnica realizada el día [fecha], se evidenció que... [describir hallazgo y acciones correctivas]",
+            'reclamo' => "Según revisión técnica realizada el día [fecha], se evidenció que... [describir hallazgo y acciones correctivas]",
+            'sugerencia' => "Hemos remitido su observación al área encargada... [ESCRIBA AQUÍ LA GESTIÓN]",
+            'reposicion' => "Hemos revisado nuevamente los hechos... [DECISIÓN FINAL: CONFIRMA, MODIFICA O REVOCA]",
+            'apelacion' => "El caso ha sido revisado por la instancia superior... [DECISIÓN DE SEGUNDA INSTANCIA]",
+            default => "[ESCRIBA AQUÍ LA RESPUESTA]",
         };
+
+        return $this->getUnifiedOfficialResponseTemplate($pqrs, $placeholders);
     }
 
     public function generatePdf(string $content, Pqrs $pqrs): string
@@ -83,102 +87,65 @@ class PqrsResponseService
 
     // --- Official Response Templates (Final Decision) ---
 
-    protected function getOfficialPeticionTemplate($name, $cun, $date, $city): string
+    protected function getUnifiedOfficialResponseTemplate(Pqrs $pqrs, string $responseBodyPlaceholder): string
     {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Oficial a Petición CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>En atención a su petición radicada en nuestro sistema, nos permitimos informarle que hemos procesado su solicitud de acuerdo con los términos establecidos por la ley.</p>
-            <p><strong>Respuesta de fondo:</strong></p>
-            <p>[ESCRIBA AQUÍ LA RESPUESTA DETALLADA A LA PETICIÓN]</p>
-            <p>Esperamos haber resuelto su inquietud de manera satisfactoria.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
+        // Formatting dates and data
+        Carbon::setLocale('es');
+        $city = $pqrs->city ?? 'Montería';
+        $now = now()->isoFormat('D [de] MMMM [de] YYYY'); // e.g., 22 de Diciembre de 2025
+        $fullDate = "$city, $now";
+        
+        $name = $pqrs->first_name . ' ' . $pqrs->last_name;
+        $address = $pqrs->address ?? '[Dirección del usuario]';
+        $contract = $pqrs->contract_number ?? '[Número]';
+        $email = $pqrs->email ?? '[Correo]';
+        $cun = $pqrs->cun;
+        $createdDate = $pqrs->created_at ? $pqrs->created_at->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha recibida]';
+        
+        // Handling description safely
+        $description = $pqrs->description ?? '[describir brevemente la queja, petición o reclamo]';
 
-    protected function getOfficialQuejaTemplate($name, $cun, $date, $city): string
-    {
         return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Oficial a Queja CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Hemos recibido su queja respecto a la inconformidad manifestada. Lamentamos los inconvenientes causados y le informamos que hemos tomado las medidas correctivas necesarias.</p>
-            <p><strong>Acciones tomadas:</strong></p>
-            <p>[ESCRIBA AQUÍ LAS ACCIONES TOMADAS Y LA RESPUESTA A LA QUEJA]</p>
-            <p>Agradecemos su retroalimentación para mejorar nuestro servicio.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
+            <p>$fullDate</p>
+            <p>Señor(a):<br>
+            <strong>$name</strong><br>
+            Dirección: $address<br>
+            Número de suscriptor: $contract<br>
+            Correo electrónico: $email</p>
 
-    protected function getOfficialReclamoTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Oficial a Reclamo CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>En respuesta a su reclamo sobre la falla en la prestación del servicio, le informamos que hemos realizado la revisión técnica y administrativa correspondiente.</p>
-            <p><strong>Resultado de la revisión:</strong></p>
-            <p>[ESCRIBA AQUÍ EL RESULTADO TÉCNICO/ADMINISTRATIVO Y LA SOLUCIÓN]</p>
-            <p>Quedamos atentos a cualquier inquietud adicional.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
+            <p><strong>Asunto:</strong> Respuesta a PQR presentada por el usuario<br>
+            <strong>Referencia:</strong> PQR radicada No. $cun, recibida el día $createdDate</p>
 
-    protected function getOfficialSugerenciaTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Oficial a Sugerencia Radicado No. $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Agradecemos sinceramente su sugerencia. Para nosotros es muy importante conocer la opinión de nuestros usuarios para fortalecer nuestros procesos.</p>
-            <p>Hemos remitido su observación al área encargada para su evaluación.</p>
-            <p><strong>Gestión realizada:</strong></p>
-            <p>[ESCRIBA AQUÍ LA GESTIÓN O ANÁLISIS DE LA SUGERENCIA]</p>
-            <p>Gracias por ayudarnos a mejorar.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
+            <p>Agradecemos su comunicación y el interés en mejorar nuestro servicio. INTALNET TELECOMUNICACIONES, reafirma su compromiso con la atención oportuna y técnica de cada uno de los requerimientos de nuestros usuarios.</p>
 
-    protected function getOfficialReposicionTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Oficial a Recurso de Reposición CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Procedemos a dar respuesta al recurso de reposición interpuesto por usted frente a la decisión inicial tomada por la empresa.</p>
-            <p>Hemos revisado nuevamente los hechos y pruebas aportadas.</p>
-            <p><strong>Decisión final:</strong></p>
-            <p>[ESCRIBA AQUÍ LA DECISIÓN FINAL: CONFIRMA, MODIFICA O REVOCA]</p>
-            <p>Contra esta decisión procede el recurso de apelación.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
-        ";
-    }
+            <h3>1. ANTECEDENTES.</h3>
+            <p>En atención a la PQR radicada por el(la) señor(a) $name el día $createdDate, mediante la cual manifestó que, $description, la empresa INTALNET TELECOMUNICACIONES, en cumplimiento de lo establecido en la normatividad vigente, procede a emitir respuesta dentro de los términos legales establecidos para tal fin.</p>
 
-    protected function getOfficialApelacionTemplate($name, $cun, $date, $city): string
-    {
-        return "
-            <p><strong>Ciudad y Fecha:</strong> $city, $date</p>
-            <p><strong>Señor(a):</strong> $name</p>
-            <p><strong>Referencia:</strong> Respuesta Oficial a Recurso de Apelación CUN $cun</p>
-            <p>Cordial saludo,</p>
-            <p>Procedemos a dar respuesta al recurso de apelación interpuesto por usted.</p>
-            <p>El caso ha sido revisado por la instancia superior correspondiente.</p>
-            <p><strong>Decisión de segunda instancia:</strong></p>
-            <p>[ESCRIBA AQUÍ LA DECISIÓN DE SEGUNDA INSTANCIA]</p>
-            <p>Con esta decisión se agota la vía gubernativa.</p>
-            <p>Atentamente,</p>
-            <p><strong>Intalnet Área Servicio al Cliente</strong></p>
+            <h3>2. RESPUESTA.</h3>
+            <p>Luego de realizar la verificación correspondiente en los sistemas internos y con el área encargada, nos permitimos informar lo siguiente:</p>
+            <p>$responseBodyPlaceholder</p>
+            <p>En caso de que se requieran acciones adicionales o una visita técnica, se dejará establecido en este punto.</p>
+            <p>Adjunto encontrará el documento [nombre del archivo] (si aplica), donde se evidencia [indicar que contiene].</p>
+
+            <h3>3. RECURSOS Y CANALES DE CONTACTO.</h3>
+            <p>En caso de no estar de acuerdo con la respuesta que le hemos dado, puede presentar ante nosotros recurso de reposición o recurso de reposición y en subsidio de apelación dentro de los diez (10) días hábiles siguientes a la notificación de esta decisión. Lo puede hacer a través de nuestros canales oficiales: correo electrónico: pqr@intalnet.com, teléfono de Atención al Cliente: 314 8042601, o mediante nuestra página web <a href=\"https://intalnettelecomunicaciones.com/\">https://intalnettelecomunicaciones.com/</a>.</p>
+
+            <p>Por favor tenga en cuenta que el recurso de reposición es la solicitud para que el operador revise nuevamente su decisión dentro de los 15 días hábiles siguientes a su radicación, si transcurrido este término el operador no ha resuelto dicho recurso, se entenderá que su solicitud o reclamación ha sido resuelta de forma favorable (Silencio Administrativo Positivo).</p>
+
+            <p>Por su parte, el recurso de reposición y en subsidio apelación es la solicitud para que el operador revise nuevamente su decisión y, en caso de que la respuesta al recurso de reposición sea desfavorable, el expediente sea remitido a la Superintendencia de Industria y Comercio para que dicha Autoridad, decida de fondo.</p>
+
+            <p>Atentamente;</p>
+
+            <br><br>
+            <p>__________________________________<br>
+            <strong>ANGELA MARIA SEJIN M.</strong><br>
+            Gerente General<br>
+            INTALNET TELECOMUNICACIONES<br>
+            Correo: servicioalcliente@intalnet.com<br>
+            Teléfono: +57 314 8042601<br>
+            Anexos (si aplica):<br>
+            [Listado de documentos enviados con la respuesta]</p>
         ";
     }
 }
+
