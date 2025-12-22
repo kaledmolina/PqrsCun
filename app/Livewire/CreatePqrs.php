@@ -99,24 +99,23 @@ class CreatePqrs extends Component
         ];
 
         // If it's NOT a valid resource subsidy flow (which implies data is auto-filled)
-        // OR checks for validity are done manually. 
-        // Logic: If recurso_subsidio is selected, we rely on parent data, so these fields are technically present in $data but hidden.
-        // We generally keep validation to ensure data integrity, assuming autofill works.
-        
-        $rules = array_merge($rules, [
-            'data.contract_number' => 'nullable|max:255',
-            'data.document_type' => 'required|in:CC,TI,CE,NIT,PAS',
-            'data.document_number' => 'required|max:255',
-            'data.first_name' => 'required|max:255',
-            'data.last_name' => $this->data['document_type'] === 'NIT' ? 'nullable|max:255' : 'required|max:255',
-            'data.services' => 'nullable|array',
-            'data.email' => 'nullable|email|confirmed|max:255',
-            'data.phone' => 'nullable|max:255',
-            'data.address' => 'required|max:255',
-            'data.city' => 'required|max:255',
-            'data.landline' => 'nullable|max:255',
-            'data.motive' => 'nullable|max:255',
-        ]);
+        // We only require full validation if the user is manually entering data.
+        if (($this->data['type'] ?? '') !== 'recurso_subsidio') {
+            $rules = array_merge($rules, [
+                'data.contract_number' => 'nullable|max:255',
+                'data.document_type' => 'required|in:CC,TI,CE,NIT,PAS',
+                'data.document_number' => 'required|max:255',
+                'data.first_name' => 'required|max:255',
+                'data.last_name' => $this->data['document_type'] === 'NIT' ? 'nullable|max:255' : 'required|max:255',
+                'data.services' => 'nullable|array',
+                'data.email' => 'nullable|email|confirmed|max:255',
+                'data.phone' => 'nullable|max:255',
+                'data.address' => 'required|max:255',
+                'data.city' => 'required|max:255',
+                'data.landline' => 'nullable|max:255',
+                'data.motive' => 'nullable|max:255',
+            ]);
+        }
 
         return $rules;
     }
