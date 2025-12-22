@@ -147,6 +147,7 @@ class PqrsResource extends Resource
                         'sugerencia' => 'success',
                         'reposicion' => 'danger',
                         'apelacion' => 'danger',
+                        'recurso_subsidio' => 'danger',
                     }),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label('Client')
