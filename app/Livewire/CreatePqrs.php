@@ -271,7 +271,7 @@ class CreatePqrs extends Component
         }
 
         // Map $this->data to individual properties for Pqrs::create
-        Pqrs::create([
+        $pqrs = Pqrs::create([
             'type' => $this->data['type'] ?? '',
             'first_name' => $this->data['first_name'] ?? '',
             'last_name' => $this->data['last_name'] ?? '',
@@ -295,6 +295,38 @@ class CreatePqrs extends Component
             'sub_typology' => $this->data['sub_typology'] ?? null,
             'parent_pqrs_id' => $this->parentPqrsId, // Link original PQR
         ]);
+
+        // --- Automatic Quick Response ---
+        try {
+            $service = new \App\Services\PqrsResponseService();
+            $content = $service->getQuickResponseTemplate($pqrs, $pqrs->type);
+            
+            // Generate PDF
+            $pdfPath = $service->generatePdf($content, $pqrs);
+            
+            // Create Message (System/Admin role)
+            $pqrs->messages()->create([
+                'role' => 'admin',
+                'content' => $content,
+                'attachments' => [$pdfPath],
+            ]);
+
+            // Update Status
+            $pqrs->update(['status' => 'in_progress']);
+
+            // Send Email
+            if ($pqrs->email) {
+                \Illuminate\Support\Facades\Mail::to($pqrs->email)->send(new \App\Mail\PqrsResponseMail(
+                    $pqrs,
+                    $content,
+                    [$pdfPath],
+                    'Confirmación de Radicación de PQR – Intalnet Telecomunicaciones'
+                ));
+            }
+        } catch (\Exception $e) {
+            // Log error but allow flow to continue so the user sees the success CUN
+            \Illuminate\Support\Facades\Log::error('Error sending auto-response for PQR ' . $cun . ': ' . $e->getMessage());
+        }
 
         // Guardar el CUN generado para mostrarlo en la vista
         $this->successCun = $cun;
