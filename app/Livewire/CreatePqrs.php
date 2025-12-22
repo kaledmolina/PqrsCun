@@ -88,9 +88,8 @@ class CreatePqrs extends Component
     {
         $rules = [
             'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
-            'data.previous_cun' => 'required_if:data.type,recurso_subsidio',
+            'previous_cun' => 'required_if:data.type,recurso_subsidio',
             'data.description' => 'required',
-            'data.type' => 'required|in:peticion,queja_reclamo,peticion,queja,reclamo,sugerencia,recurso_subsidio',
             // Data treatment is required unless type is recurso_subsidio
             'data.data_treatment_accepted' => $this->data['type'] === 'recurso_subsidio' ? 'nullable' : 'accepted',
             'data.authorize_email_documents' => 'boolean',
