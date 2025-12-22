@@ -68,7 +68,7 @@ class PqrsResponseService
 
     protected function getQuickResponseGeneralTemplate($name, $cun, $date, $description): string
     {
-        $responseDate = now()->addWeekdays(15)->format('d/m/Y');
+        $responseDate = $this->addBusinessDays(now(), 15)->format('d/m/Y');
 
         return "
             <p>Estimado(a) <strong>$name</strong>,</p>
@@ -109,7 +109,7 @@ class PqrsResponseService
         $email = $pqrs->email ?? '[Correo]';
         $cun = $pqrs->cun;
         $createdDate = $pqrs->created_at ? $pqrs->created_at->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha recibida]';
-        $responseDate = $pqrs->created_at ? $pqrs->created_at->addWeekdays(15)->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha calculada]';
+        $responseDate = $pqrs->created_at ? $this->addBusinessDays($pqrs->created_at->copy(), 15)->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha calculada]';
         
         // Handling description safely
         $description = $pqrs->description ?? '[describir brevemente la queja, petición o reclamo]';
@@ -162,6 +162,54 @@ class PqrsResponseService
                 De conformidad con lo dispuesto en la regulación vigente, INTALNET TELECOMUNICACIONES, informa al usuario que las PQRS presentados, serán atendidos y resueltos mediante una respuesta clara, completa y de fondo dentro de un término máximo de quince (15) días hábiles, contados a partir del día hábil siguiente a la fecha de su radicación. Si su PQR no es atendida en la fecha indicada, se entenderá que ha sido resuelta a su favor. (Esto se llama Silencio Administrativo Positivo). RECURSOS. Dentro de los 10 días hábiles siguientes a la notificación de la decisión y cuando INTALNET TELECOMUNICACIONES NO resuelva a su favor la petición o queja, en relación con actos de negativa del contrato, suspensión del servicio, terminación del contrato, corte y facturación, Ud, tendrá derecho a solicitar que se reconsidere la decisión tomada, a través de la presentación de recursos en cualquiera de los canales de atención, teniendo la opción de presentar RECURSO DE REPOSICIÓN bajo el cual solicita a INTALNET TELECOMUNICACIONES, que revise nuevamente la decisión o RECURSO DE REPOSICION Y EN SUBSIDIO APELACION para que INTALNET TELECOMUNICACIONES revise la decisión y si no se accede a lo solicitado remita el expediente a la Superintendencia de Industria y Comercio (SIC) para que esta entidad revise y adopte una decisión final y definitiva. Para estos efectos, INTALNET TELECOMUNICACIONES, tiene habilitados los siguientes canales de atención: Teléfono de Atención al Cliente 3148042601, correo electrónico pqr@intalnet.com, y la página web https://intalnettelecomunicaciones.com/, a través de los cuales el usuario podrá radicar sus solicitudes y hacer seguimiento a las mismas.
             </div>
         ";
+    }
+    
+    /**
+     * Calculate business days skipping weekends and Colombian holidays.
+     */
+    protected function addBusinessDays(Carbon $startDate, int $days): Carbon
+    {
+        $date = $startDate->copy();
+        
+        // Colombian Holidays 2024-2026 (Y-m-d)
+        $holidays = [
+            // 2024 (Remaining)
+            '2024-12-08', '2024-12-25',
+            
+            // 2025
+            '2025-01-01', '2025-01-06', '2025-03-24', 
+            '2025-04-17', '2025-04-18', '2025-05-01', 
+            '2025-06-02', '2025-06-23', '2025-06-30', 
+            '2025-07-20', '2025-08-07', '2025-08-18', 
+            '2025-10-13', '2025-11-03', '2025-11-17', 
+            '2025-12-08', '2025-12-25',
+
+            // 2026
+            '2026-01-01', '2026-01-12', '2026-03-23', 
+            '2026-04-02', '2026-04-03', '2026-05-01', 
+            '2026-05-18', '2026-06-08', '2026-06-15', 
+            '2026-06-29', '2026-07-20', '2026-08-07', 
+            '2026-08-17', '2026-10-12', '2026-11-02', 
+            '2026-11-16', '2026-12-08', '2026-12-25',
+        ];
+
+        while ($days > 0) {
+            $date->addDay();
+            
+            // Check if weekend (Saturday or Sunday)
+            if ($date->isWeekend()) {
+                continue;
+            }
+
+            // Check if holiday
+            if (in_array($date->format('Y-m-d'), $holidays)) {
+                continue;
+            }
+
+            $days--;
+        }
+
+        return $date;
     }
 }
 
