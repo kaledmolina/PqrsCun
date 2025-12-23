@@ -64,9 +64,9 @@ class PqrsResponseService
         $fileName = 'respuesta_' . $pqrs->cun . '_' . time() . '.pdf';
         $path = 'pqrs_responses/' . $fileName;
 
-        // Save to 'local' disk (storage/app) in 'private' folder
-        // PqrsResponseMail expects path relative to storage/app/private
-        Storage::disk('local')->put('private/' . $path, $pdf->output());
+        // Save to 'local' disk (configured to storage/app/private)
+        // So we don't need to add 'private/' prefix again
+        Storage::disk('local')->put($path, $pdf->output());
 
         return $path;
     }
