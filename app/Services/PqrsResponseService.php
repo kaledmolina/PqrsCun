@@ -96,7 +96,7 @@ class PqrsResponseService
                 <li><strong>Usuario:</strong> $name</li>
                 <li><strong>Descripción del requerimiento:</strong> $description</li>
             </ul>
-            <p>Para consultar el estado de su solicitud, puede ingresar con su código CUN en el siguiente enlace:</p>
+            <p>Para consultar el estado de su solicitud, puede ingresar con su CUN en el siguiente enlace:</p>
             <p><a href=\"https://pqr.intalnet.com\">https://pqr.intalnet.com</a></p>
             <p>Este mensaje es generado automáticamente. Por favor, no responda a este correo.</p>
             <p>Si requiere más información, comuníquese directamente con Intalnet Telecomunicaciones por nuestros canales oficiales.</p>

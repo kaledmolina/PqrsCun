@@ -47,8 +47,8 @@
 <body>
     <div class="header">
         <img src="{{ public_path('images/logo.png') }}" class="logo" alt="Logo CUN">
-        <div class="title">Respuesta Oficial a Solicitud</div>
-        <div>{{ $pqrs->type === 'sugerencia' ? 'Radicado' : 'CUN' }} No. {{ $pqrs->cun }}</div>
+        <div class="title">Respuesta Automática</div>
+        <div>{{ $pqrs->type === 'sugerencia' ? 'Radicado' : 'CUN' }}. {{ $pqrs->cun }}</div>
     </div>
 
     <div class="content">
