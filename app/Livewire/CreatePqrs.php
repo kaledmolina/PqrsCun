@@ -301,25 +301,23 @@ class CreatePqrs extends Component
             $service = new \App\Services\PqrsResponseService();
             $content = $service->getQuickResponseTemplate($pqrs, $pqrs->type);
             
-            // Generate PDF
-            $pdfPath = $service->generatePdf($content, $pqrs);
-            
             // Create Message (System/Admin role)
+            // No PDF generated for automatic receipt acknowledgment
             $pqrs->messages()->create([
                 'role' => 'admin',
                 'content' => $content,
-                'attachments' => [$pdfPath],
+                'attachments' => [], 
             ]);
 
             // Update Status
             $pqrs->update(['status' => 'in_progress']);
 
-            // Send Email
+            // Send Email (without PDF attachment)
             if ($pqrs->email) {
                 \Illuminate\Support\Facades\Mail::to($pqrs->email)->send(new \App\Mail\PqrsResponseMail(
                     $pqrs,
                     $content,
-                    [$pdfPath],
+                    [], // No attachments
                     'Confirmación de Radicación de PQR – Intalnet Telecomunicaciones'
                 ));
             }
