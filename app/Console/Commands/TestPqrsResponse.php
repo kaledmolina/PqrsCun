@@ -91,7 +91,7 @@ class TestPqrsResponse extends Command
                 'PRUEBA DE RESPUESTA PQR - ' . $pqrs->cun
             ));
 
-            $this->success("¡Correo enviado exitosamente!");
+            $this->info("¡Correo enviado exitosamente!");
             $this->newLine();
             $this->line("Verifica la bandeja de entrada de: $email");
             $this->line("El PDF debe estar adjunto y la contraseña es: " . ($pqrs->document_number ?? 'N/A'));
