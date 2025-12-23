@@ -56,10 +56,17 @@ class PqrsResponseService
             'date' => now()->format('d/m/Y'),
         ]);
 
+        // Encryption with user ID (Cédula/NIT)
+        if ($pqrs->document_number) {
+            $pdf->setEncryption($pqrs->document_number);
+        }
+
         $fileName = 'respuesta_' . $pqrs->cun . '_' . time() . '.pdf';
         $path = 'pqrs_responses/' . $fileName;
 
-        Storage::disk('public')->put($path, $pdf->output());
+        // Save to 'local' disk (storage/app) in 'private' folder
+        // PqrsResponseMail expects path relative to storage/app/private
+        Storage::disk('local')->put('private/' . $path, $pdf->output());
 
         return $path;
     }
@@ -121,7 +128,7 @@ class PqrsResponseService
             $type = pathinfo($signaturePath, PATHINFO_EXTENSION);
             $data = file_get_contents($signaturePath);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-            $signatureImg = "<img src=\"$base64\" alt=\"Firma Gerente General\" style=\"width: 250px; height: auto; display: block; margin-bottom: 5px;\">";
+            $signatureImg = "<img src=\"$base64\" alt=\"Firma Gerente General\" style=\"width: 150px; height: auto; display: block; margin-bottom: 5px;\">";
         }
 
         return "
