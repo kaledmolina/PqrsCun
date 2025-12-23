@@ -218,6 +218,13 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                         return $service->getOfficialResponseTemplate($this->getOwnerRecord(), $this->getOwnerRecord()->type);
                     })
                     ->columnSpanFull(),
+                Forms\Components\FileUpload::make('attachments')
+                    ->label('Anexos Adicionales')
+                    ->multiple()
+                    ->disk('local') // Stores in storage/app/private, matching Mail logic
+                    ->directory('pqrs_attachments')
+                    ->visibility('private')
+                    ->columnSpanFull(),
             ])
             ->action(function (array $data) {
                 $service = new \App\Services\PqrsResponseService();
@@ -226,11 +233,19 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                 // Generate PDF
                 $pdfPath = $service->generatePdf($data['content'], $pqrs);
                 
+                // Collect all attachments (PDF + Manual Uploads)
+                $allAttachments = [$pdfPath];
+                if (!empty($data['attachments'])) {
+                    // Normalize attachments array
+                    $manualAttachments = is_array($data['attachments']) ? $data['attachments'] : [$data['attachments']];
+                    $allAttachments = array_merge($allAttachments, $manualAttachments);
+                }
+
                 // Create Message
                 $pqrs->messages()->create([
                     'role' => 'admin',
                     'content' => $data['content'],
-                    'attachments' => [$pdfPath],
+                    'attachments' => $allAttachments,
                 ]);
 
                 // Update Status
@@ -251,7 +266,7 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                     \Illuminate\Support\Facades\Mail::to($pqrs->email)->send(new \App\Mail\PqrsResponseMail(
                         $pqrs,
                         $data['content'],
-                        [$pdfPath],
+                        $allAttachments,
                         'Respuesta Oficial a su PQR'
                     ));
                 } catch (\Exception $e) {
