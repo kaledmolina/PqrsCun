@@ -125,10 +125,9 @@ class PqrsResponseService
         $signatureImg = '<p>__________________________________</p>';
         
         if (file_exists($signaturePath)) {
-            $type = pathinfo($signaturePath, PATHINFO_EXTENSION);
-            $data = file_get_contents($signaturePath);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-            $signatureImg = "<img src=\"$base64\" alt=\"Firma Gerente General\" width=\"120\" style=\"display: block; margin-bottom: 5px;\">";
+            // Use absolute path for DomPDF (more reliable in some envs)
+            // Ensure the path is correct and accessible
+            $signatureImg = '<img src="' . $signaturePath . '" alt="Firma" width="120" style="display: block; margin-bottom: 5px;">';
         }
 
         return "

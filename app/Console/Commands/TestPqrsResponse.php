@@ -82,6 +82,15 @@ class TestPqrsResponse extends Command
             $this->info("PDF generado correctamente en: $pdfPath");
 
             // 5. Send Email
+            $expectedPath = storage_path('app/private/' . $pdfPath);
+            $this->info("Ruta esperada del adjunto para el correo: $expectedPath");
+            
+            if (!file_exists($expectedPath)) {
+                $this->error("¡ALERTA! El archivo no existe en la ruta esperada. El correo se enviará sin adjunto.");
+            } else {
+                $this->info("El archivo existe y está listo para adjuntarse.");
+            }
+
             $this->line("Enviando correo a: $email...");
             
             Mail::to($email)->send(new PqrsResponseMail(
