@@ -150,7 +150,7 @@
                             <!-- Row 3.1: Previous CUN for Recurso -->
                             @if($data['type'] === 'recurso_subsidio')
                                 <div class="group animate-fade-in">
-                                    <label class="block text-sm font-medium text-slate-600 mb-1">Código CUN Anterior (Resuelto o Cerrado) *</label>
+                                    <label class="block text-sm font-medium text-slate-600 mb-1">CUN</label>
                                     <div class="relative">
                                         <input type="text" wire:model.blur="previous_cun" placeholder="Ej: PQR-25-0000000001" class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm {{ $validPreviousCun ? 'border-green-500 ring-1 ring-green-500' : '' }}">
                                         @if($validPreviousCun)
@@ -165,7 +165,7 @@
                                     @enderror
                                     
                                     <p class="text-xs text-slate-500 mt-2">
-                                        Debes ingresar el CUN de una PQR anterior que ya haya sido resuelta o cerrada. Los datos personales se cargarán automáticamente.
+                                        Digite los 16 dígitos del CUN con el que radicó su PQR inicial
                                     </p>
                                 </div>
                             @endif
