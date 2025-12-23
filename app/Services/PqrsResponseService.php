@@ -128,7 +128,7 @@ class PqrsResponseService
             $type = pathinfo($signaturePath, PATHINFO_EXTENSION);
             $data = file_get_contents($signaturePath);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-            $signatureImg = "<img src=\"$base64\" alt=\"Firma Gerente General\" style=\"width: 150px; height: auto; display: block; margin-bottom: 5px;\">";
+            $signatureImg = "<img src=\"$base64\" alt=\"Firma Gerente General\" style=\"width: 100px; height: auto; display: block; margin-bottom: 5px;\">";
         }
 
         return "
