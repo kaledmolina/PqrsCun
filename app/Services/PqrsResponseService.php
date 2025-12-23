@@ -50,6 +50,16 @@ class PqrsResponseService
 
     public function generatePdf(string $content, Pqrs $pqrs): string
     {
+        // Replace signature placeholder with Local File Path for DomPDF
+        $signaturePath = storage_path('app/private/firma.png');
+        $signatureHtml = '<p>__________________________________</p>';
+        
+        if (file_exists($signaturePath)) {
+            $signatureHtml = '<img src="' . $signaturePath . '" alt="Firma" width="120" style="display: block; margin-bottom: 5px;">';
+        }
+        
+        $content = str_replace('[[FIRMA_GERENTE]]', $signatureHtml, $content);
+
         $pdf = Pdf::loadView('pdf.response', [
             'content' => $content,
             'pqrs' => $pqrs,
@@ -65,49 +75,19 @@ class PqrsResponseService
         $path = 'pqrs_responses/' . $fileName;
 
         // Save to 'local' disk (configured to storage/app/private)
-        // So we don't need to add 'private/' prefix again
         Storage::disk('local')->put($path, $pdf->output());
 
         return $path;
     }
 
-    // --- Quick Response Template (General) ---
-
-    protected function getQuickResponseGeneralTemplate($name, $cun, $date, $description): string
-    {
-        $responseDate = $this->addBusinessDays(now(), 15)->format('d/m/Y');
-
-        return "
-            <p>Estimado(a) <strong>$name</strong>,</p>
-            <p>Su solicitud ha sido recibida y registrada con la siguiente información:</p>
-            <ul>
-                <li><strong>Número de radicado:</strong> $cun</li>
-                <li><strong>Fecha de radicación:</strong> $date</li>
-                <li><strong>Fecha de respuesta (máxima):</strong> $responseDate</li>
-                <li><strong>Usuario:</strong> $name</li>
-                <li><strong>Descripción del requerimiento:</strong> $description</li>
-            </ul>
-            <p>Para consultar el estado de su solicitud, puede ingresar con su código CUN en el siguiente enlace:</p>
-            <p><a href=\"https://pqr.intalnet.com\">https://pqr.intalnet.com</a></p>
-            <p>Este mensaje es generado automáticamente. Por favor, no responda a este correo.</p>
-            <p>Si requiere más información, comuníquese directamente con Intalnet Telecomunicaciones por nuestros canales oficiales.</p>
-            <p style=\"font-size: 10px; color: #999;\">Este correo es informativo y de uso exclusivo del destinatario. Puede contener información confidencial. Si usted no es el destinatario, elimine el mensaje de inmediato. La reproducción o difusión no autorizada está estrictamente prohibida.</p>
-        
-            <br><br>
-            <div style=\"font-size: 10px; text-align: justify; color: #666;\">
-                De conformidad con lo dispuesto en la regulación vigente, INTALNET TELECOMUNICACIONES, informa al usuario que las PQRS presentados, serán atendidos y resueltos mediante una respuesta clara, completa y de fondo dentro de un término máximo de quince (15) días hábiles, contados a partir del día hábil siguiente a la fecha de su radicación. Si su PQR no es atendida en la fecha indicada, se entenderá que ha sido resuelta a su favor. (Esto se llama Silencio Administrativo Positivo). RECURSOS. Dentro de los 10 días hábiles siguientes a la notificación de la decisión y cuando INTALNET TELECOMUNICACIONES NO resuelva a su favor la petición o queja, en relación con actos de negativa del contrato, suspensión del servicio, terminación del contrato, corte y facturación, Ud, tendrá derecho a solicitar que se reconsidere la decisión tomada, a través de la presentación de recursos en cualquiera de los canales de atención, teniendo la opción de presentar RECURSO DE REPOSICIÓN bajo el cual solicita a INTALNET TELECOMUNICACIONES, que revise nuevamente la decisión o RECURSO DE REPOSICION Y EN SUBSIDIO APELACION para que INTALNET TELECOMUNICACIONES revise la decisión y si no se accede a lo solicitado remita el expediente a la Superintendencia de Industria y Comercio (SIC) para que esta entidad revise y adopte una decisión final y definitiva. Para estos efectos, INTALNET TELECOMUNICACIONES, tiene habilitados los siguientes canales de atención: Teléfono de Atención al Cliente 3148042601, correo electrónico pqr@intalnet.com, y la página web https://intalnettelecomunicaciones.com/, a través de los cuales el usuario podrá radicar sus solicitudes y hacer seguimiento a las mismas.
-            </div>
-        ";
-    }
-
-    // --- Official Response Templates (Final Decision) ---
+    // ... (quick response, etc)
 
     protected function getUnifiedOfficialResponseTemplate(Pqrs $pqrs, string $responseBodyPlaceholder): string
     {
-        // Formatting dates and data
+        // ... (data setup)
         Carbon::setLocale('es');
         $city = $pqrs->city ?? 'Montería';
-        $now = now()->isoFormat('D [de] MMMM [de] YYYY'); // e.g., 22 de Diciembre de 2025
+        $now = now()->isoFormat('D [de] MMMM [de] YYYY');
         $fullDate = "$city, $now";
         
         $name = $pqrs->first_name . ' ' . $pqrs->last_name;
@@ -118,18 +98,10 @@ class PqrsResponseService
         $createdDate = $pqrs->created_at ? $pqrs->created_at->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha recibida]';
         $responseDate = $pqrs->created_at ? $this->addBusinessDays($pqrs->created_at->copy(), 15)->isoFormat('D [de] MMMM [de] YYYY') : '[Fecha calculada]';
         
-        // Handling description safely
         $description = $pqrs->description ?? '[describir brevemente la queja, petición o reclamo]';
 
-        $signaturePath = storage_path('app/private/firma.png');
-        $signatureImg = '<p>__________________________________</p>';
-        
-        if (file_exists($signaturePath)) {
-            $type = pathinfo($signaturePath, PATHINFO_EXTENSION);
-            $data = file_get_contents($signaturePath);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-            $signatureImg = '<img src="' . $base64 . '" alt="Firma" width="120" style="display: block; margin-bottom: 5px;">';
-        }
+        // Use Placeholder
+        $signaturePlaceholder = '[[FIRMA_GERENTE]]';
 
         return "
             <p>$fullDate</p>
@@ -165,7 +137,7 @@ class PqrsResponseService
             <p>Atentamente;</p>
 
             <br><br>
-            <p>$signatureImg<br>
+            <p>$signaturePlaceholder<br>
             <strong>ANGELA MARIA SEJIN M.</strong><br>
             Gerente General<br>
             INTALNET TELECOMUNICACIONES<br>

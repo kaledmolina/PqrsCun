@@ -17,7 +17,25 @@
         </div>
         
         <div class="content">
-            {!! $responseContent !!}
+            @php
+                $signaturePath = storage_path('app/private/firma.png');
+                $signedContent = $responseContent;
+                
+                // Check if signature exists and replace placeholder with CID attachment
+                if (file_exists($signaturePath)) {
+                    // $message is a variable automatically available in Mailable views
+                    $cid = $message->embed($signaturePath);
+                    $signedContent = str_replace(
+                        '[[FIRMA_GERENTE]]', 
+                        '<img src="' . $cid . '" alt="Firma" width="120" style="display: block; margin-bottom: 5px;">', 
+                        $signedContent
+                    );
+                } else {
+                    // Fallback if signature not found
+                    $signedContent = str_replace('[[FIRMA_GERENTE]]', '<p>__________________________________</p>', $signedContent);
+                }
+            @endphp
+            {!! $signedContent !!}
         </div>
         
         <div class="footer">
