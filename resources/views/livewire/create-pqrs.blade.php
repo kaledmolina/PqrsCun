@@ -2,10 +2,10 @@
     <!-- Hero Section -->
     <div class="text-center mb-12">
         <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
-            Estamos aquí para <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">escucharte</span>
+            Estamos aquí para <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">atender tus solicitudes</span>
         </h1>
         <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-            Tu satisfacción es nuestra prioridad. Utiliza este formulario para radicar tus peticiones, quejas o reclamos.
+            Tu satisfacción es nuestra prioridad. Utiliza este formulario para radicar tus Peticiones, Quejas/Reclamos o Recursos.
         </p>
     </div>
 
