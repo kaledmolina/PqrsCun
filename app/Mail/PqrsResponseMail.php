@@ -63,8 +63,8 @@ class PqrsResponseMail extends Mailable
         $mailAttachments = [];
 
         foreach ($this->attachmentPaths as $path) {
-            // Use local disk path
-            $fullPath = storage_path('app/private/' . $path);
+            // Use public disk path to match PqrsResponseService storage
+            $fullPath = storage_path('app/public/' . $path);
             if (file_exists($fullPath)) {
                 $mailAttachments[] = Attachment::fromPath($fullPath);
             }

@@ -221,9 +221,9 @@ class MessagesRelationManager extends RelationManager implements \Filament\Actio
                 Forms\Components\FileUpload::make('attachments')
                     ->label('Anexos Adicionales')
                     ->multiple()
-                    ->disk('local') // Stores in storage/app/private, matching Mail logic
+                    ->disk('public') // Matches PqrsResponseMail and Service logic
                     ->directory('pqrs_attachments')
-                    ->visibility('private')
+                    ->visibility('public') // Accessible via URL in Admin Panel
                     ->columnSpanFull(),
             ])
             ->action(function (array $data) {

@@ -74,8 +74,8 @@ class PqrsResponseService
         $fileName = 'respuesta_' . $pqrs->cun . '_' . time() . '.pdf';
         $path = 'pqrs_responses/' . $fileName;
 
-        // Save to 'local' disk (configured to storage/app/private)
-        Storage::disk('local')->put($path, $pdf->output());
+        // Save to 'public' disk (storage/app/public) to allow Admin Panel downloads
+        Storage::disk('public')->put($path, $pdf->output());
 
         return $path;
     }

@@ -82,7 +82,7 @@ class TestPqrsResponse extends Command
             $this->info("PDF generado correctamente en: $pdfPath");
 
             // 5. Send Email
-            $expectedPath = storage_path('app/private/' . $pdfPath);
+            $expectedPath = storage_path('app/public/' . $pdfPath);
             $this->info("Ruta esperada del adjunto para el correo: $expectedPath");
             
             if (!file_exists($expectedPath)) {
