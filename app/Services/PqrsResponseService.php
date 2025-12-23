@@ -114,6 +114,16 @@ class PqrsResponseService
         // Handling description safely
         $description = $pqrs->description ?? '[describir brevemente la queja, petición o reclamo]';
 
+        $signaturePath = storage_path('app/private/firma.png');
+        $signatureImg = '<p>__________________________________</p>';
+        
+        if (file_exists($signaturePath)) {
+            $type = pathinfo($signaturePath, PATHINFO_EXTENSION);
+            $data = file_get_contents($signaturePath);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+            $signatureImg = "<img src=\"$base64\" alt=\"Firma Gerente General\" style=\"width: 250px; height: auto; display: block; margin-bottom: 5px;\">";
+        }
+
         return "
             <p>$fullDate</p>
             <p>Señor(a):<br>
@@ -148,7 +158,7 @@ class PqrsResponseService
             <p>Atentamente;</p>
 
             <br><br>
-            <p>__________________________________<br>
+            <p>$signatureImg<br>
             <strong>ANGELA MARIA SEJIN M.</strong><br>
             Gerente General<br>
             INTALNET TELECOMUNICACIONES<br>
