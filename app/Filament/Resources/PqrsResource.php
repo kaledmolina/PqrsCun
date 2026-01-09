@@ -30,34 +30,34 @@ class PqrsResource extends Resource
                             ->maxLength(255),
                         Forms\Components\TextInput::make('document_type')
                             ->label('Tipo de Documento')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('document_number')
                             ->label('Número de Documento')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('first_name')
                             ->label('Nombres / Razón Social')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('last_name')
                             ->label('Apellidos')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('email')
                             ->label('Correo Electrónico')
                             ->email()
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('phone')
                             ->label('Celular')
                             ->tel()
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('landline')
                             ->label('Teléfono Fijo')
                             ->tel()
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('address')
                             ->label('Dirección')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('city')
                             ->label('Sede')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                     ])->columns(2),
 
                 Forms\Components\Section::make('Detalles de la PQR')
@@ -78,16 +78,16 @@ class PqrsResource extends Resource
                                 'apelacion' => 'Apelación',
                                 'recurso_subsidio' => 'Recurso de Reposición en Subsidio de Apelación',
                             ])
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TagsInput::make('services')
                             ->label('Servicios Afectados')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('motive')
                             ->label('Motivo') // Note: User said "el campo motivo alla no sale", checking if it was missing. It was in the code but maybe not filled? Or maybe they meant it wasn't shown to client? The user said "agrega campos que no le sale al cliente". Wait, "el camapo motivo alla no sale agrega campos que no le sale al cliente". This is confusing. "motive" is in the admin form. Maybe they mean "motive" is NOT in the client form so it's empty? In CreatePqrs.php, 'motive' is in rules but NOT in the blade form! So it's always null. I should probably remove it or keep it if they plan to use it internally. But the user said "el unico campo editable es de contrato". So I will keep it disabled or remove it if it's useless. Let's keep it disabled for now as per "read only".
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\Textarea::make('description')
                             ->label('Descripción')
-                            ->disabled(fn (string $operation) => $operation === 'edit')
+                            ->disabled(fn(string $operation) => $operation === 'edit')
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('attachments')
                             ->label('Adjuntos')
@@ -95,7 +95,7 @@ class PqrsResource extends Resource
                             ->downloadable()
                             ->disk('public')
                             ->visibility('public')
-                            ->disabled(fn (string $operation) => $operation === 'edit')
+                            ->disabled(fn(string $operation) => $operation === 'edit')
                             ->columnSpanFull(),
                         Forms\Components\Select::make('status')
                             ->label('Estado')
@@ -105,19 +105,19 @@ class PqrsResource extends Resource
                                 'resolved' => 'Resuelto',
                                 'closed' => 'Cerrado',
                             ])
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
 
                         Forms\Components\TextInput::make('typology')
                             ->label('Tipología')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\TextInput::make('sub_typology')
                             ->label('Detalle Tipología')
-                            ->disabled(fn (string $operation) => $operation === 'edit'),
+                            ->disabled(fn(string $operation) => $operation === 'edit'),
                         Forms\Components\Section::make('Satisfacción del Cliente')
                             ->schema([
                                 Forms\Components\TextInput::make('rating')
                                     ->label('Calificación')
-                                    ->formatStateUsing(fn ($state) => $state ? str_repeat('⭐', $state) : 'Sin calificación')
+                                    ->formatStateUsing(fn($state) => $state ? str_repeat('⭐', $state) : 'Sin calificación')
                                     ->disabled()
                                     ->dehydrated(false),
                                 Forms\Components\Textarea::make('feedback')
@@ -126,7 +126,7 @@ class PqrsResource extends Resource
                                     ->dehydrated(false)
                                     ->columnSpanFull(),
                             ])
-                            ->visible(fn ($record) => $record && $record->rating),
+                            ->visible(fn($record) => $record && $record->rating),
                     ])->columns(2),
             ]);
     }
@@ -140,7 +140,7 @@ class PqrsResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('type')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'queja_reclamo' => 'warning',
                         'peticion' => 'info',
                         'queja' => 'warning',
@@ -152,18 +152,18 @@ class PqrsResource extends Resource
                     }),
                 Tables\Columns\TextColumn::make('first_name')
                     ->label('Client')
-                    ->formatStateUsing(fn ($record) => $record->first_name . ' ' . $record->last_name)
+                    ->formatStateUsing(fn($record) => $record->first_name . ' ' . $record->last_name)
                     ->searchable(['first_name', 'last_name']),
                 Tables\Columns\TextColumn::make('status')
                     ->label('Estado')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'pending' => 'warning',
                         'in_progress' => 'info',
                         'resolved' => 'success',
                         'closed' => 'gray',
                     })
-                    ->formatStateUsing(fn (string $state): string => match ($state) {
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
                         'pending' => 'Pendiente',
                         'in_progress' => 'En Progreso',
                         'resolved' => 'Resuelto',
@@ -174,7 +174,8 @@ class PqrsResource extends Resource
                     ->date('d/m/Y')
                     ->sortable()
                     ->badge()
-                    ->color(fn ($record) => 
+                    ->color(
+                        fn($record) =>
                         $record->status === 'resolved' || $record->status === 'closed' ? 'gray' : (
                             $record->deadline_at < now() ? 'danger' : (
                                 $record->deadline_at < now()->addDays(3) ? 'warning' : 'success'
@@ -197,7 +198,7 @@ class PqrsResource extends Resource
                     ]),
                 Tables\Filters\Filter::make('overdue')
                     ->label('Vencidos')
-                    ->query(fn (Builder $query): Builder => $query->where('deadline_at', '<', now())->whereNotIn('status', ['resolved', 'closed'])),
+                    ->query(fn(Builder $query): Builder => $query->where('deadline_at', '<', now())->whereNotIn('status', ['resolved', 'closed'])),
 
                 Tables\Filters\SelectFilter::make('type')
                     ->options([
@@ -210,6 +211,10 @@ class PqrsResource extends Resource
                         'apelacion' => 'Apelación',
                         'recurso_subsidio' => 'Recurso de Reposición en Subsidio de Apelación',
                     ]),
+                Tables\Filters\SelectFilter::make('city')
+                    ->label('Sede / Ciudad')
+                    ->options(fn() => Pqrs::distinct()->whereNotNull('city')->pluck('city', 'city')->toArray())
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
