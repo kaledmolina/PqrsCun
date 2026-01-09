@@ -20,8 +20,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-       if($this->app->environment('production') || config('app.env') === 'production') {
-        URL::forceScheme('https');
-    }
+        if ($this->app->environment('production') || config('app.env') === 'production') {
+            URL::forceScheme('https');
+        }
+        \Illuminate\Support\Facades\Gate::policy(\Spatie\Permission\Models\Role::class, \App\Policies\RolePolicy::class);
     }
 }
