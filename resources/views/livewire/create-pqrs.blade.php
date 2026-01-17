@@ -111,6 +111,7 @@
                                     <div class="group">
                                         <label class="block text-sm font-medium text-slate-600 mb-1">Código de contrato</label>
                                         <input type="text" wire:model="data.contract_number"
+                                            x-on:input="$el.value = $el.value.replace(/[^0-9]/g, '')"
                                             class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                         @error('data.contract_number') <span
                                         class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
@@ -148,6 +149,7 @@
                                             class="block text-sm font-medium text-slate-600 mb-1 {{ $errors->has('data.document_number') ? 'text-red-500' : '' }}">Número
                                             de documento *</label>
                                         <input type="text" wire:model="data.document_number"
+                                            x-on:input="$el.value = $el.value.replace(/[^0-9]/g, '')"
                                             class="w-full px-4 py-3 bg-white border {{ $errors->has('data.document_number') ? 'border-red-500' : 'border-slate-200' }} rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                         @error('data.document_number') <span class="text-red-500 text-sm mt-1 block">El campo
                                         número de documento es obligatorio</span> @enderror
@@ -361,6 +363,7 @@
                                         <label class="block text-sm font-medium text-slate-600 mb-1">Número de contacto
                                             celular</label>
                                         <input type="tel" wire:model="data.phone"
+                                            x-on:input="$el.value = $el.value.replace(/[^0-9]/g, '')"
                                             class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                         @error('data.phone') <span class="text-red-500 text-sm mt-1 block">{{ $message }}</span>
                                         @enderror
@@ -369,6 +372,7 @@
                                         <label class="block text-sm font-medium text-slate-600 mb-1">Teléfono de
                                             contacto</label>
                                         <input type="tel" wire:model="data.landline"
+                                            x-on:input="$el.value = $el.value.replace(/[^0-9]/g, '')"
                                             class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all shadow-sm">
                                         @error('data.landline') <span
                                         class="text-red-500 text-sm mt-1 block">{{ $message }}</span> @enderror
