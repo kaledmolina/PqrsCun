@@ -16,14 +16,14 @@ class CunService
         try {
             // 1. Obtener parámetros enviados por la SIC
             // Nota: La SIC envía esto como enteros, ejemplo: 7714, 25, 1
-            $io = $params->identificadorOperador; 
+            $io = $params->identificadorOperador;
             $anio = $params->anoRadicacionCun;
             $consecutivoInput = $params->ConsecutivoRadCun;
 
             // 2. Reconstruir el CUN para buscar en tu BD
             // Tu generador usa %010d, así que debemos rellenar con ceros a la izquierda
             $consecutivoPadded = sprintf('%010d', $consecutivoInput);
-            
+
             // Armamos el string: "7714-25-0000000001"
             $cunString = "{$io}-{$anio}-{$consecutivoPadded}";
 
@@ -59,7 +59,7 @@ class CunService
 
         // 2. Mapeo de Tipo de Documento (Tu BD -> Código SIC)
         // Ajusta estos case según lo que guardes en $pqr->document_type
-        $tipoIdSic = match(strtoupper($pqr->document_type)) {
+        $tipoIdSic = match (strtoupper($pqr->document_type)) {
             'CC', 'CEDULA' => 'CC',
             'CE' => 'CE',
             'NIT' => 'NI',
@@ -67,8 +67,8 @@ class CunService
             'PASAPORTE' => 'PA',
             default => 'CC' // Valor por defecto o manejar error
         };
-        
-        $nombreTipoId = match($tipoIdSic) {
+
+        $nombreTipoId = match ($tipoIdSic) {
             'CC' => 'CEDULA DE CIUDADANIA',
             'CE' => 'CEDULA DE EXTRANJERIA',
             'NI' => 'NIT',
@@ -78,7 +78,7 @@ class CunService
         // 3. Fechas
         // La fecha de asignación es created_at. Formato ISO 8601
         $fechaAsignacion = $pqr->created_at->format('Y-m-d\TH:i:s');
-        
+
         // Fecha estimada de respuesta (deadline_at)
         $fechaEstRespuesta = $pqr->deadline_at ? $pqr->deadline_at->format('Y-m-d') : date('Y-m-d');
 
@@ -89,7 +89,7 @@ class CunService
         // 5. Tipo de Queja SIC (Mapeo)
         // Debes definir qué código enviar según $pqr->type
         $codigoTipoQueja = '1'; // Ejemplo: Petición
-        $nombreTipoQueja = strtoupper($pqr->type); 
+        $nombreTipoQueja = strtoupper($pqr->type);
 
         // Construcción del XML String
         // NOTA: No indentes el XML interno para evitar problemas de parsing en la SIC
@@ -129,7 +129,8 @@ XML;
     /**
      * XML de Error según esquema
      */
-    private function buildErrorXml($code, $desc) {
+    private function buildErrorXml($code, $desc)
+    {
         $timestamp = now()->format('Y-m-d\TH:i:s');
         return <<<XML
 <tns:ArrayOfIntegracionCUN xmlns:tns="http://ws.wso2.org/dataservice">
@@ -152,7 +153,7 @@ XML;
         // Unir el resto como segundo nombre (si tiene 3 nombres, los 2 últimos van aquí)
         unset($partes[0]);
         $segundo = implode(' ', $partes);
-        
+
         return ['primero' => $primero, 'segundo' => $segundo];
     }
 
@@ -162,11 +163,14 @@ XML;
     private function mapEstado($statusDb)
     {
         // Ajusta estos valores según lo que tengas en tu columna 'status'
-        return match(strtolower($statusDb)) {
-            'pendiente', 'radicado' => 'EN TRAMITE',
-            'en proceso' => 'EN ANALISIS',
-            'resuelto', 'cerrado' => 'RESUELTO',
-            'anulado' => 'ANULADO',
+        $cleanedStatus = trim(strtolower($statusDb));
+        Log::info("Mapeando estado DB: '{$statusDb}' -> Cleaned: '{$cleanedStatus}'");
+
+        return match ($cleanedStatus) {
+            'pendiente', 'radicado', 'en tramite' => 'EN TRAMITE',
+            'en proceso', 'en analisis' => 'EN ANALISIS',
+            'resuelto', 'cerrado', 'finalizado', 'solucionado' => 'RESUELTO',
+            'anulado', 'rechazado' => 'ANULADO',
             default => 'EN TRAMITE'
         };
     }
