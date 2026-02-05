@@ -167,10 +167,10 @@ XML;
         Log::info("Mapeando estado DB: '{$statusDb}' -> Cleaned: '{$cleanedStatus}'");
 
         return match ($cleanedStatus) {
-            'pendiente', 'radicado', 'en tramite' => 'EN TRAMITE',
-            'en proceso', 'en analisis' => 'EN ANALISIS',
-            'resuelto', 'cerrado', 'finalizado', 'solucionado' => 'RESUELTO',
-            'anulado', 'rechazado' => 'ANULADO',
+            'pendiente', 'radicado', 'en tramite', 'pending' => 'EN TRAMITE',
+            'en proceso', 'en analisis', 'in_progress' => 'EN ANALISIS',
+            'resuelto', 'cerrado', 'finalizado', 'solucionado', 'resolved', 'closed' => 'RESUELTO',
+            'anulado', 'rechazado', 'cancelled' => 'ANULADO',
             default => 'EN TRAMITE'
         };
     }
